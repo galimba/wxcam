@@ -1,0 +1,27 @@
+\section{Resultados}
+ Los filtros se testearon tanto en Linux como en OSX, utilizando webcams de definici\'on $640 x 480$ tanto como HD-720. Las webcams tienen una limitaci\'on promedio de 20 FPS. La comparaci\'on se realiza sin par\'ametros de optimizaci\'on y con -03. Para analizar la velocidad y medir los tiempos de respuesta de las diferentes implementaciones no alcanza con mirar los FPS, as\'i que decidimos utilizar el TSC. Para tal fin generamos la siguiente rutina que es llamada antes de cada algoritmo:
+ \begin{verbatim}
+ static __inline__ unsigned long rdtsc(void)
+{
+   //unsigned long long int x;
+   unsigned a, d;
+
+   __asm__ volatile("rdtsc" : "=a" (a), "=d" (d));
+
+   return (((unsigned long)a) | (unsigned long)d >> 32);
+}
+ \end{verbatim}
+ En la siguiente tabla se ven las diferencias (medidas en cantidad de ciclos promedio) entre los algoritmos implementados en C++ y assembler (con y sin optimizaciones de compilador).
+ Para calcular el promedio de ciclos por aplicacion del algoritmo se ejecuta el programa, se activa el filtro y se mide durante 30 segundos la diferencia de RDTSC entre el inicio y final de cada llamada al filtro. Luego se promedian todos los datos.
+
+\begin{center}
+    \begin{tabular}{ | l | l | l | p{5cm} |}
+    \hline
+    Filtro & gcc & gcc -O3 & SSE \\ \hline
+    Monochrome & 4244864  & 3463785 & 4244864  \\ \hline
+    Negative & 16895274 & 755973 & 866218  \\ \hline
+    Sobel & 225153350 & 22634335 & 15596374  \\ \hline
+    Median & 3414938448 & 1786994543 & 13632900  \\ \hline
+    \end{tabular}
+$ $ \\ \textit{Los datos est\'an expresados en cantidad de tics del CPU de acuerdo al TSC}
+\end{center}

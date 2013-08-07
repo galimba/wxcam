@@ -1,0 +1,656 @@
+/***************************************************************************
+ *   Copyright (C) 2007 by Marco Lorrai                                    *
+ *   marco.lorrai@abbeynet.it                                              *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
+#include <wx/wx.h>
+#include <wx/dcclient.h>
+#include <wx/dcbuffer.h>
+#include <wx/msgout.h>
+#include <wx/bitmap.h>
+#include <wx/dcmemory.h>
+#include <wx/thread.h>
+#include <wx/toolbar.h>
+#include <wx/panel.h>
+#include <wx/sizer.h>
+#include <wx/msgdlg.h>
+#include <wx/aboutdlg.h>
+#include <wx/thread.h>
+
+#include <linux/videodev2.h>
+#include "device.h"
+#include <iostream>
+#include <sstream>
+#include "wxcam.h"
+#include "picture.h"
+#include "cfile.h"
+#include "setting.h"
+#include "recording.h"
+#include "device.h"
+#include "resolution.h"
+#include "configure.h"
+#include "frame.h"
+#include "vidiostd.h"
+
+using namespace std;
+
+//images
+#include "configure.xpm"
+#include "appicon.xpm"
+#include "snapshot.xpm"
+#include "snapshot_small.xpm"
+#include "record.xpm"
+#include "rgb.xpm"
+#include "resize.xpm"
+#include "tv.xpm"
+
+const int ID_TOOLBAR = 500;
+
+BEGIN_EVENT_TABLE( wxCam, wxFrame )
+EVT_MENU( wxID_EXIT, wxCam::OnQuit )
+EVT_MENU( wxID_ABOUT, wxCam::OnAbout )
+EVT_MENU( Menu_Info_Capabilities, wxCam::OnShowCapabilities )
+EVT_MENU( wxID_SETUP, wxCam::OnConfigure )
+EVT_MENU( Menu_Settings_Resolution, wxCam::OnSettingResolution )
+EVT_MENU( Menu_Settings_Picture, wxCam::OnPictureFunctions )
+EVT_MENU( Menu_Settings_Video_Std, wxCam::OnSettingVideoStd )
+EVT_MENU( Menu_Video_Snapshot, wxCam::OnTakeSnapshot )
+EVT_MENU( Menu_Video_Recording, wxCam::OnRecording )
+EVT_MENU( Display_FullScreen, wxCam::OnFullScreen )
+EVT_MENU( AdjustColors_Filter, wxCam::OnSettingAdjustColors )
+EVT_MENU( Negative_Filter, wxCam::OnSettingNegative )
+EVT_MENU( Monochrome_Filter, wxCam::OnSettingMonochrome )
+EVT_MENU( Upturned_Filter, wxCam::OnSettingUpturned )
+EVT_MENU( Mirror_Filter, wxCam::OnSettingMirror )
+EVT_MENU( Blur_Filter, wxCam::OnSettingBlur )
+EVT_MENU( Deriche_Filter, wxCam::OnSettingDeriche )
+EVT_MENU( Noise_Filter, wxCam::OnSettingNoise )
+EVT_MENU( Sharpen_Filter, wxCam::OnSettingSharpen )
+EVT_MENU( Edge_Filter, wxCam::OnSettingEdge )
+EVT_MENU( Laplacian_Filter, wxCam::OnSettingLaplacian )
+EVT_MENU( DateTime_Filter, wxCam::OnSettingDateTime )
+EVT_MENU( Menu_MovementDetection, wxCam::OnMovementDetection )
+EVT_MENU( Menu_ShowMDAreas, wxCam::OnShowMDAreas )
+EVT_PAINT( wxCam::OnPaintBackground )
+EVT_SIZE( wxCam::OnResize )
+END_EVENT_TABLE()
+
+IMPLEMENT_APP( CamApp )
+
+bool CamApp::OnInit() 
+{
+    if(m_locale.Init(wxLANGUAGE_DEFAULT, wxLOCALE_CONV_ENCODING))
+    {
+        wxLocale::AddCatalogLookupPathPrefix(wxT("."));
+        m_locale.AddCatalog(wxT("wxcam"));
+    }
+    else
+        cout<<"Error adding catalog, using english language"<<std::endl;
+    wxCam *frame = new wxCam( wxT( "wxCam" ) );
+    //frame->Maximize( TRUE );
+    frame->Show( TRUE );
+    SetTopWindow( frame );
+    return TRUE;
+}
+
+wxCam::wxCam( const wxString& title )
+: wxFrame( ( wxFrame * ) NULL, -1, title ) 
+{    
+    frame = NULL;
+    panel = NULL;
+    SetIcon( wxIcon( appicon_xpm ) );    
+    panel = new wxPanel( this, -1, wxDefaultPosition, GetClientSize(), wxSUNKEN_BORDER );
+    panel->SetBackgroundColour( *wxWHITE );
+    panel->ClearBackground();
+    panel->Refresh();
+    
+    string res = Setting::GetInstance()->GetResolution();
+    bool isFirstExecution = Setting::GetInstance()->isFirstExecution();
+    if ( isFirstExecution ) {
+        Setting::GetInstance()->WriteDefaults();
+        res = "0x0";
+    }
+    frame = new Frame( res, this, panel, -1, wxPoint( 0, 0 ), GetClientSize() );    
+    
+    if ( isFirstExecution && frame->isOpen() ) {   
+        Setting::GetInstance()->SetAlreadyOpen();
+        struct video_capability caps;
+        struct video_picture pic;
+        wxString msg;
+        if(cam.queryCapabilities( &caps )) {
+            msg = _( "Device found in your system: " ) +  wxString( "\n", wxConvUTF8 );
+            msg += wxString(caps.name, wxConvUTF8);
+        } else {
+            struct v4l2_capability v2caps;
+            cam.queryCapabilities(&v2caps);
+            msg = _( "Device found in your system: " ) +  wxString( "\n", wxConvUTF8 );
+            msg += wxString((char*)v2caps.card, wxConvUTF8);
+        }
+        wxMessageBox( msg,  _( "Hardware found" ), wxICON_INFORMATION );
+
+        /*cam.getPictureFunctions( &pic );
+        if ( pic.palette == VIDEO_PALETTE_YUV420P || frame->isPWC() ) {
+            Setting::GetInstance()->SetFrameFormat( "YUV420P" );
+            frame->SetFormat();
+        }*/
+        //else: RGB24 is the default setting
+    }
+    adjustSize(/*res*/Setting::GetInstance()->GetResolution());
+    
+    if(Setting::GetInstance()->GetVideoStd() != NONE) {
+        cam.setVideoStd(Setting::GetInstance()->GetVideoStd());
+    }
+    
+    if(frame->isOpen())         
+        frame->Started();    
+    
+    wxMenu *menuFile = new wxMenu;
+    wxMenu *menuSettings = new wxMenu;
+    wxMenu *menuInfo = new wxMenu;
+    menuCapture = new wxMenu;
+    wxMenu *menuFilters = new wxMenu;
+    
+    menuFile->Append( wxID_EXIT, _( "E&xit\tAlt-X" ) );
+    
+    wxBitmap bmpConfigure( configure_xpm );
+    wxMenuItem *setupItem = new wxMenuItem( menuSettings, wxID_SETUP, _( "&Preferences\tCtrl-P" ), _( "Preferences" ) );
+    setupItem->SetBitmap( bmpConfigure );
+    menuSettings->Append( setupItem );
+    menuSettings->AppendSeparator();
+    wxBitmap bmpRbg( rgb_xpm );
+    wxMenuItem *rbgItem = new wxMenuItem( menuSettings, Menu_Settings_Picture, _( "&Image balance\tCtrl-I" ), _( "Configure brightness, contrast, gamma and saturation" ) );
+    rbgItem->SetBitmap( bmpRbg );
+    menuSettings->Append( rbgItem );
+    wxBitmap resizeRbg( resize_xpm );
+    wxMenuItem *resizeItem = new wxMenuItem( menuSettings, Menu_Settings_Resolution, _( "&Frame size\tCtrl-F" ), _( "Choose resolution and frame rate" ) );
+    resizeItem->SetBitmap( resizeRbg );
+    menuSettings->Append( resizeItem );
+    wxBitmap tv( tv_xpm );
+    wxMenuItem *vstdItem = new wxMenuItem( menuSettings, Menu_Settings_Video_Std, _( "&Video standard\tCtrl-V" ), _( "Choose video standard" ) );
+    vstdItem->SetBitmap( tv );
+    menuSettings->Append( vstdItem );
+    menuSettings->AppendSeparator();
+    menuSettings->AppendCheckItem( Display_FullScreen, _( "Full screen\tF" ) );
+    
+    const wxSize imageSize( 16, 16 );
+    
+    wxBitmap bmpInfo( wxArtProvider::GetIcon( wxART_QUESTION, wxART_OTHER, imageSize ) );
+    menuInfo->Append( wxID_ABOUT, _( "About...\tF1" ) );
+    menuInfo->AppendSeparator();
+    wxMenuItem *infoItem = new wxMenuItem( menuInfo, Menu_Info_Capabilities, _( "&Webcam\tCtrl-W" ), _( "Show webcam info" ) );
+    infoItem->SetBitmap( bmpInfo );
+    menuInfo->Append( infoItem );
+    
+    wxMenuItem *captureItemSn = new wxMenuItem( menuCapture, Menu_Video_Snapshot, _( "&Snapshot\tCtrl-S" ), _( "Take snapshot" ) );
+    wxImage imgSn( snapshot_small_xpm );
+    captureItemSn->SetBitmap( wxBitmap( imgSn ) );
+    wxMenuItem *captureItemRec = new wxMenuItem( menuCapture, Menu_Video_Recording, _( "&Record video\tCtrl-R" ), _( "Record video" ) );
+    wxImage imgRec( record_xpm );
+    imgRec.Rescale( 16, 16, wxIMAGE_QUALITY_HIGH );
+    captureItemRec->SetBitmap( wxBitmap( imgRec ) );
+    menuCapture->Append( captureItemSn );
+    menuCapture->Append( captureItemRec );
+    menuCapture->AppendSeparator();
+    menuCapture->AppendCheckItem( Menu_MovementDetection, _( "Movement detection" ) );
+    menuCapture->Check(Menu_MovementDetection, frame->GetMovementDetectionStatus());
+    menuCapture->AppendCheckItem( Menu_ShowMDAreas, _( "Show movement detection areas" ) );
+    menuCapture->Check(Menu_ShowMDAreas, frame->GetMDAreasShowStatus());
+    
+    menuFilters->AppendCheckItem( AdjustColors_Filter, _( "&Adjust Colors\tAlt-A" ) );
+    menuFilters->Check(AdjustColors_Filter, Setting::GetInstance()->GetAdjustColors());
+    menuFilters->AppendCheckItem( Negative_Filter, _( "&Negative\tAlt-N" ) );
+    menuFilters->Check(Negative_Filter, Setting::GetInstance()->GetNegative());
+    menuFilters->AppendCheckItem( Monochrome_Filter, _( "&Monochrome\tAlt-M" ) );
+    menuFilters->Check(Monochrome_Filter, Setting::GetInstance()->GetMonochrome());
+    menuFilters->AppendSeparator();
+    menuFilters->AppendCheckItem( Upturned_Filter, _( "&Upturned\tAlt-U" ) );
+    menuFilters->Check(Upturned_Filter, Setting::GetInstance()->GetUpturned());
+    menuFilters->AppendCheckItem( Mirror_Filter, _( "M&irror\tAlt-I" ) );
+    menuFilters->Check(Mirror_Filter, Setting::GetInstance()->GetMirror());
+    menuFilters->AppendSeparator(); 
+    menuFilters->AppendCheckItem( Blur_Filter, _( "&Blur\tAlt-B" ) );
+    menuFilters->Check(Blur_Filter, Setting::GetInstance()->GetBlur());
+    menuFilters->AppendCheckItem( Deriche_Filter, _( "&Deriche\tAlt-D" ) );
+    menuFilters->Check(Deriche_Filter, Setting::GetInstance()->GetDeriche());
+    menuFilters->AppendCheckItem( Noise_Filter, _( "N&oise (slow)\tAlt-O" ) );
+    menuFilters->Check(Noise_Filter, Setting::GetInstance()->GetNoise());  
+    menuFilters->AppendCheckItem( Sharpen_Filter, _( "&Sharpen (slow)\tAlt-S" ) );
+    menuFilters->Check(Sharpen_Filter, Setting::GetInstance()->GetSharpen()); 
+    menuFilters->AppendCheckItem( Edge_Filter, _( "&Edge\tAlt-E" ) );
+    menuFilters->Check(Edge_Filter, Setting::GetInstance()->GetEdge());
+    menuFilters->AppendCheckItem( Laplacian_Filter, _( "&Laplacian\tAlt-L" ) );
+    menuFilters->Check(Laplacian_Filter, Setting::GetInstance()->GetLaplacian());
+    menuFilters->AppendSeparator();
+    menuFilters->AppendCheckItem( DateTime_Filter, _( "A&ppend datetime \tAlt-P" ) );
+    menuFilters->Check(DateTime_Filter, Setting::GetInstance()->GetDateTime()); 
+    
+    wxMenuBar *menuBar = new wxMenuBar;
+    menuBar->Append( menuFile, _( "&File" ) );
+    menuBar->Append( menuSettings, _( "&Settings" ) );
+    menuBar->Append( menuCapture, _( "&Capture" ) );
+    menuBar->Append( menuFilters, _( "&Effects" ) );
+    menuBar->Append( menuInfo, _( "&Info" ) );
+    SetMenuBar( menuBar );
+    
+    CreateToolBar( wxBORDER_SIMPLE|wxTB_HORIZONTAL|wxTB_FLAT );
+    
+    GetToolBar()->AddTool( Menu_Video_Snapshot, _( "Take snapshot" ), snapshot_xpm, _( "Take Snapshot" ) );
+    GetToolBar()->AddTool( Menu_Video_Recording, _( "Start recording" ), record_xpm, _( "Start recording" ) );
+    GetToolBar()->AddSeparator();
+    GetToolBar()->Realize();
+    SetToolBar( GetToolBar() );
+    
+    CreateStatusBar();
+    wxStatusBar *sb = GetStatusBar();
+    static const int widthsForFPSField[] = { -1, 85 };
+    static const int *widthsAll[] =
+    {
+        NULL,               // 1 field: default
+        widthsForFPSField,   // 2 fields: 1 fixed, 1 var        
+    };
+    const int * const widths = widthsAll[1];
+    sb->SetFieldsCount(2, widths);
+    SetBackgroundStyle( wxBG_STYLE_CUSTOM );
+    
+    //setting NULL to all dialogs;
+    resDlg = NULL;
+    recordingDlg = NULL;
+    
+    //SetStatusText( wxT( "Welcome to wxCam!" ) );
+}
+
+wxCam::~wxCam() 
+{
+    frame->Destroy();
+    Destroy();
+}
+
+void wxCam::OnResize( wxSizeEvent& event ) 
+{
+    panel->SetSize( GetClientSize() );
+    frame->SetSize( GetClientSize() );
+}
+
+void wxCam::OnPaintBackground( wxPaintEvent& event ) 
+{
+    int w, h;
+    wxPaintDC dc( panel );
+    dc.GetSize( &w, &h );
+    dc.SetBrush( wxBrush( *wxWHITE ) );
+    dc.SetPen( wxPen( *wxWHITE, 1, wxSOLID ) );
+    dc.DrawRectangle( 0, 0, w, h );
+}
+
+void wxCam::OnQuit( wxCommandEvent& WXUNUSED( event ) ) 
+{
+    Close( TRUE );
+}
+
+void wxCam::OnAbout( wxCommandEvent& WXUNUSED( event ) ) 
+{
+    wxAboutDialogInfo info;
+    
+    info.SetName( _T( "wxCam" ) );
+    info.SetVersion( wxString("1.1", wxConvUTF8) );
+    info.SetDescription( _( "A webcam application for linux" ) );
+    info.SetCopyright( _T( "(C) 2011 Marco Lorrai" ) );
+    info.AddDeveloper( _T( "Marco Lorrai" ) );
+    info.AddDeveloper( _T( "Örjan Medhage" ) );
+    info.SetWebSite(wxT("wxcam.sourceforge.net"));
+    // we can add a second developer
+    //info.AddDeveloper(_T("A.N. Other"));
+    
+    // or we can add several persons at once like this
+//    static const wxChar *docwriters[] =
+//    {
+//        _T("Marco Lorrai"),
+//        _T("Another Writer")
+//    };
+    
+    //info.SetDocWriters(wxArrayString(WXSIZEOF(docwriters), docwriters));
+    info.SetLicence( wxString::FromAscii(
+            "This program is free software; you can redistribute it and/or modify\n"
+            "it under the terms of the GNU General Public License as published by\n"
+            "the Free Software Foundation; either version 2 of the License, or\n"
+            "(at your option) any later version.\n\n"
+            
+            "This program is distributed in the hope that it will be useful,\n"
+            "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+            "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+            "GNU General Public License for more details.\n\n"
+            
+            ) );
+    
+    //info.AddTranslator(_T("Wun Ngo Wen (Martian)"));
+    
+    wxAboutBox( info );
+}
+
+void wxCam::OnShowCapabilities( wxCommandEvent& WXUNUSED( event ) ) 
+{
+    struct video_capability caps;
+    if ( !cam.queryCapabilities( &caps ) ) {
+        //Trying v4l2 query...
+        struct v4l2_capability v2caps;
+        if ( !cam.queryCapabilities( &v2caps ) ) {
+            wxMessageBox( _( "Error querying webcam capabilities.\nPerhaps the device hasn't been correctly opened." ), _( "Capabilities" ), wxICON_WARNING );
+            return;
+        }
+        std::stringstream ss;
+        std::string str;
+        ss << (const char*) wxString(_("Driver: ")).mb_str(wxConvUTF8) << v2caps.driver << "\n";
+
+        ss << (const char*) wxString(_("Card: ")).mb_str(wxConvUTF8) << v2caps.card << "\n";
+        str = ss.str();
+
+        ss.str("");
+        if (v2caps.capabilities & V4L2_CAP_AUDIO)
+            ss << (const char*) wxString(_("Audio: ")).mb_str(wxConvUTF8) << (const char*) wxString(_("Yes")).mb_str(wxConvUTF8) << "\n";
+        else
+            ss << (const char*) wxString(_("Audio: ")).mb_str(wxConvUTF8) << (const char*) wxString(_("No")).mb_str(wxConvUTF8) << "\n";
+        str += ss.str();        
+
+        wxMessageBox(wxString(str.c_str(), wxConvUTF8), _("Webcam Capabilities     "), wxICON_INFORMATION);
+    } else {
+        std::stringstream ss;
+        std::string str;
+
+        ss << (const char*) wxString(_("Name: ")).mb_str(wxConvUTF8) << caps.name << "\n";
+
+        ss << (const char*) wxString(_("Channels: ")).mb_str(wxConvUTF8) << caps.channels << "\n";
+        str = ss.str();
+
+        ss.str("");
+        if (caps.audios)
+            ss << (const char*) wxString(_("Audio: ")).mb_str(wxConvUTF8) << (const char*) wxString(_("Yes")).mb_str(wxConvUTF8) << "\n";
+        else
+            ss << (const char*) wxString(_("Audio: ")).mb_str(wxConvUTF8) << (const char*) wxString(_("No")).mb_str(wxConvUTF8) << "\n";
+        str += ss.str();
+
+        ss.str("");
+        ss << (const char*) wxString(_("Min resolution: ")).mb_str(wxConvUTF8) << caps.minwidth << "x" << caps.minheight << "\n";
+        str += ss.str();
+
+        ss.str("");
+        ss << (const char*) wxString(_("Max resolution: ")).mb_str(wxConvUTF8) << caps.maxwidth << "x" << caps.maxheight << "\n";
+        str += ss.str();
+
+        wxMessageBox(wxString(str.c_str(), wxConvUTF8), _("Webcam Capabilities     "), wxICON_INFORMATION);
+    }
+}
+
+void wxCam::OnPictureFunctions( wxCommandEvent& WXUNUSED( event ) ) 
+{
+    if ( frame->isOpen() ) {
+        Picture *pic = new Picture( &cam, this, cam.isPWC() );
+        pic->ShowModal();
+        pic->Destroy();
+    }
+    else
+        wxMessageBox( _( "Error!\nPerhaps the device hasn't been correctly open." ), _( "Picture Functions" ), wxICON_WARNING );
+}
+
+void wxCam::OnConfigure( wxCommandEvent& WXUNUSED( event ) ) 
+{
+    ConfigureDialog *dlg = new ConfigureDialog( this );
+    dlg->ShowModal();
+    dlg->Destroy();
+}
+
+void wxCam::OnSettingResolution( wxCommandEvent& WXUNUSED( event ) ) 
+{
+    if ( frame->isOpen() ) {
+        if ( validResolution.IsEmpty() )
+            fillValidResolution();
+        
+        resDlg = new ResolutionDialog( validResolution, NULL, cam.isPWC() );
+        if ( resDlg->ShowModal() == wxID_OK ) {
+            wxString valueResolution = resDlg->GetResolution();
+            if ( valueResolution == wxString("- - -", wxConvUTF8) || valueResolution.empty() )
+                return;
+            
+            wxString valueFrameRate = resDlg->GetFrameRate();
+            if(!valueFrameRate.size())
+                valueFrameRate = wxT("10");
+            /*if ( valueFrameRate == wxString("- - -", wxConvUTF8) || valueFrameRate.empty() )
+                return;*/
+
+            if(frame->SetResolution( (const char*)valueResolution.mb_str(wxConvUTF8), (const char*)valueFrameRate.mb_str(wxConvUTF8)) )
+                adjustSize((const char*)valueResolution.mb_str(wxConvUTF8));
+        }
+        resDlg->Destroy();
+        resDlg=NULL;
+    }
+    else
+        wxMessageBox( _( "Error!\nPerhaps the device hasn't been correctly open." ), _( "Setting Resolution" ), wxICON_WARNING );
+}
+
+void wxCam::OnSettingVideoStd( wxCommandEvent& WXUNUSED( event ) )
+{
+    VidioStd *std = new VidioStd( this );
+    if(std->ShowModal() == wxID_OK) {
+        video_std vm = (video_std)std->stdMode->GetSelection();
+        if (vm != NONE) {
+            if (cam.setVideoStd(vm))
+                Setting::GetInstance()->SetVideoStd(vm);
+            else
+                wxMessageBox(_("Error!\nThis video standard is not supported by your device."), _("Setting Video Standard"), wxICON_WARNING);
+        } 
+        else
+            Setting::GetInstance()->SetVideoStd(vm);
+    }
+    std->Destroy();
+}
+
+void wxCam::OnTakeSnapshot( wxCommandEvent& WXUNUSED( event ) ) 
+{
+    if ( frame->isOpen() ) {
+        frame->TakeSnapshot();
+        wxString message;
+        message = _( "Saving snapshot on " ) + wxString(Setting::GetInstance()->GetSnapshotFile( false ).c_str(), wxConvUTF8);
+        SetStatusText( message );
+    }
+    else
+        wxMessageBox( _( "Error taking snapshot!\nPerhaps the device hasn't been correctly open." ), _( "Take snapshot" ), wxICON_WARNING );
+}
+
+void wxCam::OnRecording( wxCommandEvent& WXUNUSED( event ) ) 
+{
+    if ( frame->isOpen() ) {
+        if(recordingDlg)
+            recordingDlg->Destroy();
+        recordingDlg = new Recording( this );
+        frame->startRecording();
+        wxString message = _( "Saving video on " ) + wxString(Setting::GetInstance()->GetVideoFile( false ).c_str(), wxConvUTF8);
+        SetStatusText( message );
+        recordingDlg->ShowModal();
+        frame->stopRecording();
+        recordingDlg->Destroy();
+        recordingDlg = NULL;
+    }
+    else
+        wxMessageBox( _( "Error recording!\nPerhaps the device hasn't been correctly open." ), _( "Record video" ), wxICON_WARNING );
+}
+
+void wxCam::setRecordingTime(const wxTimeSpan &ts)
+{
+    if(recordingDlg)
+        recordingDlg->setRecordingTime(ts);
+}
+
+void wxCam::closeRecWindow() 
+{
+    if(recordingDlg)
+        recordingDlg->Close();
+}
+
+void wxCam::enableRec( bool enable ) 
+{
+    wxToolBarBase *tb = GetToolBar();
+    tb->EnableTool( Menu_Video_Recording, enable );
+}
+
+void wxCam::adjustSize(std::string res)
+{
+    //std::cout<<"Adjust size"<<std::endl;
+    if(frame) {
+        int w, h;
+        frame->GetResolution(res, w, h);
+        if (w < 320)
+            w=320;
+        if(h<240)
+            h=240;            
+        SetSize( w+50, h+130 );    
+        panel->SetSize( w+50, h+130 );   
+        frame->SetSize( GetClientSize() );
+    }
+}
+
+void wxCam::fillValidResolution() 
+{
+    /*struct video_capability caps;
+    int minw, minh, maxw, maxh;
+    
+    cam.queryCapabilities( &caps );
+    
+    minw = caps.minwidth;
+    minh = caps.minheight;
+    maxw = caps.maxwidth;
+    maxh = caps.maxheight;
+    
+    int currentw = maxw;
+    int currenth = maxh;
+    std::stringstream ss;
+    std::string str;
+    
+    while ( ( currentw >= minw ) && ( currenth >= minh ) ) {
+        ss.str( "" );
+        ss<<currentw<<"x"<<currenth;
+        str = ss.str();
+        validResolution.Add( wxString(str.c_str(), wxConvUTF8) );
+        currentw /= 2;
+        currenth /= 2;
+    }*/
+    validResolution.clear();
+    cam.getResolutionList(validResolution);
+}
+
+void wxCam::OnFullScreen( wxCommandEvent& event ) 
+{
+    ShowFullScreen( event.IsChecked(), wxFULLSCREEN_NOTOOLBAR|
+            wxFULLSCREEN_NOSTATUSBAR|
+            wxFULLSCREEN_NOBORDER|
+            wxFULLSCREEN_NOCAPTION
+            //wxFULLSCREEN_ALL
+            );    
+    frame->setFullscreen( event.IsChecked() );
+    panel->SetSize(1920, 1440);
+}
+
+void wxCam::OnSettingAdjustColors(wxCommandEvent& event)
+{
+    Setting::GetInstance()->SetAdjustColors(event.IsChecked());   
+}
+
+void wxCam::OnSettingNegative(wxCommandEvent& event)
+{
+   Setting::GetInstance()->SetNegative(event.IsChecked());
+}
+
+void wxCam::OnSettingMonochrome(wxCommandEvent& event)
+{
+    Setting::GetInstance()->SetMonochrome(event.IsChecked());
+}
+
+void wxCam::OnSettingUpturned(wxCommandEvent& event)
+{
+    Setting::GetInstance()->SetUpturned(event.IsChecked());
+}
+
+void wxCam::OnSettingMirror(wxCommandEvent& event)
+{
+    Setting::GetInstance()->SetMirror(event.IsChecked());
+}
+
+void wxCam::OnSettingBlur(wxCommandEvent& event)
+{
+    Setting::GetInstance()->SetBlur(event.IsChecked());
+}
+
+void wxCam::OnSettingDeriche(wxCommandEvent& event)
+{
+    Setting::GetInstance()->SetDeriche(event.IsChecked());
+}
+
+void wxCam::OnSettingNoise(wxCommandEvent& event)
+{
+    Setting::GetInstance()->SetNoise(event.IsChecked());
+}
+
+void wxCam::OnSettingSharpen(wxCommandEvent& event)
+{
+    Setting::GetInstance()->SetSharpen(event.IsChecked());
+}
+
+void wxCam::OnSettingEdge(wxCommandEvent& event)
+{
+    Setting::GetInstance()->SetEdge(event.IsChecked());
+}
+
+void wxCam::OnSettingLaplacian(wxCommandEvent& event)
+{
+    Setting::GetInstance()->SetLaplacian(event.IsChecked());
+}
+
+void wxCam::OnSettingDateTime(wxCommandEvent& event)
+{
+    Setting::GetInstance()->SetDateTime(event.IsChecked());
+}
+
+void wxCam::SetRecordingStatus(bool recordingStatus)
+{
+   recordingDlg->SetRecordingStatus(recordingStatus);
+}
+
+void wxCam::OnMovementDetection(wxCommandEvent& event)
+{
+    if (event.IsChecked()) {
+        frame->ActivateMovementDetection();
+    }
+    else {
+        frame->DeactivateMovementDetection();
+    }
+}
+
+void wxCam::OnShowMDAreas( wxCommandEvent& event )
+{ 
+    if (event.IsChecked()) {
+        frame->ShowMDAreas();
+    }
+    else {
+        frame->HideMDAreas();
+    }
+        
+}
+
+void wxCam::OnHideMDAreas() 
+{    
+    frame->HideMDAreas();
+    menuCapture->Check(Menu_ShowMDAreas, false);
+}
+

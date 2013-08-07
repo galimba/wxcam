@@ -1,0 +1,221 @@
+#
+# Generated Makefile - do not edit!
+#
+# Edit the Makefile in the project folder instead (../Makefile). Each target
+# has a -pre and a -post target defined where you can add customized code.
+#
+# This makefile implements configuration specific macros and targets.
+
+
+# Environment
+MKDIR=mkdir
+CP=cp
+GREP=grep
+NM=nm
+CCADMIN=CCadmin
+RANLIB=ranlib
+CC=gcc
+CCC=g++
+CXX=g++
+FC=gfortran
+AS=as
+
+# Macros
+CND_PLATFORM=GNU-Linux-x86
+CND_CONF=Debug
+CND_DISTDIR=dist
+CND_BUILDDIR=build
+
+# Include project Makefile
+include Makefile
+
+# Object Directory
+OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
+
+# Object Files
+OBJECTFILES= \
+	${OBJECTDIR}/src/uncompressed.o \
+	${OBJECTDIR}/src/wxcam.o \
+	${OBJECTDIR}/src/v4l1.o \
+	${OBJECTDIR}/ccvt/ccvt.o \
+	${OBJECTDIR}/src/motion.o \
+	${OBJECTDIR}/src/mddialog.o \
+	${OBJECTDIR}/src/filters.o \
+	${OBJECTDIR}/src/recording.o \
+	${OBJECTDIR}/src/audio.o \
+	${OBJECTDIR}/src/picture.o \
+	${OBJECTDIR}/src/setting.o \
+	${OBJECTDIR}/src/configure.o \
+	${OBJECTDIR}/src/xvidcodec.o \
+	${OBJECTDIR}/src/progressdlg.o \
+	${OBJECTDIR}/src/XvidEncoder.o \
+	${OBJECTDIR}/src/avilib.o \
+	${OBJECTDIR}/src/device.o \
+	${OBJECTDIR}/src/vidiostd.o \
+	${OBJECTDIR}/src/cfile.o \
+	${OBJECTDIR}/src/BaseEncoder.o \
+	${OBJECTDIR}/src/resolution.o \
+	${OBJECTDIR}/src/revelcore.o \
+	${OBJECTDIR}/src/v4l2.o \
+	${OBJECTDIR}/src/frame.o
+
+
+# C Compiler Flags
+CFLAGS=
+
+# CC Compiler Flags
+CCFLAGS=`wx-config --cxxflags` 
+CXXFLAGS=`wx-config --cxxflags` 
+
+# Fortran Compiler Flags
+FFLAGS=
+
+# Assembler Flags
+ASFLAGS=
+
+# Link Libraries and Options
+LDLIBSOPTIONS=-L/usr/local/lib -lxvidcore -llavjpeg -lmjpegutils -lX11 -lasound
+
+# Build Targets
+.build-conf: ${BUILD_SUBPROJECTS}
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk bin/wxcam
+
+bin/wxcam: ${OBJECTFILES}
+	${MKDIR} -p bin
+	${LINK.cc} `wx-config --libs` -o bin/wxcam  ${OBJECTFILES} ${LDLIBSOPTIONS} 
+
+${OBJECTDIR}/src/uncompressed.o: src/uncompressed.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -Iccvt -Iimages -Iinclude -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/uncompressed.o src/uncompressed.cpp
+
+${OBJECTDIR}/src/wxcam.o: src/wxcam.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -Iccvt -Iimages -Iinclude -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/wxcam.o src/wxcam.cpp
+
+${OBJECTDIR}/src/v4l1.o: src/v4l1.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -Iccvt -Iimages -Iinclude -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/v4l1.o src/v4l1.cpp
+
+${OBJECTDIR}/ccvt/ccvt.o: ccvt/ccvt.c 
+	${MKDIR} -p ${OBJECTDIR}/ccvt
+	${RM} $@.d
+	$(COMPILE.c) -g -Iinclude -MMD -MP -MF $@.d -o ${OBJECTDIR}/ccvt/ccvt.o ccvt/ccvt.c
+
+${OBJECTDIR}/src/motion.o: src/motion.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -Iccvt -Iimages -Iinclude -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/motion.o src/motion.cpp
+
+${OBJECTDIR}/src/mddialog.o: src/mddialog.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -Iccvt -Iimages -Iinclude -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/mddialog.o src/mddialog.cpp
+
+${OBJECTDIR}/src/filters.o: src/filters.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -Iccvt -Iimages -Iinclude -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/filters.o src/filters.cpp
+
+${OBJECTDIR}/src/recording.o: src/recording.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -Iccvt -Iimages -Iinclude -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/recording.o src/recording.cpp
+
+${OBJECTDIR}/src/audio.o: src/audio.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -Iccvt -Iimages -Iinclude -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/audio.o src/audio.cpp
+
+${OBJECTDIR}/src/picture.o: src/picture.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -Iccvt -Iimages -Iinclude -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/picture.o src/picture.cpp
+
+${OBJECTDIR}/src/setting.o: src/setting.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -Iccvt -Iimages -Iinclude -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/setting.o src/setting.cpp
+
+${OBJECTDIR}/src/configure.o: src/configure.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -Iccvt -Iimages -Iinclude -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/configure.o src/configure.cpp
+
+${OBJECTDIR}/src/xvidcodec.o: src/xvidcodec.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -Iccvt -Iimages -Iinclude -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/xvidcodec.o src/xvidcodec.cpp
+
+${OBJECTDIR}/src/progressdlg.o: src/progressdlg.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -Iccvt -Iimages -Iinclude -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/progressdlg.o src/progressdlg.cpp
+
+${OBJECTDIR}/src/XvidEncoder.o: src/XvidEncoder.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -Iccvt -Iimages -Iinclude -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/XvidEncoder.o src/XvidEncoder.cpp
+
+${OBJECTDIR}/src/avilib.o: src/avilib.c 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.c) -g -Iinclude -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/avilib.o src/avilib.c
+
+${OBJECTDIR}/src/device.o: src/device.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -Iccvt -Iimages -Iinclude -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/device.o src/device.cpp
+
+${OBJECTDIR}/src/vidiostd.o: src/vidiostd.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -Iccvt -Iimages -Iinclude -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/vidiostd.o src/vidiostd.cpp
+
+${OBJECTDIR}/src/cfile.o: src/cfile.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -Iccvt -Iimages -Iinclude -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/cfile.o src/cfile.cpp
+
+${OBJECTDIR}/src/BaseEncoder.o: src/BaseEncoder.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -Iccvt -Iimages -Iinclude -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/BaseEncoder.o src/BaseEncoder.cpp
+
+${OBJECTDIR}/src/resolution.o: src/resolution.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -Iccvt -Iimages -Iinclude -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/resolution.o src/resolution.cpp
+
+${OBJECTDIR}/src/revelcore.o: src/revelcore.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -Iccvt -Iimages -Iinclude -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/revelcore.o src/revelcore.cpp
+
+${OBJECTDIR}/src/v4l2.o: src/v4l2.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -Iccvt -Iimages -Iinclude -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/v4l2.o src/v4l2.cpp
+
+${OBJECTDIR}/src/frame.o: src/frame.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -Iccvt -Iimages -Iinclude -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/frame.o src/frame.cpp
+
+# Subprojects
+.build-subprojects:
+
+# Clean Targets
+.clean-conf: ${CLEAN_SUBPROJECTS}
+	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
+	${RM} bin/wxcam
+
+# Subprojects
+.clean-subprojects:
+
+# Enable dependency checking
+.dep.inc: .depcheck-impl
+
+include .dep.inc

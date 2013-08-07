@@ -1,0 +1,109 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{packages/caratula}
+\usepackage{packages/algo2symb}
+\usepackage{packages/newalgo}
+\usepackage{packages/itef}
+\usepackage{packages/boxedfile}
+\usepackage{colortbl}
+\usepackage{color}
+\usepackage{multicol}
+\usepackage{multirow}
+
+
+\usepackage{footnote}
+\makesavenoteenv{tabular}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage[pdftex]{graphicx}
+\usepackage{makeidx}
+\usepackage{textcomp}
+\usepackage{fancyhdr}
+\usepackage{subfigure}
+\usepackage{lastpage}
+\usepackage{listings}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=false,
+    pdfborder={0 0 0},
+}
+\usepackage{alltt}
+\usepackage{wasysym}
+\usepackage{float}
+
+\pagestyle{fancy}
+
+\makeindex
+\fancyhf{}
+\fancyhead[LO]{Orga2, TP Final -- WxCam}
+\fancyhead[RO]{\thepage~de \pageref{LastPage}}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\renewcommand{\headrulewidth}{0.5pt}
+
+\usepackage[top=3cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+
+\definecolor{light-gray}{gray}{0.90}
+\definecolor{dark-gray}{gray}{0.75}
+
+\newcommand{\maximo}[2]{\max_{\;#1}\big(#2 \big)}
+\newcommand{\nil}{\textbf{nil}}
+
+\newcommand{\strongnewpage}{\newpage\mbox{} \newpage}
+\newcommand{\comment}[1]{{\small{\emph{\textcolor{blue}{#1}}}}}
+\newcommand{\complex}[1]{$\mathcal{O}(#1)$}
+
+\newtheorem{prop}{Proposición}
+\newtheorem{lema}{Lema}
+\newtheorem{teorema}{Teorema}
+
+\newfloat{codef}{ht}{codetemp}
+\floatname{codef}{Código}
+
+
+\lstloadlanguages{C++}
+\lstnewenvironment{code}
+	{\csname lst@SetFirstLabel\endcsname}
+	{\csname lst@SaveFirstLabel\endcsname}
+\lstset{
+	language=C++, basicstyle=\small\ttfamily, keywordstyle=\slshape,
+	emph=[1]{tipo,usa}, emphstyle={[1]\sffamily\bfseries},
+	morekeywords={tint,forn,forsn},
+	basewidth={0.47em,0.40em},
+	columns=fixed, fontadjust, resetmargins, xrightmargin=5pt, xleftmargin=15pt,
+	flexiblecolumns=false, tabsize=2, breaklines,	breakatwhitespace=false, extendedchars=true,
+	numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=9pt,
+	frame=l, framesep=3pt,
+}
+
+\begin{document}
+
+    \materia{Organizaci\'on del Computador II}
+
+    \titulo{Trabajo Pr\'actico Final}
+
+    
+
+	\integrante{Adri\'an Bonaccini}{207/04}{adrian.bonaccini@gmail.com}
+    \integrante{Sebastian Galimberti}{763/04}{galimba@gmail.com}
+	
+  \maketitle
+  \tableofcontents
+  \newpage
+  \input{introduccion.tex}
+  \newpage
+  \input{intro.tex}
+  \clearpage
+  \input{Desarrollo.tex}
+  \newpage
+  \input{resultados.tex}
+  \input{discusion.tex}
+  \newpage
+   \input{referencias.tex}
+   \newpage
+   \input{apendice.tex}
+\end{document}
+

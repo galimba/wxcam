@@ -1,0 +1,73 @@
+\NeedsTeXFormat{LaTeX2e}
+
+\RCSdate $Date: 2006/10/12 12:07:28 $
+\RCS $Revision: 1.4 $
+
+\ProvidesPackage{packages/itef}[2004/04/17 v\RCSRevision if-then-else-fi.]
+
+% Imprimir un mensajito al procesar un .tex que use este package
+\typeout{Cargando package 'itef' v\RCSRevision, \RCSDate}
+
+% Los s?mbolos a utilizar
+\newcommand{\LIF}{\textrm{\textbf{if}}}
+\newcommand{\LTHEN}{\textrm{\textbf{then}}}
+\newcommand{\LELSE}{\textrm{\textbf{else}}}
+\newcommand{\LFI}{\textrm{\textbf{fi}}}
+
+
+% Intento fallido de hacerlo de forma autom?tica.
+\def\itef#1#2#3{\setbox1=\hbox{\noindent\LIF #1 \LTHEN #2 \LELSE #3 \LFI}%
+\ifdim\wd1>\linewidth%
+% No entra. Hago un box con el then y otra con el else.
+\setbox2=\hbox{\noindent\hspace{1em}#2}%
+\setbox3=\hbox{\noindent\hspace{1em}#3}%
+\newdimen\max\max=\wd3% El m?ximo es el else.
+\ifdim\wd2>\wd3% El largo es del then
+\max=\wd2%
+\fi
+% ?Me paso?
+\ifdim\max>\hsize
+\max=0.9\hsize minus 3cm
+\fi
+\typeout{El m?x es \showthemax y el hsize es \showthehsize.}
+\hbox{\hsize\1.05\max\vtop{\noindent\LIF #1 \LTHEN\par\usebox2 \par\noindent\LELSE\par\usebox3 \par\noindent\LFI}}%
+% Entra.
+\else \showthe\parfillskip \showthe\linewidth \showthe\hsize \showthe\wd1 \noindent\usebox1\fi%
+\typeout{La cond #1 entra porque es menor que \showthe\hsize}}
+
+% if then else fi, en una l?nea.
+\def\IF#1THEN#2ELSE#3FI{\noindent\LIF\ #1~\LTHEN\ #2~\LELSE\ #3~\LFI}
+
+% if then else fi, en varias l?neas.
+\def\IFV#1THEN#2ELSE#3FI{
+% Hago un box con el then y otra con el else.
+\setbox2=\hbox{\noindent\hspace{1em}#2}%
+\setbox3=\hbox{\noindent\hspace{1em}#3}%
+\newdimen\max\max=\wd3% El m?ximo es el else.
+\ifdim\wd2>\wd3% El largo es del then
+ \max=\wd2%
+\fi
+\hbox to 1.05\max{\vtop{%
+ \noindent\LIF\ #1~\LTHEN\\%
+  \usebox2\\%
+ \noindent\LELSE\\%
+  \usebox3 \\%
+ \noindent\LFI%
+}}%
+}
+
+% if then else fi, en varias l?neas, m?s prolijo.
+\def\IFX#1THEN#2ELSE#3FI{
+% Hago un box con el then y otra con el else.
+\newdimen\max\max=\wd3% El m?ximo es el else.
+\ifdim\wd2>\wd3% El largo es del then
+ \max=\wd2%
+\fi
+\hbox to 1.05\max{\vtop{%
+ \noindent\LIF\ #1~\LTHEN\\%
+  \hspace*{1em}#2\\%
+ \noindent\LELSE\\%
+  \hspace*{1em}#3\\%
+ \noindent\LFI%
+}}%
+}

@@ -1,0 +1,71 @@
+% Los paquetes que usa
+\usepackage{ifthen}
+\usepackage{color}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% INSTRUCCIONES DE USO %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Para incluir esas macros poner \input{designMacros} junto con los \usepackage
+%
+% EL ENVIRONMENT INTERFAZ
+% Se usa con \begin{interfaz} y \end{interfaz}.
+% Toma 4 parámetros:
+%  - Nombre de la función
+%  - Parámetros
+%  - Tipo del resultado (Opcional)
+%  - Complejidad (Oppcional)
+% 
+% Para las funciones sobre estr se puede poner \i antes del nombre de la función para una i más pro. Eg: \begin{interfaz}{\i Desencolar} etc.
+% Para poner pre y postcondiciones se usan las macros \pre y \post (No hace falta poner math mode para usar símbolos)
+% Se puede agregar un comentario usando \nota{el comentario}
+% Para referirse al resultado se puede usar \res en vez de escribir "resultado"
+%
+% EJEMPLO 
+% \begin{interfaz}{encolar}{inout $c$: cola(int), in $elem$: int}{}{\Ode{1}}
+%	 \pre{c = c_0}
+%	 \post{c = encolar(c_0, e)}
+% \end{interfaz}
+% 
+% 
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% IMPLEMENTACIÓN %%%
+%%%%%%%%%%%%%%%%%%%%%
+
+%%%Contadores usados%%%
+\newcounter{linenumber}
+\newcounter{showln}
+\newcounter{tabs}
+\newcounter{backtabs}
+
+%%%Envireonment para interfaces%%%
+\newenvironment{interfaz}[4]{
+
+	% Primero definamos \pre y \post
+	\newcommand{\pre}[1]{\ensuremath{\left\{\begin{array}{l}##1\end{array}\right\}}\par}
+	\newcommand{\post}[1]{\pre{##1}}
+
+	% Para comentarios
+	\newcommand{\nota}[1]{\begin{small}\textbf{Nota:} ##1\end{small}}
+
+	% El prefijo i de las funciones imperativas
+	\renewcommand{\i}{\textit{i}}
+
+	% Por si algún día dejamos de usar resultado.
+	\newcommand{\res}{resultado}
+
+
+  % Aridad de la función
+  \noindent
+  	\textsl{#1}(#2) 	
+  	\ifthenelse{\equal{#3}{}}{}{ $\rightarrow$ \textit{\res}: #3}  	
+  	\ifthenelse{\equal{#4}{}}{}{\hspace{1 ex} #4}
+  	
+  % Reducimos un touch el indent
+  \setlength{\parindent}{1 ex}
+  \par
+}{
+	% Un espacio en blanco al final
+	\vspace{3 ex}
+}

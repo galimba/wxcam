@@ -1,0 +1,120 @@
+/***************************************************************************
+ *   Copyright (C) 2007 by Marco Lorrai                                    *
+ *   marco.lorrai@abbeynet.it                                              *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
+#ifndef _wxcam_H
+#define	_wxcam_H
+
+#include <wx/wx.h>
+#include <wx/datetime.h>
+
+class wxPanel;
+class Frame;
+class Recording;
+class ResolutionDialog;
+
+class CamApp : public wxApp {
+
+public:
+        virtual bool OnInit();
+        
+private:
+        wxLocale m_locale;
+};
+
+class wxCam : public wxFrame {
+    public:
+        wxCam( const wxString& title );
+        ~wxCam();
+        void OnQuit( wxCommandEvent& event );
+        void OnAbout( wxCommandEvent& event );
+        void OnShowCapabilities( wxCommandEvent& event );
+        void OnConfigure( wxCommandEvent& event );
+        void OnPictureFunctions( wxCommandEvent& event );
+        void OnSettingResolution( wxCommandEvent& event );
+        void OnSettingVideoStd( wxCommandEvent& event );
+        void OnRecording( wxCommandEvent& event );
+        void OnTakeSnapshot( wxCommandEvent& event );        
+        void OnPaintBackground( wxPaintEvent& event );
+        void OnResize( wxSizeEvent& event );
+        void enableRec(bool enable);
+        void setRecordingTime(const wxTimeSpan &ts);
+	void closeRecWindow();        
+        void OnFullScreen(wxCommandEvent& event);
+        void OnSettingAdjustColors(wxCommandEvent& event);
+        void OnSettingNegative(wxCommandEvent& event);
+        void OnSettingMonochrome(wxCommandEvent& event);
+        void OnSettingUpturned(wxCommandEvent& event);
+        void OnSettingMirror(wxCommandEvent& event);
+        void OnSettingBlur(wxCommandEvent& event);
+        void OnSettingDeriche(wxCommandEvent& event);
+        void OnSettingNoise(wxCommandEvent& event);
+        void OnSettingSharpen(wxCommandEvent& event);
+        void OnSettingEdge(wxCommandEvent& event);
+        void OnSettingLaplacian(wxCommandEvent& event);
+        void OnSettingDateTime(wxCommandEvent& event);
+        void OnMovementDetection(wxCommandEvent& event);
+        void SetRecordingStatus(bool recordingStatus); 
+        void OnShowMDAreas(wxCommandEvent& event);
+        void OnHideMDAreas();
+                
+    private:
+        void fillValidResolution();
+        void adjustSize(std::string res);
+        
+    private:
+        wxArrayString validResolution;
+        
+    private:
+        wxPanel *panel;       
+        Frame *frame;
+        wxMenu *menuCapture;
+
+        //dialogs:
+	Recording *recordingDlg;
+        ResolutionDialog *resDlg;
+        DECLARE_EVENT_TABLE()
+};
+
+enum {
+    Menu_Settings_Picture,
+    Menu_Settings_Resolution,
+    Menu_Settings_Video_Std,
+    Menu_Info_Capabilities,
+    Menu_Video_Snapshot,
+    Menu_Video_Recording,
+    AdjustColors_Filter,
+    Negative_Filter,
+    Monochrome_Filter,
+    Upturned_Filter,
+    Mirror_Filter,
+    Blur_Filter,
+    Deriche_Filter,
+    Noise_Filter,    
+    Sharpen_Filter,
+    Edge_Filter,
+    Laplacian_Filter,
+    DateTime_Filter,    
+    Menu_MovementDetection,
+    Menu_ShowMDAreas,
+    Display_FullScreen
+};
+
+#endif	/* _wxcam_H */
+

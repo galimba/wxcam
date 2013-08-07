@@ -1,0 +1,603 @@
+# translation of hu.po to hungarian
+# Lisovszki  <lisovszki@gmail.com>, 2008.
+msgid ""
+msgstr ""
+"Project-Id-Version: hu\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2008-03-13 11:26+0100\n"
+"Last-Translator: Lisovszki  <lisovszki@gmail.com>\n"
+"Language-Team: hungarian <hu@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _\n"
+"X-Poedit-Basepath: /home/marco/anjuta/wxcam\n"
+"X-Poedit-SearchPath-0: src\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+
+#: src/resolution.cpp:31
+msgid "Frame settings"
+msgstr "Képkocka beállítások"
+
+#: src/resolution.cpp:44
+msgid "Choose resolution:"
+msgstr "Felbontás választás:"
+
+#: src/resolution.cpp:53
+msgid "Choose frame rate (fps):"
+msgstr "Másodpercenkénti képkockák (fps):"
+
+#: src/resolution.cpp:67
+#: src/picture.cpp:157
+msgid "&OK"
+msgstr "&OK"
+
+#: src/resolution.cpp:71
+msgid "&Cancel"
+msgstr "&Mégsem"
+
+#: src/picture.cpp:38
+#: src/wxcam.cpp:360
+msgid "Picture Functions"
+msgstr "Kép funkciók"
+
+#: src/picture.cpp:62
+msgid "Brightness:"
+msgstr "Fényerő:"
+
+#: src/picture.cpp:74
+msgid "Contrast:"
+msgstr "Kontraszt:"
+
+#: src/picture.cpp:86
+msgid "Gamma:"
+msgstr "Gamma:"
+
+#: src/picture.cpp:98
+msgid "Saturation:"
+msgstr "Telítettség:"
+
+#: src/picture.cpp:118
+msgid "Gain:"
+msgstr "Erősítés:"
+
+#: src/picture.cpp:123
+msgid "Auto gain control"
+msgstr "Automatikus erősítés vezérlés"
+
+#: src/picture.cpp:142
+msgid "Shutter speed:"
+msgstr "Zársebesség:"
+
+#: src/picture.cpp:147
+msgid "Auto shutter speed control"
+msgstr "Automatikus zársebesség vezérlés"
+
+#: src/configure.cpp:75
+#: src/wxcam.cpp:152
+msgid "Preferences"
+msgstr "Beállítások"
+
+#: src/configure.cpp:87
+msgid "  Global  "
+msgstr "  Globális  "
+
+#: src/configure.cpp:88
+msgid "  Files  "
+msgstr "  Fájlok  "
+
+#: src/configure.cpp:89
+msgid "  Video  "
+msgstr "  Videó  "
+
+#: src/configure.cpp:107
+msgid "Webcam device:"
+msgstr "Webkamera eszköz:"
+
+#: src/configure.cpp:116
+msgid "&YUV420P"
+msgstr "&YUV420P"
+
+#: src/configure.cpp:117
+msgid "&YUV420"
+msgstr "&YUV420"
+
+#: src/configure.cpp:118
+msgid "&YUYV"
+msgstr "&YUYV"
+
+#: src/configure.cpp:119
+msgid "&RGB24"
+msgstr "&RGB24"
+
+#: src/configure.cpp:120
+msgid "&RGB32"
+msgstr "&RGB32"
+
+#: src/configure.cpp:121
+#: src/configure.cpp:129
+msgid "&AUTO"
+msgstr "&Automatikus"
+
+#: src/configure.cpp:122
+msgid "&Frame format:"
+msgstr "&Képkocka formátum:"
+
+#: src/configure.cpp:127
+msgid "&Video4Linux1"
+msgstr "&Video4Linux1"
+
+#: src/configure.cpp:128
+msgid "&Video4Linux2"
+msgstr "&Video4Linux2"
+
+#: src/configure.cpp:131
+msgid "&Driver:"
+msgstr "&Meghajtó:"
+
+#: src/configure.cpp:145
+msgid "Choose snapshot file"
+msgstr "Pillanatkép fájl választása"
+
+#: src/configure.cpp:148
+#: src/configure.cpp:156
+msgid "&Choose"
+msgstr "&Választás"
+
+#: src/configure.cpp:149
+msgid "Snapshot file:"
+msgstr "Pillanatkép fájl:"
+
+#: src/configure.cpp:153
+msgid "Choose video registration file"
+msgstr "Video regisztrációs fájl választása"
+
+#: src/configure.cpp:157
+msgid "Video file:"
+msgstr "Videó fájl:"
+
+#: src/configure.cpp:175
+msgid "&none (uncompressed)"
+msgstr "&nincs (tömörítetlen)"
+
+#: src/configure.cpp:176
+msgid "&xvid"
+msgstr "&xvid"
+
+#: src/configure.cpp:178
+msgid "&Choose recording compression:"
+msgstr "&Felvételi tömörítés választása:"
+
+#: src/configure.cpp:182
+msgid "Choose xvid quality:"
+msgstr "xvid minőség kiválasztása:"
+
+#: src/configure.cpp:190
+msgid "Enable audio recording (xvid only)"
+msgstr "Hangrögzítés engedélyezése (csak xvid esetén)"
+
+#: src/configure.cpp:194
+msgid "Audio device:"
+msgstr "Hangmeghajtó:"
+
+#: src/configure.cpp:202
+msgid "Add silence for synchronization reason:"
+msgstr "Csend hozzáadása a szinkronizálás folyamathoz:"
+
+#: src/configure.cpp:208
+msgid "(hundredths of a second)"
+msgstr "(a másodperc századrésze)"
+
+#: src/configure.cpp:258
+msgid "Save snapshot"
+msgstr "Pillanatkép mentése"
+
+#: src/configure.cpp:276
+msgid "Save video"
+msgstr "Video mentése"
+
+#: src/configure.cpp:279
+msgid "AVI files (*.avi)|*.avi"
+msgstr "AVI fájlok (*.avi)|*.avi"
+
+#: src/configure.cpp:312
+msgid ""
+"You have modified device file or frame format or device API settings.\n"
+"Please restart the program for changes to take effect..."
+msgstr ""
+"Módosítottad az eszköz, vagy a képkocka beállításokat.\n"
+"Kérlek indítsd újra a programot a változások életbelépéséhez."
+
+#: src/configure.cpp:312
+msgid "Device setting"
+msgstr "Eszköz beállítások"
+
+#: src/wxcam.cpp:129
+msgid "Device found in your system: "
+msgstr "Megtalált eszköz: "
+
+#: src/wxcam.cpp:131
+msgid "Hardware found"
+msgstr "Hárdvert találtam"
+
+#: src/wxcam.cpp:149
+msgid "E&xit\tAlt-X"
+msgstr "&Kilépés\tAlt-X"
+
+#: src/wxcam.cpp:152
+msgid "&Preferences\tCtrl-P"
+msgstr "&Beállítások\tCtr-P"
+
+#: src/wxcam.cpp:157
+msgid "&Image balance\tCtrl-I"
+msgstr "&Kép egyensúly\tCtr-l"
+
+#: src/wxcam.cpp:157
+msgid "Configure brightness, contrast, gamma and saturation"
+msgstr "Fényesség, kontraszt, gamma és telítettség beállítása"
+
+#: src/wxcam.cpp:161
+msgid "&Frame size\tCtrl-F"
+msgstr "&Kép méret\tCtr-F"
+
+#: src/wxcam.cpp:161
+msgid "Choose resolution and frame rate"
+msgstr "Válassz felbontást és képkocka sebességet"
+
+#: src/wxcam.cpp:165
+msgid "Full screen\tF"
+msgstr "Teljes képernyő\tF"
+
+#: src/wxcam.cpp:170
+msgid "About...\tF1"
+msgstr "Névjegy...\tF1"
+
+#: src/wxcam.cpp:172
+msgid "&Webcam\tCtrl-W"
+msgstr "&Webkamera\tCtr-W"
+
+#: src/wxcam.cpp:172
+msgid "Show webcam info"
+msgstr "Webkamera információ megjelenítése"
+
+#: src/wxcam.cpp:176
+msgid "&Snapshot\tCtrl-S"
+msgstr "&Pillanatkép\tCtr-S"
+
+#: src/wxcam.cpp:176
+#: src/wxcam.cpp:227
+#: src/wxcam.cpp:405
+msgid "Take snapshot"
+msgstr "Pillanatfelvétel készítése"
+
+#: src/wxcam.cpp:179
+msgid "&Record video\tCtrl-R"
+msgstr "&Videó rögzítés\tCtr-R"
+
+#: src/wxcam.cpp:179
+#: src/wxcam.cpp:423
+msgid "Record video"
+msgstr "Videó rögzítés"
+
+#: src/wxcam.cpp:186
+msgid "Movement detection"
+msgstr "Mozgás érzékelés"
+
+#: src/wxcam.cpp:188
+msgid "Show movement detection areas"
+msgstr "Mozgásérzékelő területek megjelenítése"
+
+#: src/wxcam.cpp:191
+msgid "&Adjust Colors\tAlt-A"
+msgstr "&Színek igazítása\tAlt-A"
+
+#: src/wxcam.cpp:193
+msgid "&Negative\tAlt-N"
+msgstr "&Negatív\tAlt-N"
+
+#: src/wxcam.cpp:195
+msgid "&Monochrome\tAlt-M"
+msgstr "&Fekete-fehér\tAlt-M"
+
+#: src/wxcam.cpp:198
+msgid "&Upturned\tAlt-U"
+msgstr "&Fejreállított\tAlt-U"
+
+#: src/wxcam.cpp:200
+msgid "M&irror\tAlt-I"
+msgstr "&Tükrözés\tAlt-l"
+
+#: src/wxcam.cpp:203
+msgid "&Blur\tAlt-B"
+msgstr "&Elmosás\tAlt-B"
+
+#: src/wxcam.cpp:205
+msgid "&Deriche\tAlt-D"
+msgstr "&Homályosít\tAlt-D"
+
+#: src/wxcam.cpp:207
+msgid "N&oise (slow)\tAlt-O"
+msgstr "&Zajosít (lassú)\tAlt-O"
+
+#: src/wxcam.cpp:209
+msgid "&Sharpen (slow)\tAlt-S"
+msgstr "&Élesítés (lassú)\tAlt-S"
+
+#: src/wxcam.cpp:211
+msgid "&Edge\tAlt-E"
+msgstr "&Szél\tAlt-E"
+
+#: src/wxcam.cpp:214
+msgid "A&ppend datetime \tAlt-P"
+msgstr "&Dátum hozzáadása \tAlt-P"
+
+#: src/wxcam.cpp:218
+msgid "&File"
+msgstr "&Fájl"
+
+#: src/wxcam.cpp:219
+msgid "&Settings"
+msgstr "&Beállítások"
+
+#: src/wxcam.cpp:220
+msgid "&Capture"
+msgstr "&Felvétel"
+
+#: src/wxcam.cpp:221
+msgid "&Effects"
+msgstr "&Effektusok"
+
+#: src/wxcam.cpp:222
+msgid "&Info"
+msgstr "&Információ"
+
+#: src/wxcam.cpp:227
+msgid "Take Snapshot"
+msgstr "Pillanatkép készítése"
+
+#: src/wxcam.cpp:228
+msgid "Start recording"
+msgstr "Felvétel indítása"
+
+#: src/wxcam.cpp:285
+msgid "A webcam application for linux"
+msgstr "Egy webkamera alkalmazás linuxra"
+
+#: src/wxcam.cpp:322
+msgid ""
+"Error querying webcam capabilities.\n"
+"Perhaps the device hasn't been correctly opened."
+msgstr ""
+"Hiba a webkamera képességek keresésekor.\n"
+"Lehetséges, hogy az eszköz nem lett megfelelően megnyitva."
+
+#: src/wxcam.cpp:322
+msgid "Capabilities"
+msgstr "Képességek"
+
+#: src/wxcam.cpp:329
+msgid "Name: "
+msgstr "Név: "
+
+#: src/wxcam.cpp:331
+msgid "Channels: "
+msgstr "Csatornák: "
+
+#: src/wxcam.cpp:336
+#: src/wxcam.cpp:338
+msgid "Audio: "
+msgstr "Hang: "
+
+#: src/wxcam.cpp:336
+msgid "Yes"
+msgstr "Igen"
+
+#: src/wxcam.cpp:338
+msgid "No"
+msgstr "Nem"
+
+#: src/wxcam.cpp:342
+msgid "Min resolution: "
+msgstr "Minimum felbontás: "
+
+#: src/wxcam.cpp:346
+msgid "Max resolution: "
+msgstr "Maximum felbontás: "
+
+#: src/wxcam.cpp:349
+msgid "Webcam Capabilities     "
+msgstr "Webkamera képességek     "
+
+#: src/wxcam.cpp:360
+#: src/wxcam.cpp:393
+msgid ""
+"Error!\n"
+"Perhaps the device hasn't been correctly open."
+msgstr ""
+"Hiba!\n"
+"Elképzelhető, hogy az eszköz nem lett megfelelően megnyitva."
+
+#: src/wxcam.cpp:393
+msgid "Setting Resolution"
+msgstr "Felbontás beállítása"
+
+#: src/wxcam.cpp:401
+msgid "Saving snapshot on "
+msgstr "Pillanatfelvétel mentése ide:"
+
+#: src/wxcam.cpp:405
+msgid ""
+"Error taking snapshot!\n"
+"Perhaps the device hasn't been correctly open."
+msgstr ""
+"Hiba afelvétel közben!\n"
+"Elképzelhető, hogy az eszköz nem lett megfelelően megnyitva."
+
+#: src/wxcam.cpp:415
+msgid "Saving video on "
+msgstr "Videó mentése ide:"
+
+#: src/wxcam.cpp:423
+msgid ""
+"Error recording!\n"
+"Perhaps the device hasn't been correctly open."
+msgstr ""
+"Hiba a felvétel közben!\n"
+"Elképzelhető, hogy az eszköz nem lett megfelelően megnyitva."
+
+#: src/mddialog.cpp:40
+msgid "Area Sensitivity Setting"
+msgstr "Terület érzékenység beállítása"
+
+#: src/mddialog.cpp:53
+msgid "Colour Sensitivity"
+msgstr "Szín érzékenység"
+
+#: src/mddialog.cpp:64
+#: src/mddialog.cpp:110
+msgid "Red: "
+msgstr "Vörös: "
+
+#: src/mddialog.cpp:72
+#: src/mddialog.cpp:118
+msgid "Green: "
+msgstr "Zöld: "
+
+#: src/mddialog.cpp:80
+#: src/mddialog.cpp:126
+msgid "Blue: "
+msgstr "Kék: "
+
+#: src/mddialog.cpp:90
+#: src/mddialog.cpp:137
+msgid "Colour"
+msgstr "Szín"
+
+#: src/mddialog.cpp:93
+msgid "Sensitivity (%)"
+msgstr "Érzékenység (%)"
+
+#: src/mddialog.cpp:94
+#: src/mddialog.cpp:139
+msgid "Min"
+msgstr "Min."
+
+#: src/mddialog.cpp:95
+#: src/mddialog.cpp:140
+msgid "Mean"
+msgstr "Középérték"
+
+#: src/mddialog.cpp:96
+#: src/mddialog.cpp:141
+msgid "Max"
+msgstr "Max."
+
+#: src/mddialog.cpp:138
+msgid "Area (%)"
+msgstr "Terület (%)"
+
+#: src/mddialog.cpp:289
+msgid "Reload"
+msgstr "Újratöltés"
+
+#: src/mddialog.cpp:290
+msgid "Modify"
+msgstr "Módosítás"
+
+#: src/mddialog.cpp:291
+msgid "Hide"
+msgstr "Elrejtés"
+
+#: src/frame.cpp:97
+msgid "Cannot open "
+msgstr "Nem lehet megnyitni "
+
+#: src/frame.cpp:99
+msgid "Please check if your system has the correct driver for your webcam, or change the webcam device in settings->preferences."
+msgstr "Kérlek ellenőrizd, hogy a rendszered a megfelelő meghajtót használja-e, vagy változtasd meg a webkamera eszközt a beállításokban."
+
+#: src/frame.cpp:100
+msgid "Error opening device"
+msgstr "Hiba az eszköz megnyitáskor"
+
+#: src/frame.cpp:183
+msgid "Cannot create video recording thread!"
+msgstr "Nem tudom létrehozni a videó felvevő fonalat"
+
+#: src/frame.cpp:274
+msgid ""
+"Frame rate/resolution setting not supported.\n"
+"Please try a lower frame rate o resolution."
+msgstr ""
+"A képarány/felbontás beállítás nem támogatott.\n"
+"Kérlek próbájl meg egy alacsonyabb felbontást, képarányt."
+
+#: src/frame.cpp:274
+msgid "Error applying settings"
+msgstr "Hiba a beállítások alkalmazásakor "
+
+#: src/frame.cpp:306
+msgid ""
+"An error has occured during frame capture.\n"
+"Please check the \"frame format\" options in the preferences menu."
+msgstr ""
+"Hiba történt a kép elkapásakor.\n"
+"Kérlek ellenőrizd a \"kép formátum\" opciót a beállítások menüben."
+
+#: src/frame.cpp:306
+msgid "Error capturing frame"
+msgstr "Hiba "
+
+#: src/frame.cpp:390
+msgid "An error has occured opening file "
+msgstr "Hiba történt fájl megnyitás közben "
+
+#: src/frame.cpp:392
+msgid "Error opening file"
+msgstr "Hiba a fájl megnyitásakor"
+
+#: src/frame.cpp:399
+msgid "You system is slow"
+msgstr "A rendszered lassú"
+
+#: src/frame.cpp:400
+msgid "Queue full"
+msgstr "Sor teljes"
+
+#: src/frame.cpp:414
+msgid "Cannot open /dev/dsp.\n"
+msgstr "Nem tudom megnyitni a /dev/dsp-t.\n"
+
+#: src/frame.cpp:415
+msgid "Video file will be recorded without audio track.\n"
+msgstr "A videó hang nélkül lesz rögzítve.\n"
+
+#: src/frame.cpp:416
+msgid "Error recording audio"
+msgstr "Hangrögzítés hiba"
+
+#: src/frame.cpp:512
+msgid "Use mouse to create areas, [TAB], [<-] and [->] to select areas, [DELETE] to delete areas"
+msgstr "Használd az egeret a területek létrehozásához, [TAB], [<-] és [->] a kijelölt területekhez, [DELETE] a területek törléséhez"
+
+#: src/recording.cpp:34
+msgid "Recording"
+msgstr "Felvétel"
+
+#: src/recording.cpp:50
+msgid "Recording..."
+msgstr "Felvétel..."
+
+#: src/recording.cpp:59
+msgid "&Stop"
+msgstr "&Állj"
+
+#: src/recording.cpp:90
+msgid "&Recording..."
+msgstr "&Felvétel..."
+
+#: src/recording.cpp:99
+msgid "&Paused"
+msgstr "&Szünet"
+

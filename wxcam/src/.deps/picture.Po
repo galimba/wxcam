@@ -1,0 +1,1109 @@
+picture.o picture.o: picture.cpp picture.h \
+  /usr/local/include/wx-2.8/wx/wx.h /usr/local/include/wx-2.8/wx/defs.h \
+  /usr/local/include/wx-2.8/wx/platform.h \
+  /usr/local/lib/wx/include/gtk2-ansi-release-2.8/wx/setup.h \
+  /usr/local/include/wx-2.8/wx/chkconf.h \
+  /usr/local/include/wx-2.8/wx/features.h \
+  /usr/local/include/wx-2.8/wx/version.h \
+  /usr/local/include/wx-2.8/wx/cpp.h \
+  /usr/local/include/wx-2.8/wx/dlimpexp.h \
+  /usr/local/include/wx-2.8/wx/debug.h /usr/include/assert.h \
+  /usr/include/features.h /usr/include/sys/cdefs.h \
+  /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h \
+  /usr/include/gnu/stubs-32.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/include/limits.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/include/syslimits.h \
+  /usr/include/limits.h /usr/include/bits/posix1_lim.h \
+  /usr/include/bits/local_lim.h /usr/include/linux/limits.h \
+  /usr/include/bits/posix2_lim.h /usr/include/bits/xopen_lim.h \
+  /usr/include/bits/stdio_lim.h /usr/local/include/wx-2.8/wx/wxchar.h \
+  /usr/include/stdio.h /usr/lib/gcc/i486-linux-gnu/4.1.2/include/stddef.h \
+  /usr/include/bits/types.h /usr/include/bits/typesizes.h \
+  /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h \
+  /usr/include/bits/wchar.h /usr/include/gconv.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/include/stdarg.h \
+  /usr/include/bits/sys_errlist.h /usr/include/bits/stdio.h \
+  /usr/include/xlocale.h /usr/include/ctype.h /usr/include/endian.h \
+  /usr/include/bits/endian.h /usr/include/string.h \
+  /usr/local/include/wx-2.8/wx/object.h \
+  /usr/local/include/wx-2.8/wx/memory.h \
+  /usr/local/include/wx-2.8/wx/string.h /usr/include/stdlib.h \
+  /usr/include/bits/waitflags.h /usr/include/bits/waitstatus.h \
+  /usr/include/sys/types.h /usr/include/time.h /usr/include/sys/select.h \
+  /usr/include/bits/select.h /usr/include/bits/sigset.h \
+  /usr/include/bits/time.h /usr/include/sys/sysmacros.h \
+  /usr/include/bits/pthreadtypes.h /usr/include/alloca.h \
+  /usr/local/include/wx-2.8/wx/buffer.h \
+  /usr/local/include/wx-2.8/wx/strconv.h \
+  /usr/local/include/wx-2.8/wx/fontenc.h \
+  /usr/local/include/wx-2.8/wx/beforestd.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/string \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/c++config.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/os_defines.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/cpu_defines.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stringfwd.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/char_traits.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/cstring \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/cstddef \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_algobase.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/climits \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/cstdlib \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/iosfwd \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/c++locale.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/cstdio \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/clocale \
+  /usr/include/locale.h /usr/include/bits/locale.h \
+  /usr/include/langinfo.h /usr/include/nl_types.h /usr/include/iconv.h \
+  /usr/include/libintl.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/c++io.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/gthr.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/gthr-default.h \
+  /usr/include/pthread.h /usr/include/sched.h /usr/include/bits/sched.h \
+  /usr/include/signal.h /usr/include/bits/setjmp.h /usr/include/unistd.h \
+  /usr/include/bits/posix_opt.h /usr/include/bits/environments.h \
+  /usr/include/bits/confname.h /usr/include/getopt.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/cctype \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/postypes.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/cwchar \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/ctime \
+  /usr/include/stdint.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/functexcept.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/exception_defines.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_pair.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/cpp_type_traits.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_iterator_base_types.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_iterator_base_funcs.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/concept_check.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_iterator.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/debug/debug.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/memory \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/allocator.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/c++allocator.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/ext/new_allocator.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/new \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/exception \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_construct.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_uninitialized.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_raw_storage_iter.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/limits \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_function.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/basic_string.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/atomicity.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/atomic_word.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/algorithm \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_algo.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_heap.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_tempbuf.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/basic_string.tcc \
+  /usr/local/include/wx-2.8/wx/afterstd.h \
+  /usr/local/include/wx-2.8/wx/iosfwrap.h \
+  /usr/local/include/wx-2.8/wx/msgout.h \
+  /usr/local/include/wx-2.8/wx/dynarray.h \
+  /usr/local/include/wx-2.8/wx/list.h /usr/local/include/wx-2.8/wx/hash.h \
+  /usr/local/include/wx-2.8/wx/hashmap.h \
+  /usr/local/include/wx-2.8/wx/arrstr.h \
+  /usr/local/include/wx-2.8/wx/intl.h /usr/local/include/wx-2.8/wx/log.h \
+  /usr/local/include/wx-2.8/wx/generic/logg.h \
+  /usr/local/include/wx-2.8/wx/event.h \
+  /usr/local/include/wx-2.8/wx/clntdata.h \
+  /usr/local/include/wx-2.8/wx/vector.h \
+  /usr/local/include/wx-2.8/wx/gdicmn.h \
+  /usr/local/include/wx-2.8/wx/math.h /usr/include/math.h \
+  /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h \
+  /usr/include/bits/huge_vall.h /usr/include/bits/inf.h \
+  /usr/include/bits/nan.h /usr/include/bits/mathdef.h \
+  /usr/include/bits/mathcalls.h /usr/include/bits/mathinline.h \
+  /usr/local/include/wx-2.8/wx/cursor.h \
+  /usr/local/include/wx-2.8/wx/gtk/cursor.h \
+  /usr/local/include/wx-2.8/wx/object.h \
+  /usr/local/include/wx-2.8/wx/utils.h \
+  /usr/local/include/wx-2.8/wx/filefn.h /usr/include/sys/stat.h \
+  /usr/include/bits/stat.h /usr/include/dirent.h \
+  /usr/include/bits/dirent.h /usr/include/fcntl.h \
+  /usr/include/bits/fcntl.h /usr/include/bits/uio.h \
+  /usr/local/include/wx-2.8/wx/longlong.h \
+  /usr/local/include/wx-2.8/wx/platinfo.h \
+  /usr/local/include/wx-2.8/wx/thread.h \
+  /usr/local/include/wx-2.8/wx/app.h /usr/local/include/wx-2.8/wx/build.h \
+  /usr/local/include/wx-2.8/wx/init.h \
+  /usr/local/include/wx-2.8/wx/gtk/app.h \
+  /usr/local/include/wx-2.8/wx/stream.h \
+  /usr/local/include/wx-2.8/wx/stopwatch.h \
+  /usr/local/include/wx-2.8/wx/module.h \
+  /usr/local/include/wx-2.8/wx/window.h \
+  /usr/local/include/wx-2.8/wx/font.h \
+  /usr/local/include/wx-2.8/wx/gdiobj.h \
+  /usr/local/include/wx-2.8/wx/gtk/font.h \
+  /usr/local/include/wx-2.8/wx/colour.h \
+  /usr/local/include/wx-2.8/wx/variant.h \
+  /usr/local/include/wx-2.8/wx/datetime.h \
+  /usr/local/include/wx-2.8/wx/gtk/colour.h \
+  /usr/local/include/wx-2.8/wx/region.h \
+  /usr/local/include/wx-2.8/wx/gtk/region.h \
+  /usr/local/include/wx-2.8/wx/validate.h \
+  /usr/local/include/wx-2.8/wx/palette.h \
+  /usr/local/include/wx-2.8/wx/generic/paletteg.h \
+  /usr/local/include/wx-2.8/wx/defs.h \
+  /usr/local/include/wx-2.8/wx/object.h \
+  /usr/local/include/wx-2.8/wx/gdiobj.h \
+  /usr/local/include/wx-2.8/wx/gdicmn.h \
+  /usr/local/include/wx-2.8/wx/accel.h \
+  /usr/local/include/wx-2.8/wx/gtk/accel.h \
+  /usr/local/include/wx-2.8/wx/generic/accel.h \
+  /usr/local/include/wx-2.8/wx/gtk/window.h \
+  /usr/local/include/wx-2.8/wx/dynarray.h \
+  /usr/local/include/wx-2.8/wx/containr.h \
+  /usr/local/include/wx-2.8/wx/panel.h \
+  /usr/local/include/wx-2.8/wx/generic/panelg.h \
+  /usr/local/include/wx-2.8/wx/window.h \
+  /usr/local/include/wx-2.8/wx/containr.h \
+  /usr/local/include/wx-2.8/wx/toplevel.h \
+  /usr/local/include/wx-2.8/wx/iconbndl.h \
+  /usr/local/include/wx-2.8/wx/gtk/toplevel.h \
+  /usr/local/include/wx-2.8/wx/frame.h \
+  /usr/local/include/wx-2.8/wx/gtk/frame.h \
+  /usr/local/include/wx-2.8/wx/bitmap.h \
+  /usr/local/include/wx-2.8/wx/gtk/bitmap.h \
+  /usr/local/include/wx-2.8/wx/image.h \
+  /usr/local/include/wx-2.8/wx/imagbmp.h \
+  /usr/local/include/wx-2.8/wx/imagpng.h \
+  /usr/local/include/wx-2.8/wx/imaggif.h \
+  /usr/local/include/wx-2.8/wx/imagpcx.h \
+  /usr/local/include/wx-2.8/wx/imagjpeg.h \
+  /usr/local/include/wx-2.8/wx/imagtga.h \
+  /usr/local/include/wx-2.8/wx/imagtiff.h \
+  /usr/local/include/wx-2.8/wx/imagpnm.h \
+  /usr/local/include/wx-2.8/wx/imagxpm.h \
+  /usr/local/include/wx-2.8/wx/imagiff.h \
+  /usr/local/include/wx-2.8/wx/dc.h /usr/local/include/wx-2.8/wx/brush.h \
+  /usr/local/include/wx-2.8/wx/gtk/brush.h \
+  /usr/local/include/wx-2.8/wx/pen.h \
+  /usr/local/include/wx-2.8/wx/gtk/pen.h \
+  /usr/local/include/wx-2.8/wx/gdiobj.h \
+  /usr/local/include/wx-2.8/wx/gdicmn.h \
+  /usr/local/include/wx-2.8/wx/gtk/dc.h \
+  /usr/local/include/wx-2.8/wx/dcclient.h \
+  /usr/local/include/wx-2.8/wx/gtk/dcclient.h \
+  /usr/local/include/wx-2.8/wx/dc.h /usr/local/include/wx-2.8/wx/region.h \
+  /usr/local/include/wx-2.8/wx/dcmemory.h \
+  /usr/local/include/wx-2.8/wx/gtk/dcmemory.h \
+  /usr/local/include/wx-2.8/wx/dcclient.h \
+  /usr/local/include/wx-2.8/wx/dcprint.h \
+  /usr/local/include/wx-2.8/wx/dcscreen.h \
+  /usr/local/include/wx-2.8/wx/gtk/dcscreen.h \
+  /usr/local/include/wx-2.8/wx/button.h \
+  /usr/local/include/wx-2.8/wx/control.h \
+  /usr/local/include/wx-2.8/wx/gtk/control.h \
+  /usr/local/include/wx-2.8/wx/gtk/button.h \
+  /usr/local/include/wx-2.8/wx/menuitem.h \
+  /usr/local/include/wx-2.8/wx/gtk/menuitem.h \
+  /usr/local/include/wx-2.8/wx/bitmap.h \
+  /usr/local/include/wx-2.8/wx/menu.h \
+  /usr/local/include/wx-2.8/wx/gtk/menu.h \
+  /usr/local/include/wx-2.8/wx/icon.h \
+  /usr/local/include/wx-2.8/wx/iconloc.h \
+  /usr/local/include/wx-2.8/wx/generic/icon.h \
+  /usr/local/include/wx-2.8/wx/bitmap.h \
+  /usr/local/include/wx-2.8/wx/dialog.h \
+  /usr/local/include/wx-2.8/wx/gtk/dialog.h \
+  /usr/local/include/wx-2.8/wx/defs.h \
+  /usr/local/include/wx-2.8/wx/timer.h \
+  /usr/local/include/wx-2.8/wx/gtk/timer.h \
+  /usr/local/include/wx-2.8/wx/settings.h \
+  /usr/local/include/wx-2.8/wx/msgdlg.h \
+  /usr/local/include/wx-2.8/wx/gtk/msgdlg.h \
+  /usr/local/include/wx-2.8/wx/dialog.h \
+  /usr/local/include/wx-2.8/wx/cmndata.h \
+  /usr/local/include/wx-2.8/wx/encinfo.h \
+  /usr/local/include/wx-2.8/wx/dataobj.h \
+  /usr/local/include/wx-2.8/wx/gtk/dataform.h \
+  /usr/local/include/wx-2.8/wx/gtk/dataobj.h \
+  /usr/local/include/wx-2.8/wx/gtk/dataobj2.h \
+  /usr/local/include/wx-2.8/wx/ctrlsub.h \
+  /usr/local/include/wx-2.8/wx/bmpbuttn.h \
+  /usr/local/include/wx-2.8/wx/gtk/bmpbuttn.h \
+  /usr/local/include/wx-2.8/wx/checkbox.h \
+  /usr/local/include/wx-2.8/wx/gtk/checkbox.h \
+  /usr/local/include/wx-2.8/wx/checklst.h \
+  /usr/local/include/wx-2.8/wx/listbox.h \
+  /usr/local/include/wx-2.8/wx/gtk/listbox.h \
+  /usr/local/include/wx-2.8/wx/gtk/checklst.h \
+  /usr/local/include/wx-2.8/wx/choice.h \
+  /usr/local/include/wx-2.8/wx/gtk/choice.h \
+  /usr/local/include/wx-2.8/wx/scrolbar.h \
+  /usr/local/include/wx-2.8/wx/gtk/scrolbar.h \
+  /usr/local/include/wx-2.8/wx/stattext.h \
+  /usr/local/include/wx-2.8/wx/gtk/stattext.h \
+  /usr/local/include/wx-2.8/wx/statbmp.h \
+  /usr/local/include/wx-2.8/wx/gtk/statbmp.h \
+  /usr/local/include/wx-2.8/wx/icon.h \
+  /usr/local/include/wx-2.8/wx/statbox.h \
+  /usr/local/include/wx-2.8/wx/gtk/statbox.h \
+  /usr/local/include/wx-2.8/wx/radiobox.h \
+  /usr/local/include/wx-2.8/wx/gtk/radiobox.h \
+  /usr/local/include/wx-2.8/wx/list.h \
+  /usr/local/include/wx-2.8/wx/radiobut.h \
+  /usr/local/include/wx-2.8/wx/gtk/radiobut.h \
+  /usr/local/include/wx-2.8/wx/textctrl.h \
+  /usr/local/include/wx-2.8/wx/ioswrap.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/iostream \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/ostream \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/ios \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/localefwd.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/ios_base.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/locale_classes.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/streambuf \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/streambuf.tcc \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/basic_ios.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/streambuf_iterator.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/locale_facets.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/cwctype \
+  /usr/include/wctype.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/ctype_base.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/ctype_inline.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/codecvt.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/time_members.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/messages_members.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/basic_ios.tcc \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/ostream.tcc \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/locale \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/locale_facets.tcc \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/typeinfo \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/istream \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/istream.tcc \
+  /usr/local/include/wx-2.8/wx/gtk/textctrl.h \
+  /usr/local/include/wx-2.8/wx/slider.h \
+  /usr/local/include/wx-2.8/wx/gtk/slider.h \
+  /usr/local/include/wx-2.8/wx/gauge.h \
+  /usr/local/include/wx-2.8/wx/gtk/gauge.h \
+  /usr/local/include/wx-2.8/wx/scrolwin.h \
+  /usr/local/include/wx-2.8/wx/gtk/scrolwin.h \
+  /usr/local/include/wx-2.8/wx/dirdlg.h \
+  /usr/local/include/wx-2.8/wx/gtk/dirdlg.h \
+  /usr/local/include/wx-2.8/wx/generic/dirdlgg.h \
+  /usr/local/include/wx-2.8/wx/dialog.h \
+  /usr/local/include/wx-2.8/wx/toolbar.h \
+  /usr/local/include/wx-2.8/wx/tbarbase.h \
+  /usr/local/include/wx-2.8/wx/gtk/tbargtk.h \
+  /usr/local/include/wx-2.8/wx/combobox.h \
+  /usr/local/include/wx-2.8/wx/gtk/combobox.h \
+  /usr/local/include/wx-2.8/wx/layout.h \
+  /usr/local/include/wx-2.8/wx/sizer.h /usr/local/include/wx-2.8/wx/mdi.h \
+  /usr/local/include/wx-2.8/wx/gtk/mdi.h \
+  /usr/local/include/wx-2.8/wx/frame.h \
+  /usr/local/include/wx-2.8/wx/statusbr.h \
+  /usr/local/include/wx-2.8/wx/generic/statusbr.h \
+  /usr/local/include/wx-2.8/wx/pen.h \
+  /usr/local/include/wx-2.8/wx/arrstr.h \
+  /usr/local/include/wx-2.8/wx/choicdlg.h \
+  /usr/local/include/wx-2.8/wx/generic/choicdgg.h \
+  /usr/local/include/wx-2.8/wx/dynarray.h \
+  /usr/local/include/wx-2.8/wx/textdlg.h \
+  /usr/local/include/wx-2.8/wx/generic/textdlgg.h \
+  /usr/local/include/wx-2.8/wx/valtext.h \
+  /usr/local/include/wx-2.8/wx/filedlg.h \
+  /usr/local/include/wx-2.8/wx/gtk/filedlg.h \
+  /usr/local/include/wx-2.8/wx/generic/filedlgg.h \
+  /usr/local/include/wx-2.8/wx/listctrl.h \
+  /usr/local/include/wx-2.8/wx/listbase.h \
+  /usr/local/include/wx-2.8/wx/generic/listctrl.h \
+  /usr/local/include/wx-2.8/wx/textctrl.h \
+  /usr/local/include/wx-2.8/wx/datetime.h \
+  /usr/local/include/wx-2.8/wx/filefn.h \
+  /usr/local/include/wx-2.8/wx/filedlg.h \
+  /usr/local/include/wx-2.8/wx/valtext.h \
+  /usr/local/include/wx-2.8/wx/dialog.h \
+  /usr/local/include/wx-2.8/wx/slider.h \
+  /usr/local/include/wx-2.8/wx/checkbox.h \
+  /usr/local/include/wx-2.8/wx/statline.h \
+  /usr/local/include/wx-2.8/wx/gtk/statline.h device.h \
+  /usr/include/sys/mman.h /usr/include/bits/mman.h \
+  /usr/include/linux/videodev.h /usr/include/linux/videodev2.h \
+  /usr/include/linux/types.h /usr/include/linux/posix_types.h \
+  /usr/include/linux/stddef.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/include/asm/posix_types.h \
+  /usr/include/asm/posix_types.h /usr/include/asm-i386/posix_types.h \
+  /usr/include/asm/types.h /usr/include/asm-i386/types.h \
+  /usr/include/sys/ioctl.h /usr/include/bits/ioctls.h \
+  /usr/include/asm/ioctls.h /usr/include/asm-i386/ioctls.h \
+  /usr/include/asm/ioctl.h /usr/include/asm-i386/ioctl.h \
+  /usr/include/asm-generic/ioctl.h /usr/include/bits/ioctl-types.h \
+  /usr/include/sys/ttydefaults.h
+
+picture.h:
+
+/usr/local/include/wx-2.8/wx/wx.h:
+
+/usr/local/include/wx-2.8/wx/defs.h:
+
+/usr/local/include/wx-2.8/wx/platform.h:
+
+/usr/local/lib/wx/include/gtk2-ansi-release-2.8/wx/setup.h:
+
+/usr/local/include/wx-2.8/wx/chkconf.h:
+
+/usr/local/include/wx-2.8/wx/features.h:
+
+/usr/local/include/wx-2.8/wx/version.h:
+
+/usr/local/include/wx-2.8/wx/cpp.h:
+
+/usr/local/include/wx-2.8/wx/dlimpexp.h:
+
+/usr/local/include/wx-2.8/wx/debug.h:
+
+/usr/include/assert.h:
+
+/usr/include/features.h:
+
+/usr/include/sys/cdefs.h:
+
+/usr/include/bits/wordsize.h:
+
+/usr/include/gnu/stubs.h:
+
+/usr/include/gnu/stubs-32.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/include/limits.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/include/syslimits.h:
+
+/usr/include/limits.h:
+
+/usr/include/bits/posix1_lim.h:
+
+/usr/include/bits/local_lim.h:
+
+/usr/include/linux/limits.h:
+
+/usr/include/bits/posix2_lim.h:
+
+/usr/include/bits/xopen_lim.h:
+
+/usr/include/bits/stdio_lim.h:
+
+/usr/local/include/wx-2.8/wx/wxchar.h:
+
+/usr/include/stdio.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/include/stddef.h:
+
+/usr/include/bits/types.h:
+
+/usr/include/bits/typesizes.h:
+
+/usr/include/libio.h:
+
+/usr/include/_G_config.h:
+
+/usr/include/wchar.h:
+
+/usr/include/bits/wchar.h:
+
+/usr/include/gconv.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/include/stdarg.h:
+
+/usr/include/bits/sys_errlist.h:
+
+/usr/include/bits/stdio.h:
+
+/usr/include/xlocale.h:
+
+/usr/include/ctype.h:
+
+/usr/include/endian.h:
+
+/usr/include/bits/endian.h:
+
+/usr/include/string.h:
+
+/usr/local/include/wx-2.8/wx/object.h:
+
+/usr/local/include/wx-2.8/wx/memory.h:
+
+/usr/local/include/wx-2.8/wx/string.h:
+
+/usr/include/stdlib.h:
+
+/usr/include/bits/waitflags.h:
+
+/usr/include/bits/waitstatus.h:
+
+/usr/include/sys/types.h:
+
+/usr/include/time.h:
+
+/usr/include/sys/select.h:
+
+/usr/include/bits/select.h:
+
+/usr/include/bits/sigset.h:
+
+/usr/include/bits/time.h:
+
+/usr/include/sys/sysmacros.h:
+
+/usr/include/bits/pthreadtypes.h:
+
+/usr/include/alloca.h:
+
+/usr/local/include/wx-2.8/wx/buffer.h:
+
+/usr/local/include/wx-2.8/wx/strconv.h:
+
+/usr/local/include/wx-2.8/wx/fontenc.h:
+
+/usr/local/include/wx-2.8/wx/beforestd.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/string:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/c++config.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/os_defines.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/cpu_defines.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stringfwd.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/char_traits.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/cstring:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/cstddef:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_algobase.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/climits:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/cstdlib:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/iosfwd:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/c++locale.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/cstdio:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/clocale:
+
+/usr/include/locale.h:
+
+/usr/include/bits/locale.h:
+
+/usr/include/langinfo.h:
+
+/usr/include/nl_types.h:
+
+/usr/include/iconv.h:
+
+/usr/include/libintl.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/c++io.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/gthr.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/gthr-default.h:
+
+/usr/include/pthread.h:
+
+/usr/include/sched.h:
+
+/usr/include/bits/sched.h:
+
+/usr/include/signal.h:
+
+/usr/include/bits/setjmp.h:
+
+/usr/include/unistd.h:
+
+/usr/include/bits/posix_opt.h:
+
+/usr/include/bits/environments.h:
+
+/usr/include/bits/confname.h:
+
+/usr/include/getopt.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/cctype:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/postypes.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/cwchar:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/ctime:
+
+/usr/include/stdint.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/functexcept.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/exception_defines.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_pair.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/cpp_type_traits.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_iterator_base_types.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_iterator_base_funcs.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/concept_check.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_iterator.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/debug/debug.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/memory:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/allocator.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/c++allocator.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/ext/new_allocator.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/new:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/exception:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_construct.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_uninitialized.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_raw_storage_iter.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/limits:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_function.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/basic_string.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/atomicity.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/atomic_word.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/algorithm:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_algo.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_heap.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_tempbuf.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/basic_string.tcc:
+
+/usr/local/include/wx-2.8/wx/afterstd.h:
+
+/usr/local/include/wx-2.8/wx/iosfwrap.h:
+
+/usr/local/include/wx-2.8/wx/msgout.h:
+
+/usr/local/include/wx-2.8/wx/dynarray.h:
+
+/usr/local/include/wx-2.8/wx/list.h:
+
+/usr/local/include/wx-2.8/wx/hash.h:
+
+/usr/local/include/wx-2.8/wx/hashmap.h:
+
+/usr/local/include/wx-2.8/wx/arrstr.h:
+
+/usr/local/include/wx-2.8/wx/intl.h:
+
+/usr/local/include/wx-2.8/wx/log.h:
+
+/usr/local/include/wx-2.8/wx/generic/logg.h:
+
+/usr/local/include/wx-2.8/wx/event.h:
+
+/usr/local/include/wx-2.8/wx/clntdata.h:
+
+/usr/local/include/wx-2.8/wx/vector.h:
+
+/usr/local/include/wx-2.8/wx/gdicmn.h:
+
+/usr/local/include/wx-2.8/wx/math.h:
+
+/usr/include/math.h:
+
+/usr/include/bits/huge_val.h:
+
+/usr/include/bits/huge_valf.h:
+
+/usr/include/bits/huge_vall.h:
+
+/usr/include/bits/inf.h:
+
+/usr/include/bits/nan.h:
+
+/usr/include/bits/mathdef.h:
+
+/usr/include/bits/mathcalls.h:
+
+/usr/include/bits/mathinline.h:
+
+/usr/local/include/wx-2.8/wx/cursor.h:
+
+/usr/local/include/wx-2.8/wx/gtk/cursor.h:
+
+/usr/local/include/wx-2.8/wx/object.h:
+
+/usr/local/include/wx-2.8/wx/utils.h:
+
+/usr/local/include/wx-2.8/wx/filefn.h:
+
+/usr/include/sys/stat.h:
+
+/usr/include/bits/stat.h:
+
+/usr/include/dirent.h:
+
+/usr/include/bits/dirent.h:
+
+/usr/include/fcntl.h:
+
+/usr/include/bits/fcntl.h:
+
+/usr/include/bits/uio.h:
+
+/usr/local/include/wx-2.8/wx/longlong.h:
+
+/usr/local/include/wx-2.8/wx/platinfo.h:
+
+/usr/local/include/wx-2.8/wx/thread.h:
+
+/usr/local/include/wx-2.8/wx/app.h:
+
+/usr/local/include/wx-2.8/wx/build.h:
+
+/usr/local/include/wx-2.8/wx/init.h:
+
+/usr/local/include/wx-2.8/wx/gtk/app.h:
+
+/usr/local/include/wx-2.8/wx/stream.h:
+
+/usr/local/include/wx-2.8/wx/stopwatch.h:
+
+/usr/local/include/wx-2.8/wx/module.h:
+
+/usr/local/include/wx-2.8/wx/window.h:
+
+/usr/local/include/wx-2.8/wx/font.h:
+
+/usr/local/include/wx-2.8/wx/gdiobj.h:
+
+/usr/local/include/wx-2.8/wx/gtk/font.h:
+
+/usr/local/include/wx-2.8/wx/colour.h:
+
+/usr/local/include/wx-2.8/wx/variant.h:
+
+/usr/local/include/wx-2.8/wx/datetime.h:
+
+/usr/local/include/wx-2.8/wx/gtk/colour.h:
+
+/usr/local/include/wx-2.8/wx/region.h:
+
+/usr/local/include/wx-2.8/wx/gtk/region.h:
+
+/usr/local/include/wx-2.8/wx/validate.h:
+
+/usr/local/include/wx-2.8/wx/palette.h:
+
+/usr/local/include/wx-2.8/wx/generic/paletteg.h:
+
+/usr/local/include/wx-2.8/wx/defs.h:
+
+/usr/local/include/wx-2.8/wx/object.h:
+
+/usr/local/include/wx-2.8/wx/gdiobj.h:
+
+/usr/local/include/wx-2.8/wx/gdicmn.h:
+
+/usr/local/include/wx-2.8/wx/accel.h:
+
+/usr/local/include/wx-2.8/wx/gtk/accel.h:
+
+/usr/local/include/wx-2.8/wx/generic/accel.h:
+
+/usr/local/include/wx-2.8/wx/gtk/window.h:
+
+/usr/local/include/wx-2.8/wx/dynarray.h:
+
+/usr/local/include/wx-2.8/wx/containr.h:
+
+/usr/local/include/wx-2.8/wx/panel.h:
+
+/usr/local/include/wx-2.8/wx/generic/panelg.h:
+
+/usr/local/include/wx-2.8/wx/window.h:
+
+/usr/local/include/wx-2.8/wx/containr.h:
+
+/usr/local/include/wx-2.8/wx/toplevel.h:
+
+/usr/local/include/wx-2.8/wx/iconbndl.h:
+
+/usr/local/include/wx-2.8/wx/gtk/toplevel.h:
+
+/usr/local/include/wx-2.8/wx/frame.h:
+
+/usr/local/include/wx-2.8/wx/gtk/frame.h:
+
+/usr/local/include/wx-2.8/wx/bitmap.h:
+
+/usr/local/include/wx-2.8/wx/gtk/bitmap.h:
+
+/usr/local/include/wx-2.8/wx/image.h:
+
+/usr/local/include/wx-2.8/wx/imagbmp.h:
+
+/usr/local/include/wx-2.8/wx/imagpng.h:
+
+/usr/local/include/wx-2.8/wx/imaggif.h:
+
+/usr/local/include/wx-2.8/wx/imagpcx.h:
+
+/usr/local/include/wx-2.8/wx/imagjpeg.h:
+
+/usr/local/include/wx-2.8/wx/imagtga.h:
+
+/usr/local/include/wx-2.8/wx/imagtiff.h:
+
+/usr/local/include/wx-2.8/wx/imagpnm.h:
+
+/usr/local/include/wx-2.8/wx/imagxpm.h:
+
+/usr/local/include/wx-2.8/wx/imagiff.h:
+
+/usr/local/include/wx-2.8/wx/dc.h:
+
+/usr/local/include/wx-2.8/wx/brush.h:
+
+/usr/local/include/wx-2.8/wx/gtk/brush.h:
+
+/usr/local/include/wx-2.8/wx/pen.h:
+
+/usr/local/include/wx-2.8/wx/gtk/pen.h:
+
+/usr/local/include/wx-2.8/wx/gdiobj.h:
+
+/usr/local/include/wx-2.8/wx/gdicmn.h:
+
+/usr/local/include/wx-2.8/wx/gtk/dc.h:
+
+/usr/local/include/wx-2.8/wx/dcclient.h:
+
+/usr/local/include/wx-2.8/wx/gtk/dcclient.h:
+
+/usr/local/include/wx-2.8/wx/dc.h:
+
+/usr/local/include/wx-2.8/wx/region.h:
+
+/usr/local/include/wx-2.8/wx/dcmemory.h:
+
+/usr/local/include/wx-2.8/wx/gtk/dcmemory.h:
+
+/usr/local/include/wx-2.8/wx/dcclient.h:
+
+/usr/local/include/wx-2.8/wx/dcprint.h:
+
+/usr/local/include/wx-2.8/wx/dcscreen.h:
+
+/usr/local/include/wx-2.8/wx/gtk/dcscreen.h:
+
+/usr/local/include/wx-2.8/wx/button.h:
+
+/usr/local/include/wx-2.8/wx/control.h:
+
+/usr/local/include/wx-2.8/wx/gtk/control.h:
+
+/usr/local/include/wx-2.8/wx/gtk/button.h:
+
+/usr/local/include/wx-2.8/wx/menuitem.h:
+
+/usr/local/include/wx-2.8/wx/gtk/menuitem.h:
+
+/usr/local/include/wx-2.8/wx/bitmap.h:
+
+/usr/local/include/wx-2.8/wx/menu.h:
+
+/usr/local/include/wx-2.8/wx/gtk/menu.h:
+
+/usr/local/include/wx-2.8/wx/icon.h:
+
+/usr/local/include/wx-2.8/wx/iconloc.h:
+
+/usr/local/include/wx-2.8/wx/generic/icon.h:
+
+/usr/local/include/wx-2.8/wx/bitmap.h:
+
+/usr/local/include/wx-2.8/wx/dialog.h:
+
+/usr/local/include/wx-2.8/wx/gtk/dialog.h:
+
+/usr/local/include/wx-2.8/wx/defs.h:
+
+/usr/local/include/wx-2.8/wx/timer.h:
+
+/usr/local/include/wx-2.8/wx/gtk/timer.h:
+
+/usr/local/include/wx-2.8/wx/settings.h:
+
+/usr/local/include/wx-2.8/wx/msgdlg.h:
+
+/usr/local/include/wx-2.8/wx/gtk/msgdlg.h:
+
+/usr/local/include/wx-2.8/wx/dialog.h:
+
+/usr/local/include/wx-2.8/wx/cmndata.h:
+
+/usr/local/include/wx-2.8/wx/encinfo.h:
+
+/usr/local/include/wx-2.8/wx/dataobj.h:
+
+/usr/local/include/wx-2.8/wx/gtk/dataform.h:
+
+/usr/local/include/wx-2.8/wx/gtk/dataobj.h:
+
+/usr/local/include/wx-2.8/wx/gtk/dataobj2.h:
+
+/usr/local/include/wx-2.8/wx/ctrlsub.h:
+
+/usr/local/include/wx-2.8/wx/bmpbuttn.h:
+
+/usr/local/include/wx-2.8/wx/gtk/bmpbuttn.h:
+
+/usr/local/include/wx-2.8/wx/checkbox.h:
+
+/usr/local/include/wx-2.8/wx/gtk/checkbox.h:
+
+/usr/local/include/wx-2.8/wx/checklst.h:
+
+/usr/local/include/wx-2.8/wx/listbox.h:
+
+/usr/local/include/wx-2.8/wx/gtk/listbox.h:
+
+/usr/local/include/wx-2.8/wx/gtk/checklst.h:
+
+/usr/local/include/wx-2.8/wx/choice.h:
+
+/usr/local/include/wx-2.8/wx/gtk/choice.h:
+
+/usr/local/include/wx-2.8/wx/scrolbar.h:
+
+/usr/local/include/wx-2.8/wx/gtk/scrolbar.h:
+
+/usr/local/include/wx-2.8/wx/stattext.h:
+
+/usr/local/include/wx-2.8/wx/gtk/stattext.h:
+
+/usr/local/include/wx-2.8/wx/statbmp.h:
+
+/usr/local/include/wx-2.8/wx/gtk/statbmp.h:
+
+/usr/local/include/wx-2.8/wx/icon.h:
+
+/usr/local/include/wx-2.8/wx/statbox.h:
+
+/usr/local/include/wx-2.8/wx/gtk/statbox.h:
+
+/usr/local/include/wx-2.8/wx/radiobox.h:
+
+/usr/local/include/wx-2.8/wx/gtk/radiobox.h:
+
+/usr/local/include/wx-2.8/wx/list.h:
+
+/usr/local/include/wx-2.8/wx/radiobut.h:
+
+/usr/local/include/wx-2.8/wx/gtk/radiobut.h:
+
+/usr/local/include/wx-2.8/wx/textctrl.h:
+
+/usr/local/include/wx-2.8/wx/ioswrap.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/iostream:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/ostream:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/ios:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/localefwd.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/ios_base.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/locale_classes.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/streambuf:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/streambuf.tcc:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/basic_ios.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/streambuf_iterator.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/locale_facets.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/cwctype:
+
+/usr/include/wctype.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/ctype_base.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/ctype_inline.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/codecvt.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/time_members.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/messages_members.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/basic_ios.tcc:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/ostream.tcc:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/locale:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/locale_facets.tcc:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/typeinfo:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/istream:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/istream.tcc:
+
+/usr/local/include/wx-2.8/wx/gtk/textctrl.h:
+
+/usr/local/include/wx-2.8/wx/slider.h:
+
+/usr/local/include/wx-2.8/wx/gtk/slider.h:
+
+/usr/local/include/wx-2.8/wx/gauge.h:
+
+/usr/local/include/wx-2.8/wx/gtk/gauge.h:
+
+/usr/local/include/wx-2.8/wx/scrolwin.h:
+
+/usr/local/include/wx-2.8/wx/gtk/scrolwin.h:
+
+/usr/local/include/wx-2.8/wx/dirdlg.h:
+
+/usr/local/include/wx-2.8/wx/gtk/dirdlg.h:
+
+/usr/local/include/wx-2.8/wx/generic/dirdlgg.h:
+
+/usr/local/include/wx-2.8/wx/dialog.h:
+
+/usr/local/include/wx-2.8/wx/toolbar.h:
+
+/usr/local/include/wx-2.8/wx/tbarbase.h:
+
+/usr/local/include/wx-2.8/wx/gtk/tbargtk.h:
+
+/usr/local/include/wx-2.8/wx/combobox.h:
+
+/usr/local/include/wx-2.8/wx/gtk/combobox.h:
+
+/usr/local/include/wx-2.8/wx/layout.h:
+
+/usr/local/include/wx-2.8/wx/sizer.h:
+
+/usr/local/include/wx-2.8/wx/mdi.h:
+
+/usr/local/include/wx-2.8/wx/gtk/mdi.h:
+
+/usr/local/include/wx-2.8/wx/frame.h:
+
+/usr/local/include/wx-2.8/wx/statusbr.h:
+
+/usr/local/include/wx-2.8/wx/generic/statusbr.h:
+
+/usr/local/include/wx-2.8/wx/pen.h:
+
+/usr/local/include/wx-2.8/wx/arrstr.h:
+
+/usr/local/include/wx-2.8/wx/choicdlg.h:
+
+/usr/local/include/wx-2.8/wx/generic/choicdgg.h:
+
+/usr/local/include/wx-2.8/wx/dynarray.h:
+
+/usr/local/include/wx-2.8/wx/textdlg.h:
+
+/usr/local/include/wx-2.8/wx/generic/textdlgg.h:
+
+/usr/local/include/wx-2.8/wx/valtext.h:
+
+/usr/local/include/wx-2.8/wx/filedlg.h:
+
+/usr/local/include/wx-2.8/wx/gtk/filedlg.h:
+
+/usr/local/include/wx-2.8/wx/generic/filedlgg.h:
+
+/usr/local/include/wx-2.8/wx/listctrl.h:
+
+/usr/local/include/wx-2.8/wx/listbase.h:
+
+/usr/local/include/wx-2.8/wx/generic/listctrl.h:
+
+/usr/local/include/wx-2.8/wx/textctrl.h:
+
+/usr/local/include/wx-2.8/wx/datetime.h:
+
+/usr/local/include/wx-2.8/wx/filefn.h:
+
+/usr/local/include/wx-2.8/wx/filedlg.h:
+
+/usr/local/include/wx-2.8/wx/valtext.h:
+
+/usr/local/include/wx-2.8/wx/dialog.h:
+
+/usr/local/include/wx-2.8/wx/slider.h:
+
+/usr/local/include/wx-2.8/wx/checkbox.h:
+
+/usr/local/include/wx-2.8/wx/statline.h:
+
+/usr/local/include/wx-2.8/wx/gtk/statline.h:
+
+device.h:
+
+/usr/include/sys/mman.h:
+
+/usr/include/bits/mman.h:
+
+/usr/include/linux/videodev.h:
+
+/usr/include/linux/videodev2.h:
+
+/usr/include/linux/types.h:
+
+/usr/include/linux/posix_types.h:
+
+/usr/include/linux/stddef.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/include/asm/posix_types.h:
+
+/usr/include/asm/posix_types.h:
+
+/usr/include/asm-i386/posix_types.h:
+
+/usr/include/asm/types.h:
+
+/usr/include/asm-i386/types.h:
+
+/usr/include/sys/ioctl.h:
+
+/usr/include/bits/ioctls.h:
+
+/usr/include/asm/ioctls.h:
+
+/usr/include/asm-i386/ioctls.h:
+
+/usr/include/asm/ioctl.h:
+
+/usr/include/asm-i386/ioctl.h:
+
+/usr/include/asm-generic/ioctl.h:
+
+/usr/include/bits/ioctl-types.h:
+
+/usr/include/sys/ttydefaults.h:

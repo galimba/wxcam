@@ -1,0 +1,23 @@
+%\ProvidesPackage{boxedfile}
+
+\usepackage[table]{xcolor}
+\usepackage{colortbl}
+
+\newenvironment{boxedtext}[1]
+{
+  \begin{scriptsize}  
+  \begin{ttfamily}  
+  
+  \begin{center}
+  \rowcolors{2}{gray!20}{white}  
+  \begin{tabular}{| l |}
+  %\rowcolor[rgb]{0,0,0}{0.}
+  \sffamily{#1} \\
+  \hline
+}{
+  \hline
+  \end{tabular}
+  \end{center}
+  \end{ttfamily}
+  \end{scriptsize}
+}

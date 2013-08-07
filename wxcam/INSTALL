@@ -1,0 +1,15 @@
+Basic Installation
+==================
+
+You shuold have wxWidgets installed on your distribution.
+(libwxgtk2.8 and libwxgtk2.8-dev)
+Make sure you have libxvidcore4 and livxvidcore4-dev
+Download, compile and install revel library (http://revel.sourceforge.net)
+
+Now you can compile wxCam:
+
+Type:
+
+shell> make
+
+and copy bin/wxcam in your path (e.g. /usr/bin)

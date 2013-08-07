@@ -1,0 +1,610 @@
+/***************************************************************************
+ *   Copyright (C) 2010 by Marco Lorrai                                    *
+ *   iking@aruba.it                                                        *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
+#include "frame.h"
+#include "setting.h"
+#include "pwc-ioctl.h"
+#include "wxcam.h"
+#include "progressdlg.h"
+#include "filters.h"
+#include <wx/wfstream.h>
+#include <wx/thread.h>
+#include <wx/progdlg.h>
+#include <wx/datetime.h>
+#include <sys/time.h>
+#include <time.h>
+#include <string.h>
+#include <stdlib.h>
+
+BEGIN_EVENT_TABLE( Frame, wxWindow )
+EVT_UPDATE_UI( PROGRESS_DIALOG_START, Frame::OnUpdateProgress )
+EVT_MENU( PROGRESS_DIALOG_START, Frame::OnStartProgress )
+EVT_MENU( PROGRESS_DIALOG_EVENT, Frame::OnProgressEvent )
+EVT_MENU( STOP_REC, Frame::OnRecThreadTerminated )
+EVT_MENU( AUDIO_ERR, Frame::OnAudioError )
+EVT_PAINT( Frame::OnPaint )
+EVT_KEY_DOWN( Frame::OnKeyDown )
+EVT_MOTION( Frame::OnMouseEvent )
+EVT_MOUSE_EVENTS( Frame::OnMouseEvent )
+EVT_ERASE_BACKGROUND( Frame::OnEraseBackground )
+//EVT_IDLE(Frame::OnIdle)
+END_EVENT_TABLE()
+
+using namespace std;
+
+Device cam;
+
+Frame::Frame( const string &resolution, wxCam* main, wxWindow* parent, wxWindowID id,
+        const wxPoint& pos, const wxSize& size, long style )
+        : wxWindow( parent, id, pos, size, style ) 
+ {
+    mainFrame = main;
+    int w, h;
+    GetResolution( resolution, w, h );
+    width=w;
+    height=h;
+    snapshot = false;
+    started = false;
+    fullScreen = false;
+    rstatus = REC_NONE;
+    rec = NULL;
+    dialog = ( ProgressDlg* ) NULL;
+    wxInitAllImageHandlers();
+    OpenDevice();    
+    busy=false;
+    movementDetection = false;
+    showMDAreasStatus = false;
+    restoreMDialog = false;
+    mdet.SetParentWindow(mainFrame);
+    mdet.DeactivateVerboseMode();
+}
+
+Frame::~Frame()
+{}
+
+void Frame::OpenDevice() 
+{
+    int frameFormat;
+    if ( Setting::GetInstance()->GetFrameFormat() == "YUV420P" )
+        frameFormat = VIDEO_PALETTE_YUV420P;
+    else if( Setting::GetInstance()->GetFrameFormat() == "YUV420" )
+        frameFormat = VIDEO_PALETTE_YUV420;
+    else if( Setting::GetInstance()->GetFrameFormat() == "YUYV" )
+        frameFormat = VIDEO_PALETTE_YUYV;
+    else if( Setting::GetInstance()->GetFrameFormat() == "RGB24" )
+        frameFormat = VIDEO_PALETTE_RGB24;
+    else if( Setting::GetInstance()->GetFrameFormat() == "RGB32" )
+        frameFormat = VIDEO_PALETTE_RGB32;
+    else if( Setting::GetInstance()->GetFrameFormat() == "JPEG" )
+        frameFormat = VIDEO_PALETTE_JPEG;
+    else if( Setting::GetInstance()->GetFrameFormat() == "MPEG" )
+        frameFormat = VIDEO_PALETTE_MJPEG;
+    else
+        frameFormat = 0 /*AUTO*/;
+    if ( !cam.openDevice( width, height, frameFormat ) ) {
+        deviceOpen = false;
+        wxString msg = _( "Cannot open " );
+        msg += wxString(Setting::GetInstance()->GetDeviceFile().c_str(), wxConvUTF8);
+        msg += wxString( ".\n", wxConvUTF8 ) + _( "Please check if your system has the correct driver for your webcam, or change the webcam device in settings->preferences." );
+        wxMessageBox( msg, _( "Error opening device" ), wxICON_ERROR );
+    }
+    else
+        deviceOpen = true;
+    buffer=NULL;
+}
+
+void Frame::Started()  //now we can acquire frame!
+{
+    Connect( wxEVT_IDLE, wxIdleEventHandler( Frame::OnIdle ) );
+}
+
+bool Frame::isPWC() 
+{
+    return cam.isPWC();
+}
+
+void Frame::TakeSnapshot() 
+{
+    snapshot = true;
+}
+
+void Frame::startRecording() 
+{
+    if(rstatus == REC_NONE)
+        rstatus = REC_STARTING;
+}
+
+void Frame::stopRecording() 
+{
+    if(rstatus == REC_CONTINUING || rstatus == REC_PAUSE)
+        rstatus = REC_STOPPING;
+}
+
+void Frame::setFullscreen( bool enable ) 
+{
+    fullScreen=enable;
+}
+
+void Frame::OnPaint( wxPaintEvent& event ) 
+{   
+    int w, h, frameW, frameH;    
+    wxPaintDC dc( this );
+    dc.GetSize( &w, &h );
+    frameW = w;
+    frameH = h;
+    dc.SetBrush( wxBrush( *wxWHITE ) );
+    dc.SetPen( wxPen( *wxWHITE, 1, wxSOLID ) );
+    dc.DrawRectangle( 0, 0, w, h );
+    if ( buffer ) {
+        int x, y;
+        x = w/2 - ( width + 2 ) /2;
+        y = h/2 - ( height + 2 ) /2;
+        w = width;
+        h = height;
+        wxImage wximg( w, h );
+        mdet.SetImageSize(wximg);
+        
+        wximg.SetData( ( unsigned char* ) buffer);
+                
+        if ( rstatus == REC_STARTING ) {
+            if(mdet.GetDialogStatus()) {
+                mdet.HideDialog();
+                restoreMDialog = true;
+            }
+            rec_start = wxDateTime::UNow();
+            mainFrame->enableRec( false );            
+            compression = Setting::GetInstance()->GetCompression();
+            if(compression == "none") 
+                rec = new AviUncompressed();
+            else {
+                rec = new Xvid();
+                float level = (float)Setting::GetInstance()->GetCompressionLevel();
+                static_cast<Xvid*>(rec)->setCompressionLevel(level/(float)100);
+            }
+            string filename = Setting::GetInstance()->GetVideoFile(false);
+            unsigned int freq;
+            //cam.getResolution( gw, gh, freq );            
+            //if ( !cam.isPWC() )            
+            freq = assessFrequency;            
+            rec->setParameters( this, filename, freq, width, height );
+
+            if ((rec)->Create() != wxTHREAD_NO_ERROR) {
+                wxLogError(_("Cannot create video recording thread!"));
+                return;
+            }
+            rec->Run();
+
+             if( rec->setup() ) {
+                rstatus = REC_NONE;
+                wxCommandEvent event( wxEVT_COMMAND_MENU_SELECTED, STOP_REC );
+                event.SetInt(1);
+                OnRecThreadTerminated(event);
+            } else {
+                rstatus = REC_CONTINUING;
+            }
+            
+        }
+        else if ( rstatus == REC_CONTINUING ) {
+            wxDateTime now = wxDateTime::UNow();
+            wxTimeSpan recTime = now.Subtract(rec_start);
+            mainFrame->SetRecordingStatus(true);
+            mainFrame->setRecordingTime(recTime);            
+            if ( rec )
+                rec->addFrame( buffer );            
+        }
+        else if ( rstatus == REC_STOPPING ) {
+            if ( rec ) {
+                setBusy( true );
+                rec->record();
+            }
+            rstatus = REC_NONE;
+            if(restoreMDialog) {
+                mdet.ShowDialog();
+                restoreMDialog = false;
+            }
+        }
+        else if ( rstatus == REC_PAUSE ) 
+            mainFrame->SetRecordingStatus(false);        
+        
+        int temprstatus = rstatus;
+        mdet.MovementDetection(wximg, temprstatus);
+        if (rstatus != REC_STOPPING && rstatus != REC_NONE) {
+            if (temprstatus == REC_CONTINUING) {
+                rstatus = REC_CONTINUING;
+            }
+            else if (temprstatus == REC_PAUSE) {
+                rstatus = REC_PAUSE;
+            }
+        }
+
+        if ( snapshot ) {
+            snapshot = false;            
+            wximg.SaveFile( wxString(Setting::GetInstance()->GetSnapshotFile( false ).c_str(), wxConvUTF8) );
+        }
+        if ( fullScreen ) {
+            wximg.Rescale( frameH*4/3, frameH );
+            int diff = frameW - frameH*4/3;
+            wxBitmap bit( wximg );
+            dc.DrawBitmap( bit, diff/2 , 0, true );
+            double scalex = frameH*4.0/3.0/(w*1.0);
+            double scaley = frameH/(h*1.0);
+            mdet.DrawAreas(showMDAreasStatus, 
+                           dc, 
+                           (diff/2), 
+                           0, 
+                           scalex, 
+                           scaley, 
+                           false);            
+        }
+        else {
+            wxBitmap bit( wximg );            
+            dc.SetPen( wxPen( *wxBLACK, 1, wxSOLID ) );
+            dc.DrawRectangle( x, y, w + 2, h + 2 );
+            dc.DrawBitmap( bit, 1 + x , 1 + y, true );
+            mdet.DrawAreas(showMDAreasStatus, 
+                           dc, 
+                           (1+x), 
+                           (1+y));
+        }
+    }
+    buffer = NULL;
+}
+
+void Frame::OnEraseBackground( wxEraseEvent &event )
+{}
+
+bool Frame::isOpen() 
+{
+    return deviceOpen;
+}
+
+bool Frame::SetResolution( const std::string &resolution, const std::string &frameRate ) 
+{
+    int w, h;
+    GetResolution( resolution, w, h );
+    int freq=0;
+    if( cam.isPWC() )
+        freq=atoi(frameRate.c_str());
+    else
+        freq = 0;
+    if ( !cam.setResolution( w, h, freq ) && deviceOpen ) {
+        wxMessageBox( _( "Frame rate/resolution setting not supported.\nPlease try a lower frame rate o resolution." ), _( "Error applying settings" ), wxICON_WARNING );
+        return false;
+    }
+    else {
+        Setting::GetInstance()->SetFrameRate( frameRate.c_str() );
+        Setting::GetInstance()->SetResolution( resolution.c_str() );
+        width=w;
+        height=h;
+        return true;
+    }
+}
+
+void Frame::OnIdle( wxIdleEvent& event ) 
+{    
+    static struct timeval tv;
+    static bool show = false;
+
+    if ( deviceOpen && cam.getFrame( &buffer ) ) {
+        applyFilters();
+        struct timeval tv_old = tv;
+        gettimeofday( &tv, NULL );
+        int delta = ( tv.tv_sec - tv_old.tv_sec ) * 1000000 + ( tv.tv_usec - tv_old.tv_usec );
+        double sec = ( double ) delta / ( double ) 1000000;
+        float freq = ( float ) 1/ ( float ) sec;
+        updateFrequency( freq );
+        Refresh();
+        Update();
+        buffer=NULL;
+    }
+    else {
+        if ( deviceOpen && !show ) {
+            show=true;
+            Disconnect( wxEVT_IDLE, wxIdleEventHandler( Frame::OnIdle ) );
+            wxMessageBox( _( "An error has occured during frame capture.\nPlease check the \"frame format\" options in the preferences menu." ), _( "Error capturing frame" ), wxICON_ERROR );
+            return;
+        }
+    }
+    if ( !isBusy() )
+        event.RequestMore();
+    event.Skip();
+}
+
+void Frame::GetResolution( const std::string &resolution, int &w, int &h ) 
+{
+    wxString tmp = wxString(resolution.c_str(), wxConvUTF8), res = wxString(resolution.c_str(), wxConvUTF8);
+    int pos = res.Find( 'x' );
+    h = atoi( (const char*)res.Remove( 0, pos + 1 ).mb_str(wxConvUTF8) );
+    w = atoi( (const char*)tmp.Remove( pos ).mb_str(wxConvUTF8) );
+}
+
+void Frame::updateFrequency( float freq ) 
+{
+    freqList.push_back( freq );
+    if ( freqList.size() == 11 )
+        freqList.pop_front();
+    int c=0;
+    float mean=0;
+    for ( std::list<float>::iterator it=freqList.begin(); it!=freqList.end(); ++it ) {
+        mean += *it;
+        c++;
+    }
+    mean /= ( float ) c;
+    char statusMessage[10];
+    snprintf(statusMessage, 10, "%s %02.1f", "FPS:", mean);
+    mainFrame->SetStatusText(wxString(statusMessage, wxConvUTF8), 1);    
+    assessFrequency = ( int ) ( mean + 0.5 );
+}
+
+void Frame::OnProgressEvent( wxCommandEvent& event ) 
+{
+    int n = event.GetInt();
+    cout<<"OnProgressEvent: n="<<n<<endl;
+    if (n == -1) {
+        dialog->Hide();
+        dialog->Destroy();
+        dialog = (ProgressDlg *)NULL;
+        // the dialog is aborted because the event came from another thread, so
+        // we may need to wake up the main event loop for the dialog to be
+        // really closed
+
+        wxWakeUpIdle();
+    }
+    else
+        dialog->Update(n);
+}
+
+void Frame::OnUpdateProgress( wxUpdateUIEvent& event ) 
+{
+    event.Enable( isBusy() );
+}
+
+void Frame::OnStartProgress( wxCommandEvent& event ) 
+{
+    cout<<"OnStartProgress: Dialog started"<<endl;
+//    dialog = new wxProgressDialog
+//                    (
+//                     _T(_("Recording file")),
+//                     _T(_("Please wait until the file is saved...")),
+//                     100,
+//                     this,
+//                     wxPD_AUTO_HIDE |
+//                     wxPD_APP_MODAL |
+//                     wxPD_ELAPSED_TIME |
+//                     wxPD_ESTIMATED_TIME |
+//                     wxPD_REMAINING_TIME
+//                    );
+    dialog = new ProgressDlg(this);
+    dialog->Show();
+    cout<<"OnStartProgress: Dialog created"<<endl;
+}
+
+void Frame::OnRecThreadTerminated( wxCommandEvent& event ) 
+{
+    int n = event.GetInt();
+    if ( n == 1 ) {
+        wxString message =  _( "An error has occured opening file " );
+        message += wxString(Setting::GetInstance()->GetVideoFile().c_str(), wxConvUTF8);
+        wxMessageBox( message, _( "Error opening file" ), wxICON_WARNING );
+        if(compression == "none")
+            static_cast<AviUncompressed*>(rec)->Delete();
+        rec = NULL;
+        mainFrame->closeRecWindow();
+    }
+    if ( n == 2 ) {
+        wxString message =  _( "You system is slow" );
+        wxMessageBox( message, _( "Queue full" ), wxICON_WARNING );
+        mainFrame->closeRecWindow();
+        stopRecording();
+    }    
+    
+    mainFrame->enableRec( true );
+    setBusy( false );
+    wxWakeUpIdle();
+}
+
+void Frame::OnAudioError( wxCommandEvent& event )
+{
+    int n = event.GetInt();
+    if ( n == 1 ) {
+        wxString message = _( "Cannot open /dev/dsp.\n" );
+        message += _( "Video file will be recorded without audio track.\n" );
+        wxMessageBox( message, _( "Error recording audio" ), wxICON_ERROR );       
+    }
+}
+
+bool Frame::isBusy() 
+{
+    return busy;
+}
+
+void Frame::setBusy( bool b ) 
+{
+    busy=b;
+    if ( !busy )
+        Connect( wxEVT_IDLE, wxIdleEventHandler( Frame::OnIdle ) );
+    else
+        Disconnect( wxEVT_IDLE, wxIdleEventHandler( Frame::OnIdle ) );
+}
+
+void Frame::applyFilters( )
+{
+    CImg<unsigned char> *image = NULL;    
+    int size = width * height *3; 
+    if(Setting::GetInstance()->GetAdjustColors())
+        cam.setAdjustColors(true);
+    else
+        cam.setAdjustColors(false);
+    if(Setting::GetInstance()->GetNegative())
+        negative( (unsigned char*)buffer, size);
+    if(Setting::GetInstance()->GetMonochrome())
+        monochrome((unsigned char*)buffer, size);
+    if(Setting::GetInstance()->GetUpturned())
+        upturned( (unsigned char*)buffer, size);
+    if(Setting::GetInstance()->GetMirror())
+        mirror( (unsigned char*)buffer, size, width);
+
+    if(Setting::GetInstance()->GetVerticalMirror())            
+        verticalMirror_wrp( (unsigned char*)buffer, size, width);
+    if(Setting::GetInstance()->GetInstagram())            
+        instagram_wrp( (unsigned char*)buffer, size, width);
+    if(Setting::GetInstance()->GetStretch())            
+        stretch_wrp( (unsigned char*)buffer, size, width);
+    if(Setting::GetInstance()->GetMonoAsm())            
+        mono_wrp( (unsigned char*)buffer, size);
+    if(Setting::GetInstance()->GetNegativeAsm())            
+        negative_wrp( (unsigned char*)buffer, size);
+    if(Setting::GetInstance()->GetBlueOnlyAsm())            
+        blueonly_wrp( (unsigned char*)buffer, size, 0);
+    if(Setting::GetInstance()->GetEdgeAsm())
+        edge_wrp((unsigned char*)buffer, size, height, width);
+    if(Setting::GetInstance()->GetBonaAsm())
+        bona_wrp((unsigned char*)buffer, size);
+    if(Setting::GetInstance()->GetPixelate())
+        pixelate_wrp((unsigned char*)buffer, size, height, width);
+    if(Setting::GetInstance()->GetMedian())
+        median( (unsigned char*)buffer, size, width);
+    if(Setting::GetInstance()->GetMedianAsm())
+        median_wrp( (unsigned char*)buffer, size, height, width);
+    if(Setting::GetInstance()->GetBlur()) {
+        if(!image) 
+            image = new CImg<unsigned char>(cimg_from_rgb((unsigned char*)buffer, width, height));
+        image->blur(3.0f);
+    }
+    if(Setting::GetInstance()->GetDeriche()) {
+        if(!image) 
+            image = new CImg<unsigned char>(cimg_from_rgb((unsigned char*)buffer, width, height));
+        image->deriche(3.0f);
+    }
+    if(Setting::GetInstance()->GetNoise()) {
+        if(!image) 
+            image = new CImg<unsigned char>(cimg_from_rgb((unsigned char*)buffer, width, height));
+        image->noise(10);
+    }
+    if(Setting::GetInstance()->GetSharpen()) {
+        if(!image) 
+            image = new CImg<unsigned char>(cimg_from_rgb((unsigned char*)buffer, width, height));
+        image->sharpen(30, true);
+    }
+    if(Setting::GetInstance()->GetLaplacian()) {
+        if(!image)
+            image = new CImg<unsigned char>(cimg_from_rgb((unsigned char*)buffer, width, height));
+        image->laplacian();
+    }
+    if(Setting::GetInstance()->GetEdge())
+        edge((unsigned char*)buffer, size, width);
+    if(Setting::GetInstance()->GetDateTime()) {
+        if(!image)
+            image = new CImg<unsigned char>(cimg_from_rgb((unsigned char*)buffer, width, height));
+        unsigned char fgcolor[3], bgcolor[3];
+        char text[80];
+        wxDateTime dt = wxDateTime::UNow();
+        snprintf(text, 80, "%d-%02d-%02d %02d:%02d:%02d.%01d", 
+                dt.GetYear(), dt.GetMonth() + 1, dt.GetDay(),
+                dt.GetHour(), dt.GetMinute(), dt.GetSecond(),
+                (dt.GetMillisecond()/100));
+        memset(fgcolor, 255, 3);
+        memset(bgcolor, 0, 3);
+        image->draw_text(width - 120, height - 15, text, fgcolor, bgcolor, 12);
+    }
+    if(image) {
+        rgb_from_cimg(*image, (unsigned char*)buffer);
+        delete image;
+    }
+}
+
+void Frame::ActivateMovementDetection()
+{
+   movementDetection = true;
+   mdet.ActivateMovementDetection();
+}
+
+void Frame::DeactivateMovementDetection()
+{
+   movementDetection = false;
+   mdet.DeactivateMovementDetection();
+}
+
+bool Frame::GetMovementDetectionStatus()
+{
+   return movementDetection;
+}
+
+void Frame::ShowMDAreas()
+{
+   showMDAreasStatus = true;
+   wxString areaHelpText(_("Use mouse to create areas, [TAB], [<-] and [->] to select areas, [DELETE] to delete areas"));
+   mainFrame->SetStatusText(areaHelpText);
+}
+
+void Frame::HideMDAreas()
+{
+   showMDAreasStatus = false;
+   wxString areaHelpText;
+   mainFrame->SetStatusText(areaHelpText);
+}
+
+bool Frame::GetMDAreasShowStatus()
+{
+   return showMDAreasStatus;
+}
+
+void Frame::OnMouseEvent( wxMouseEvent& event)
+{
+   mdet.MouseEvent( event );
+   event.Skip();
+}
+
+void Frame::OnKeyDown( wxKeyEvent& event)
+{
+   mdet.KeyDown( event );
+   event.Skip();
+}
+
+CImg<unsigned char> Frame::cimg_from_rgb(unsigned char const* rgb, const unsigned int dimw, const unsigned int dimh) 
+{
+    CImg<unsigned char> res(dimw, dimh, 1, 3, true);
+    unsigned char
+          *pR = res.begin() + res.offset(0, 0, 0, 0), 
+          *pG = res.begin() + res.offset(0, 0, 0, 1), 
+          *pB = res.begin() + res.offset(0, 0, 0, 2);
+    const unsigned char *ptrs = rgb;
+    for (unsigned int off = res.width() * res.height(); off > 0; --off) {
+        *(pR++) = (unsigned char)*(ptrs++);
+        *(pG++) = (unsigned char)*(ptrs++);
+        *(pB++) = (unsigned char)*(ptrs++);
+    }
+    return res;
+}
+
+void Frame::rgb_from_cimg(CImg<unsigned char> const & cimg, unsigned char *buffer) 
+{
+    const unsigned int wh = cimg.width() * cimg.height();
+    unsigned char *nbuffer=buffer;
+    const unsigned char
+	*ptr1 = cimg.begin() + cimg.offset(0, 0, 0, 0),
+	*ptr2 = cimg.spectrum() > 1 ? cimg.begin() + cimg.offset(0, 0, 0, 1) : ptr1,
+	*ptr3 = cimg.spectrum() > 2 ? cimg.begin() + cimg.offset(0, 0, 0, 2) : ptr1;	
+    for (unsigned int k=0; k<wh; k++) {
+        *(nbuffer++) = (unsigned char)(*(ptr1++));
+        *(nbuffer++) = (unsigned char)(*(ptr2++));
+        *(nbuffer++) = (unsigned char)(*(ptr3++));
+    }
+}

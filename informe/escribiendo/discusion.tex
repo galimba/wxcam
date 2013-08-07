@@ -1,0 +1,18 @@
+\section{Discusi\'on}
+
+\subsection{Problemas encontrados}
+\begin{itemize}
+
+\item A lo largo del proceso de selecci\'on de los filtros consideramos como prioritario aportar a la comunidad Open Source una aplicaci\'on con las herramientas necesarias para que sea entretenida y \'util. Dicho esto, descartamos algoritmos que cubrieran el mismo efecto (ie. para reconocimiento de bordes utilizamos Sobel, descartando Laplacian y Canny).
+\item Nuestra intenci\'on fue implementar (en assembler SIMD) filtros similares a los de la aplicaci\'on PhotoBooth de OSX. Algunos de estos filtros fueron descartados por la naturaleza de los algoritmos. Un caso no abordado fue el efecto conocido como Swirl, que utiliza cambio de coordenadas para los pixeles, lo que imposibilita el aprovechamiento de las instrucciones SIMD en el algoritmo.
+\item Luego de programar los algoritmos Pixelar y Median nos percatamos que, aunque el filtro estaba siendo bien aplicado, el efecto logrado no tenia la intensidad deseada: El pixelado era muy peque\~no y la reducci\'on de ruido era muy pobre. Decidimos ampliar el algoritmo para recibir un parametro m\'as, que contemple el tama\~no de la ventana de pixels y la cantidad de aplicaciones de promedio para reducci\'on de ruido.
+
+
+\end{itemize}
+
+\subsection{Performance de los filtros}
+Luego de analizar los resultados, podemos afirmar que la performance de cada uno de los filtros que optimizamos ha mejorado considerablemente con respecto a la compilaci\'on sin par\'ametros de optimizaci\'on. Con respecto a la compilaci\'on optimizada (con el parametro -O3), los algoritmos simples (monocromatizar, negativo) parecen mejorar considerablemente (con una ganancia de 15 porciento de velocidad con respecto a nuestra implementaci\'on SSE). En la pr\'actica, vemos que el rendimiento de los filtros implementados con SSE es el deseado, sin p\'erdida considerable de FPS en la aplicaci\'on (incluso considerando la superposici\'on de filtros). Con respecto a los filtros programados en C++, se nos present\'o el problema de que algunos algoritmos son tan lentos que, incluso con optimizaciones -O3 no llegan a ser utilizables (Median, Sharpen). Esto se debe a la naturaleza del algoritmo.
+
+\subsection{Las condiciones de testing}
+Dado que nuestros equipos a lo sumo pueden capturar im\'agenes de 720p a 20 frames por segundo, queda abierta la posibilidad de que estos algoritmos escalen a una performance diferente cuando estemos utilizando im\'agenes full HD (de 1080p a 50 frames por segundo). A futuro y con fines acad\'emicos, ser\'ia interesante explorar \'esta posibilidad para utilizar webcams que cuenten con mejor calidad de imagen y analizar nuevamente el comportamiento de estas optimizaciones.\\
+

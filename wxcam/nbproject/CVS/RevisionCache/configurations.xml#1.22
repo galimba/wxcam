@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="79">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>include/BaseEncoder.h</itemPath>
+      <itemPath>include/XvidEncoder.h</itemPath>
+      <itemPath>include/audio.h</itemPath>
+      <itemPath>include/avi.h</itemPath>
+      <itemPath>include/avilib.h</itemPath>
+      <itemPath>ccvt/ccvt.h</itemPath>
+      <itemPath>include/cfile.h</itemPath>
+      <itemPath>include/configure.h</itemPath>
+      <itemPath>include/device.h</itemPath>
+      <itemPath>include/filters.h</itemPath>
+      <itemPath>include/frame.h</itemPath>
+      <itemPath>include/mddialog.h</itemPath>
+      <itemPath>include/motion.h</itemPath>
+      <itemPath>include/picture.h</itemPath>
+      <itemPath>include/progressdlg.h</itemPath>
+      <itemPath>include/pwc-ioctl.h</itemPath>
+      <itemPath>include/recording.h</itemPath>
+      <itemPath>include/resolution.h</itemPath>
+      <itemPath>include/setting.h</itemPath>
+      <itemPath>include/uncompressed.h</itemPath>
+      <itemPath>include/v4l.h</itemPath>
+      <itemPath>include/v4l1.h</itemPath>
+      <itemPath>include/v4l2.h</itemPath>
+      <itemPath>include/vidiostd.h</itemPath>
+      <itemPath>include/wxcam.h</itemPath>
+      <itemPath>include/xvidcodec.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>src/BaseEncoder.cpp</itemPath>
+      <itemPath>src/XvidEncoder.cpp</itemPath>
+      <itemPath>src/audio.cpp</itemPath>
+      <itemPath>src/avilib.c</itemPath>
+      <itemPath>ccvt/ccvt.c</itemPath>
+      <itemPath>src/cfile.cpp</itemPath>
+      <itemPath>src/configure.cpp</itemPath>
+      <itemPath>src/device.cpp</itemPath>
+      <itemPath>src/filters.cpp</itemPath>
+      <itemPath>src/frame.cpp</itemPath>
+      <itemPath>src/mddialog.cpp</itemPath>
+      <itemPath>src/motion.cpp</itemPath>
+      <itemPath>src/picture.cpp</itemPath>
+      <itemPath>src/progressdlg.cpp</itemPath>
+      <itemPath>src/recording.cpp</itemPath>
+      <itemPath>src/resolution.cpp</itemPath>
+      <itemPath>src/revelcore.cpp</itemPath>
+      <itemPath>src/setting.cpp</itemPath>
+      <itemPath>src/uncompressed.cpp</itemPath>
+      <itemPath>src/v4l1.cpp</itemPath>
+      <itemPath>src/v4l2.cpp</itemPath>
+      <itemPath>src/vidiostd.cpp</itemPath>
+      <itemPath>src/wxcam.cpp</itemPath>
+      <itemPath>src/xvidcodec.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>GNU|GNU</compilerSet>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <incDir>
+            <pElem>include</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>ccvt</pElem>
+            <pElem>images</pElem>
+            <pElem>include</pElem>
+          </incDir>
+          <commandLine>`wx-config --cxxflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>bin/wxcam</output>
+          <linkerAddLib>
+            <pElem>/usr/local/lib</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerLibLibItem>xvidcore</linkerLibLibItem>
+            <linkerLibLibItem>lavjpeg</linkerLibLibItem>
+            <linkerLibLibItem>mjpegutils</linkerLibLibItem>
+            <linkerLibLibItem>X11</linkerLibLibItem>
+            <linkerLibLibItem>asound</linkerLibLibItem>
+          </linkerLibItems>
+          <commandLine>`wx-config --libs`</commandLine>
+        </linkerTool>
+      </compileType>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>GNU|GNU</compilerSet>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>include</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>ccvt</pElem>
+            <pElem>images</pElem>
+            <pElem>include</pElem>
+          </incDir>
+          <commandLine>`wx-config --cxxflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>bin/wxcam</output>
+          <linkerAddLib>
+            <pElem>/usr/local/lib</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerLibLibItem>xvidcore</linkerLibLibItem>
+            <linkerLibLibItem>lavjpeg</linkerLibLibItem>
+            <linkerLibLibItem>mjpegutils</linkerLibLibItem>
+            <linkerLibLibItem>X11</linkerLibLibItem>
+            <linkerLibLibItem>asound</linkerLibLibItem>
+            <linkerOptionItem>`wx-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+    </conf>
+  </confs>
+</configurationDescriptor>

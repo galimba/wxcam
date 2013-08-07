@@ -1,0 +1,598 @@
+# translation of tr.po to Turkish
+# Cenk Güre <gure.cenk@gmail.com>, 2008.
+msgid ""
+msgstr ""
+"Last-Translator: Cenk Güre <gure.cenk@gmail.com>\n"
+"PO-Revision-Date: 2008-01-30 22:38+0200\n"
+"Project-Id-Version: tr\n"
+"Language-Team: Turkish <turkce@pardus.org.tr>\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"MIME-Version: 1.0\n"
+
+#: src/resolution.cpp:31
+msgid "Frame settings"
+msgstr "Çerçeve ayarları"
+
+#: src/resolution.cpp:44
+msgid "Choose resolution:"
+msgstr "Çözünürlük seçin:"
+
+#: src/resolution.cpp:53
+msgid "Choose frame rate (fps):"
+msgstr "Çerçeve hızını seçin (fps):"
+
+#: src/resolution.cpp:67
+#: src/picture.cpp:157
+msgid "&OK"
+msgstr "&Tamam"
+
+#: src/resolution.cpp:71
+msgid "&Cancel"
+msgstr "&İptal"
+
+#: src/picture.cpp:38
+#: src/wxcam.cpp:360
+msgid "Picture Functions"
+msgstr "Resim İşlevleri"
+
+#: src/picture.cpp:62
+msgid "Brightness:"
+msgstr "Parlaklık:"
+
+#: src/picture.cpp:74
+msgid "Contrast:"
+msgstr "Karşıtlık:"
+
+#: src/picture.cpp:86
+msgid "Gamma:"
+msgstr "Gama:"
+
+#: src/picture.cpp:98
+msgid "Saturation:"
+msgstr "Doygunluk:"
+
+#: src/picture.cpp:118
+msgid "Gain:"
+msgstr "Kazanç:"
+
+#: src/picture.cpp:123
+msgid "Auto gain control"
+msgstr "Otomatik kazanç kontrolü:"
+
+#: src/picture.cpp:142
+msgid "Shutter speed:"
+msgstr "Poz süresi:"
+
+#: src/picture.cpp:147
+msgid "Auto shutter speed control"
+msgstr "Otomatik poz süresi kontrolü"
+
+#: src/configure.cpp:75
+#: src/wxcam.cpp:152
+msgid "Preferences"
+msgstr "Özellikler"
+
+#: src/configure.cpp:87
+msgid "  Global  "
+msgstr "  Genel  "
+
+#: src/configure.cpp:88
+msgid "  Files  "
+msgstr "  Dosyalar  "
+
+#: src/configure.cpp:89
+msgid "  Video  "
+msgstr "  Video  "
+
+#: src/configure.cpp:107
+msgid "Webcam device:"
+msgstr "Webcam aygıtı:"
+
+#: src/configure.cpp:116
+msgid "&YUV420P"
+msgstr "&YUV420P"
+
+#: src/configure.cpp:117
+msgid "&YUV420"
+msgstr "&YUV420"
+
+#: src/configure.cpp:118
+msgid "&YUYV"
+msgstr "&YUYV"
+
+#: src/configure.cpp:119
+msgid "&RGB24"
+msgstr "&RGB24"
+
+#: src/configure.cpp:120
+msgid "&RGB32"
+msgstr "&RGB32"
+
+#: src/configure.cpp:121
+#: src/configure.cpp:129
+msgid "&AUTO"
+msgstr "&Otomatik"
+
+#: src/configure.cpp:122
+msgid "&Frame format:"
+msgstr "&Çerçeve biçemi:"
+
+#: src/configure.cpp:127
+msgid "&Video4Linux1"
+msgstr "&Video4Linux1"
+
+#: src/configure.cpp:128
+msgid "&Video4Linux2"
+msgstr "&Video4Linux2"
+
+#: src/configure.cpp:131
+msgid "&Driver:"
+msgstr "&Sürücü:"
+
+#: src/configure.cpp:145
+msgid "Choose snapshot file"
+msgstr "Fotoğraf dosyası seçin"
+
+#: src/configure.cpp:148
+#: src/configure.cpp:156
+msgid "&Choose"
+msgstr "&Seç"
+
+#: src/configure.cpp:149
+msgid "Snapshot file:"
+msgstr "Fotoğraf dosyası:"
+
+#: src/configure.cpp:153
+msgid "Choose video registration file"
+msgstr "Video kayıt dosyası seçin"
+
+#: src/configure.cpp:157
+msgid "Video file:"
+msgstr "Video dosyası:"
+
+#: src/configure.cpp:175
+msgid "&none (uncompressed)"
+msgstr "&hiçbiri (sıkıştırılmamış)"
+
+#: src/configure.cpp:176
+msgid "&xvid"
+msgstr "&xvid"
+
+#: src/configure.cpp:178
+msgid "&Choose recording compression:"
+msgstr "&Kayıt sıkıştırmasını seçin:"
+
+#: src/configure.cpp:182
+msgid "Choose xvid quality:"
+msgstr "xvid kalitesini seçin:"
+
+#: src/configure.cpp:190
+msgid "Enable audio recording (xvid only)"
+msgstr "Ses kaydı etkin (sadece xvid)"
+
+#: src/configure.cpp:194
+msgid "Audio device:"
+msgstr "Ses Aygıtı:"
+
+#: src/configure.cpp:202
+msgid "Add silence for synchronization reason:"
+msgstr "Ses ve görüntü eşzamanlılığı için sessizlik ekle:"
+
+#: src/configure.cpp:208
+msgid "(hundredths of a second)"
+msgstr "(saniyenin yüzde biri)"
+
+#: src/configure.cpp:258
+msgid "Save snapshot"
+msgstr "Fotoğrafı kaydet"
+
+#: src/configure.cpp:276
+msgid "Save video"
+msgstr "Videoyu kaydet"
+
+#: src/configure.cpp:279
+msgid "AVI files (*.avi)|*.avi"
+msgstr "AVI dosyaları (*.avi)|*.avi"
+
+#: src/configure.cpp:312
+msgid ""
+"You have modified device file or frame format or device API settings.\n"
+"Please restart the program for changes to take effect..."
+msgstr ""
+"Aygıt dosyasını veya çerçeve biçemini veya aygıt API ayarlarını değiştirdiniz.\n"
+"Değişikliklerin geçerli olması için lütfen programı yeniden başlatın."
+
+#: src/configure.cpp:312
+msgid "Device setting"
+msgstr "Aygıt ayarları"
+
+#: src/wxcam.cpp:129
+msgid "Device found in your system: "
+msgstr "Sisteminizde bulunan aygıt:"
+
+#: src/wxcam.cpp:131
+msgid "Hardware found"
+msgstr "Donanım algılandı"
+
+#: src/wxcam.cpp:149
+msgid "E&xit\tAlt-X"
+msgstr "&Çıkış\tAlt-X"
+
+#: src/wxcam.cpp:152
+msgid "&Preferences\tCtrl-P"
+msgstr "&Özellikler\tCtrl-P"
+
+#: src/wxcam.cpp:157
+msgid "&Image balance\tCtrl-I"
+msgstr "Görüntü &Dengesi\tCtrl-I"
+
+#: src/wxcam.cpp:157
+msgid "Configure brightness, contrast, gamma and saturation"
+msgstr "Parlaklık, karşıtlık, gama ve doygunluğu düzenleyin"
+
+#: src/wxcam.cpp:161
+msgid "&Frame size\tCtrl-F"
+msgstr "&Çerçeve Boyutu\tCtrl-F"
+
+#: src/wxcam.cpp:161
+msgid "Choose resolution and frame rate"
+msgstr "Çözünürlüğü ve çerçeve hızını seçin"
+
+#: src/wxcam.cpp:165
+msgid "Full screen\tF"
+msgstr "Tam ekran\tF"
+
+#: src/wxcam.cpp:170
+msgid "About...\tF1"
+msgstr "Hakkında...\tF1"
+
+#: src/wxcam.cpp:172
+msgid "&Webcam\tCtrl-W"
+msgstr "&Webcam\tCtrl-W"
+
+#: src/wxcam.cpp:172
+msgid "Show webcam info"
+msgstr "Webcam bilgisini göster"
+
+#: src/wxcam.cpp:176
+msgid "&Snapshot\tCtrl-S"
+msgstr "Fotoğraf çek\tCtrl-S"
+
+#: src/wxcam.cpp:176
+#: src/wxcam.cpp:227
+#: src/wxcam.cpp:405
+msgid "Take snapshot"
+msgstr "Fotoğraf çek"
+
+#: src/wxcam.cpp:179
+msgid "&Record video\tCtrl-R"
+msgstr "&Video kaydet\tCtrl-R"
+
+#: src/wxcam.cpp:179
+#: src/wxcam.cpp:423
+msgid "Record video"
+msgstr "Video kaydet"
+
+#: src/wxcam.cpp:186
+msgid "Movement detection"
+msgstr "Hareket algılaması"
+
+#: src/wxcam.cpp:188
+msgid "Show movement detection areas"
+msgstr "Hareket algılanan bölgeleri göster"
+
+#: src/wxcam.cpp:191
+msgid "&Adjust Colors\tAlt-A"
+msgstr "Renkleri düzelt\tAlt-A"
+
+#: src/wxcam.cpp:193
+msgid "&Negative\tAlt-N"
+msgstr "&Negatif\tAlt-N"
+
+#: src/wxcam.cpp:195
+msgid "&Monochrome\tAlt-M"
+msgstr "Tek&renkli\tAlt-M"
+
+#: src/wxcam.cpp:198
+msgid "&Upturned\tAlt-U"
+msgstr "&Ters\tAlt-U"
+
+#: src/wxcam.cpp:200
+msgid "M&irror\tAlt-I"
+msgstr "&Ayna\tAlt-I"
+
+#: src/wxcam.cpp:203
+msgid "&Blur\tAlt-B"
+msgstr "&Bulanık\tAlt-B"
+
+#: src/wxcam.cpp:205
+msgid "&Deriche\tAlt-D"
+msgstr "&Deriche\tAlt-D"
+
+#: src/wxcam.cpp:207
+msgid "N&oise (slow)\tAlt-O"
+msgstr "&Gürültülü (yavaş)\tAlt-O"
+
+#: src/wxcam.cpp:209
+msgid "&Sharpen (slow)\tAlt-S"
+msgstr "&Keskin (yavaş)\tAlt-S"
+
+#: src/wxcam.cpp:211
+msgid "&Edge\tAlt-E"
+msgstr "Karaka&lem\tAlt-E"
+
+#: src/wxcam.cpp:214
+msgid "A&ppend datetime \tAlt-P"
+msgstr "Tarih ve &zaman ekle\tAlt-P"
+
+#: src/wxcam.cpp:218
+msgid "&File"
+msgstr "&Dosya"
+
+#: src/wxcam.cpp:219
+msgid "&Settings"
+msgstr "&Ayarlar"
+
+#: src/wxcam.cpp:220
+msgid "&Capture"
+msgstr "&Kaydet"
+
+#: src/wxcam.cpp:221
+msgid "&Effects"
+msgstr "&Efektler"
+
+#: src/wxcam.cpp:222
+msgid "&Info"
+msgstr "&Bilgi"
+
+#: src/wxcam.cpp:227
+msgid "Take Snapshot"
+msgstr "Fotoğraf Çek"
+
+#: src/wxcam.cpp:228
+msgid "Start recording"
+msgstr "Kaydı başlat"
+
+#: src/wxcam.cpp:285
+msgid "A webcam application for linux"
+msgstr "Linux için bir webcam uygulaması"
+
+#: src/wxcam.cpp:322
+msgid ""
+"Error querying webcam capabilities.\n"
+"Perhaps the device hasn't been correctly opened."
+msgstr ""
+"Webcam özellikleri sorgulanırken hata oluştu.\n"
+"Aygıt düzgünce açılmamış olabilir."
+
+#: src/wxcam.cpp:322
+msgid "Capabilities"
+msgstr "Özellikler"
+
+#: src/wxcam.cpp:329
+msgid "Name: "
+msgstr "İsim: "
+
+#: src/wxcam.cpp:331
+msgid "Channels: "
+msgstr "Kanallar: "
+
+#: src/wxcam.cpp:336
+#: src/wxcam.cpp:338
+msgid "Audio: "
+msgstr "Ses: "
+
+#: src/wxcam.cpp:336
+msgid "Yes"
+msgstr "Evet"
+
+#: src/wxcam.cpp:338
+msgid "No"
+msgstr "Hayır"
+
+#: src/wxcam.cpp:342
+msgid "Min resolution: "
+msgstr "En düşük çözünürlük: "
+
+#: src/wxcam.cpp:346
+msgid "Max resolution: "
+msgstr "En yüksek çözünürlük: "
+
+#: src/wxcam.cpp:349
+msgid "Webcam Capabilities     "
+msgstr "Webcam Özellikleri     "
+
+#: src/wxcam.cpp:360
+#: src/wxcam.cpp:393
+msgid ""
+"Error!\n"
+"Perhaps the device hasn't been correctly open."
+msgstr ""
+"Hata!\n"
+"Aygıt düzgünce açılmamış olabilir."
+
+#: src/wxcam.cpp:393
+msgid "Setting Resolution"
+msgstr "Çözünürlük Ayarı"
+
+#: src/wxcam.cpp:401
+msgid "Saving snapshot on "
+msgstr "Fotoğraf kaydediliyor "
+
+#: src/wxcam.cpp:405
+msgid ""
+"Error taking snapshot!\n"
+"Perhaps the device hasn't been correctly open."
+msgstr ""
+"Fotoğraf çekilirken hata oluştu!\n"
+"Aygıt düzgünce açılmamış olabilir."
+
+#: src/wxcam.cpp:415
+msgid "Saving video on "
+msgstr "Video kaydediliyor "
+
+#: src/wxcam.cpp:423
+msgid ""
+"Error recording!\n"
+"Perhaps the device hasn't been correctly open."
+msgstr ""
+"Kayıt yapılırken hata oluştu!\n"
+"Aygıt düzgünce açılmamış olabilir."
+
+#: src/mddialog.cpp:40
+msgid "Area Sensitivity Setting"
+msgstr "Alan Duyarlılık Ayarları"
+
+#: src/mddialog.cpp:53
+msgid "Colour Sensitivity"
+msgstr "Renk Duyarlılığı"
+
+#: src/mddialog.cpp:64
+#: src/mddialog.cpp:110
+msgid "Red: "
+msgstr "Kırmızı:"
+
+#: src/mddialog.cpp:72
+#: src/mddialog.cpp:118
+msgid "Green: "
+msgstr "Yeşil:"
+
+#: src/mddialog.cpp:80
+#: src/mddialog.cpp:126
+msgid "Blue: "
+msgstr "Mavi:"
+
+#: src/mddialog.cpp:90
+#: src/mddialog.cpp:137
+msgid "Colour"
+msgstr "Renk"
+
+#: src/mddialog.cpp:93
+msgid "Sensitivity (%)"
+msgstr "Duyarlılık (%)"
+
+#: src/mddialog.cpp:94
+#: src/mddialog.cpp:139
+msgid "Min"
+msgstr "En az"
+
+#: src/mddialog.cpp:95
+#: src/mddialog.cpp:140
+msgid "Mean"
+msgstr "Ortalama"
+
+#: src/mddialog.cpp:96
+#: src/mddialog.cpp:141
+msgid "Max"
+msgstr "En çok"
+
+#: src/mddialog.cpp:138
+msgid "Area (%)"
+msgstr "Alan (%)"
+
+#: src/mddialog.cpp:289
+msgid "Reload"
+msgstr "Tekrar Yükle"
+
+#: src/mddialog.cpp:290
+msgid "Modify"
+msgstr "Değiştir"
+
+#: src/mddialog.cpp:291
+msgid "Hide"
+msgstr "Gizle"
+
+#: src/frame.cpp:97
+msgid "Cannot open "
+msgstr "Açılamadı "
+
+#: src/frame.cpp:99
+msgid "Please check if your system has the correct driver for your webcam, or change the webcam device in settings->preferences."
+msgstr "Lütfen webcaminiz için doğru sürücünün olup olmadığını kontrol edin veya ayarlar -> özellikler'den webcam aygıtınızı değiştirin."
+
+#: src/frame.cpp:100
+msgid "Error opening device"
+msgstr "Aygıt açılırken hata oluştu"
+
+#: src/frame.cpp:183
+msgid "Cannot create video recording thread!"
+msgstr "Video kayıt iş parçacığı oluşturulamadı!"
+
+#: src/frame.cpp:274
+msgid ""
+"Frame rate/resolution setting not supported.\n"
+"Please try a lower frame rate o resolution."
+msgstr ""
+"Çerçeve hızı veya çözünürlük ayarı desteklenmiyor.\n"
+"Lütfen daha düşük çerçeve hızı veya çözünürlük deneyin."
+
+#: src/frame.cpp:274
+msgid "Error applying settings"
+msgstr "Ayarlar uygulanırken hata oluştu"
+
+#: src/frame.cpp:306
+msgid ""
+"An error has occured during frame capture.\n"
+"Please check the \"frame format\" options in the preferences menu."
+msgstr ""
+"Çerçeve kaydı sırasında bir hata oluştu.\n"
+"Lütfen özellikler menüsündeki \"çerçeve biçemi\" ayarlarını kontrol edin."
+
+#: src/frame.cpp:306
+msgid "Error capturing frame"
+msgstr "Çerçeve kaydedilirken hata oluştu"
+
+#: src/frame.cpp:390
+msgid "An error has occured opening file "
+msgstr "Dosya açılırken bir hata oluştu "
+
+#: src/frame.cpp:392
+msgid "Error opening file"
+msgstr "Dosya açılırken hata oluştu"
+
+#: src/frame.cpp:399
+msgid "You system is slow"
+msgstr "Sisteminiz yavaş"
+
+#: src/frame.cpp:400
+msgid "Queue full"
+msgstr "Kuyruk dolu"
+
+#: src/frame.cpp:414
+msgid "Cannot open /dev/dsp.\n"
+msgstr "/dev/dsp açılamadı.\n"
+
+#: src/frame.cpp:415
+msgid "Video file will be recorded without audio track.\n"
+msgstr "Video dosyası sessiz kaydedilecek.\n"
+
+#: src/frame.cpp:416
+msgid "Error recording audio"
+msgstr "Ses kaydedilirken hata oluştu"
+
+#: src/frame.cpp:512
+msgid "Use mouse to create areas, [TAB], [<-] and [->] to select areas, [DELETE] to delete areas"
+msgstr "Alan yaratmak için fareyi, alanları seçmek için [TAB], [<-] ve [->], alanları silmek için [DELETE] tuşlarını kullanın"
+
+#: src/recording.cpp:34
+msgid "Recording"
+msgstr "Kaydediliyor"
+
+#: src/recording.cpp:50
+msgid "Recording..."
+msgstr "Kaydediliyor..."
+
+#: src/recording.cpp:59
+msgid "&Stop"
+msgstr "&Dur"
+
+#: src/recording.cpp:90
+msgid "&Recording..."
+msgstr "Kaydediliyor..."
+
+#: src/recording.cpp:99
+msgid "&Paused"
+msgstr "&Durdu"
+

@@ -1,0 +1,190 @@
+/***************************************************************************
+ *   Copyright (C) 2007 by Marco Lorrai                                    *
+ *   marco.lorrai@abbeynet.it                                              *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
+#include "filters.h"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+void convert2bgr(unsigned char* frame, int size)
+{
+    for(int i=0; i < size; i = i + 3)
+    {
+        unsigned char tmp;
+        tmp = frame[i];
+        frame[i] = frame[i + 2];
+        frame[i + 2] = tmp;
+    }
+}
+
+void negative(unsigned char* frame, int size)
+{
+    for(int i=0; i < size; i++)
+        frame[i] = ~frame[i];     
+}
+
+void upturned(unsigned char* frame, int size)
+{    
+    int j = size - 1;
+    for(int i=0; i < size/2; i = i + 3)
+    {
+        unsigned char tmp;
+        tmp = frame[i];
+        frame[i] = frame[j - 2];
+        frame[j - 2] = tmp;
+        
+        tmp = frame[i + 1];
+        frame[i + 1] = frame[j - 1];
+        frame[j - 1] = tmp;
+        
+        tmp = frame[i + 2];
+        frame[i + 2] = frame[j];
+        frame[j] = tmp;
+        j = j - 3;
+    }
+}
+
+void mirror(unsigned char* frame, int size, int width)
+{
+    int height = size/(width*3);
+    unsigned char pixel[3];
+    for (int w=0; w < width/2; w++) {
+        for(int h=w*3; h < height*width* 3; h = h + width*3) {
+            memcpy(pixel, frame + h, 3);
+            int last = h + (width - 1 - 2*w)*3;
+            memcpy(frame + h, frame + last, 3);
+            memcpy(frame + last, pixel, 3);
+        }        
+    }      
+}
+
+void monochrome(unsigned char* frame, int size) {
+    for(int i=0; i < size; i = i + 3) {
+        int mean = (frame[i] + frame[i+1] + frame[i+2])/3;
+        frame[i]=frame[i+1]=frame[i+2]=mean;        
+    
+    }
+}
+
+// based from http://www.pages.drexel.edu/~weg22/edge.html
+// Author: Bill Green
+void edge(unsigned char* frame, int size, int width)
+{
+    int height = size/(width*3);
+    unsigned int x, y;
+    int i, j;
+    long sumX, sumY;
+    int	nColors, sum;
+    unsigned char edge[size];
+    unsigned char bnimage[size/3];
+    
+    int c=0;
+    for(int i=0; i < size; i = i + 3) {
+        int mean = (frame[i] + frame[i+1] + frame[i+2])/3;
+        bnimage[c] = mean;
+        c++;    
+    }
+    
+    char GX[3][3];
+    char GY[3][3];
+    
+    /* 3x3 GX Sobel mask.  Ref: www.cee.hw.ac.uk/hipr/html/sobel.html */
+    GX[0][0] = -1; GX[0][1] = 0; GX[0][2] = 1;
+    GX[1][0] = -2; GX[1][1] = 0; GX[1][2] = 2;
+    GX[2][0] = -1; GX[2][1] = 0; GX[2][2] = 1;
+
+    /* 3x3 GY Sobel mask.  Ref: www.cee.hw.ac.uk/hipr/html/sobel.html */
+    GY[0][0] =  1; GY[0][1] =  2; GY[0][2] =  1;
+    GY[1][0] =  0; GY[1][1] =  0; GY[1][2] =  0;
+    GY[2][0] = -1; GY[2][1] = -2; GY[2][2] = -1;
+        
+    for(y=0; y<=(height-1); y++)  {
+        for(x=0; x<=(width-1); x++)  {
+            sumX = 0;
+            sumY = 0;
+            
+            /* image boundaries */
+            if(y==0 || y==height-1)
+                sum = 0;
+            else if(x==0 || x==width-1)
+                sum = 0;
+            
+            /* Convolution starts here */
+            else   {
+                
+                /*-------x GRADIENT APPROXIMATION------*/
+                for(i=-1; i<=1; i++)  {
+                    for(j=-1; j<=1; j++)  {
+                        sumX = sumX + (int)( (*(bnimage + x + i +
+                                (y + j)*width)) * GX[i+1][j+1]);
+                    }
+                }
+                
+                
+                /*-------y GRADIENT APPROXIMATION-------*/
+                for(i=-1; i<=1; i++)  {
+                    for(j=-1; j<=1; j++)  {
+                        sumY = sumY + (int)( (*(bnimage + x + i +
+                                (y + j)*width)) * GY[i+1][j+1]);
+                    }
+                }
+                
+                /*---GRADIENT MAGNITUDE APPROXIMATION (Myler p.218)----*/
+                sum = abs(sumX) + abs(sumY);
+            }
+            
+            if(sum>255) sum=255;
+           
+            unsigned char res = ~(unsigned char)(sum); 
+            /*if(res>100)
+                res=255;
+            else
+                res=0;*/
+            *(edge + 3*(x + y*width)) = res;
+            *(edge + 3*(x + y*width) + 1) = res; 
+            *(edge + 3*(x + y*width) + 2) = res;             
+        }
+    } 
+    memcpy(frame, edge, size);   
+}
+
+void rgb32_rgb24(unsigned int width, unsigned int height, const unsigned char* src, unsigned char* dest)
+{
+    int size = width*height*4;
+    int j = 0;
+    for(int i=0; i < size; i = i + 4)
+    {
+        memcpy(dest + j, src + i, 3);       
+        j = j + 3;
+    }
+}
+
+void rgb32_bgr24(unsigned int width, unsigned int height, const unsigned char* src, unsigned char* dest)
+{
+    int size = width*height*4;
+    int j = 0;
+    for(int i=0; i < size; i = i + 4)
+    {
+        dest[j] = src[i + 2];
+        dest[j + 1] = src[i + 1];
+        dest[j + 2] = src[i];        
+        j = j + 3;
+    }
+}

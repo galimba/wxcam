@@ -1,0 +1,643 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: wxcam-1.1\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2012-14-01 19:43-0500\n"
+"Last-Translator: Eugene Roskin <pams@imail.ru>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _\n"
+"X-Poedit-Language: Russian\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: src\n"
+
+#: src/resolution.cpp:31
+msgid "Frame settings"
+msgstr "Настройки кадра"
+
+#: src/resolution.cpp:44
+msgid "Choose resolution:"
+msgstr "Выберите разрешение:"
+
+#: src/resolution.cpp:53
+msgid "Choose frame rate (fps):"
+msgstr "Выберите частоту кадров (fps):"
+
+#: src/resolution.cpp:67
+#: src/picture.cpp:157
+#: src/vidiostd.cpp:53
+msgid "&OK"
+msgstr "&OK"
+
+#: src/resolution.cpp:71
+#: src/vidiostd.cpp:57
+msgid "&Cancel"
+msgstr "&Отменить"
+
+#: src/picture.cpp:38
+#: src/wxcam.cpp:373
+msgid "Picture Functions"
+msgstr "Функции картинки"
+
+#: src/picture.cpp:62
+msgid "Brightness:"
+msgstr "Яркость:"
+
+#: src/picture.cpp:74
+msgid "Contrast:"
+msgstr "Контрастность:"
+
+#: src/picture.cpp:86
+msgid "Gamma:"
+msgstr "Гамма:"
+
+#: src/picture.cpp:98
+msgid "Saturation:"
+msgstr "Насыщенность:"
+
+#: src/picture.cpp:118
+msgid "Gain:"
+msgstr "Усиление:"
+
+#: src/picture.cpp:123
+msgid "Auto gain control"
+msgstr "Автоматическое управление усилением"
+
+#: src/picture.cpp:142
+msgid "Shutter speed:"
+msgstr "Выдержка:"
+
+#: src/picture.cpp:147
+msgid "Auto shutter speed control"
+msgstr "Автоматическое управление выдержкой"
+
+#: src/configure.cpp:75
+#: src/wxcam.cpp:142
+msgid "Preferences"
+msgstr "Свойства"
+
+#: src/configure.cpp:87
+msgid "  Global  "
+msgstr "  Общие  "
+
+#: src/configure.cpp:88
+msgid "  Files  "
+msgstr "  Файлы  "
+
+#: src/configure.cpp:89
+msgid "  Video  "
+msgstr "  Видео  "
+
+#: src/configure.cpp:107
+msgid "Webcam device:"
+msgstr "Веб-камера:"
+
+#: src/configure.cpp:116
+msgid "&YUV420P"
+msgstr "&YUV420P"
+
+#: src/configure.cpp:117
+msgid "&YUV420"
+msgstr "&YUV420"
+
+#: src/configure.cpp:118
+msgid "&YUYV"
+msgstr "&YUYV"
+
+#: src/configure.cpp:119
+msgid "&RGB24"
+msgstr "&RGB24"
+
+#: src/configure.cpp:120
+msgid "&RGB32"
+msgstr "&RGB32"
+
+#: src/configure.cpp:121
+#: src/configure.cpp:129
+msgid "&AUTO"
+msgstr "&AВТОМАТИЧЕСКИ"
+
+#: src/configure.cpp:122
+msgid "&Frame format:"
+msgstr "&Формат кадра:"
+
+#: src/configure.cpp:127
+msgid "&Video4Linux1"
+msgstr "&Video4Linux1"
+
+#: src/configure.cpp:128
+msgid "&Video4Linux2"
+msgstr "&Video4Linux2"
+
+#: src/configure.cpp:131
+msgid "&Driver:"
+msgstr "&Драйвер:"
+
+#: src/configure.cpp:145
+msgid "Choose snapshot file"
+msgstr "Выберите файл снимка"
+
+#: src/configure.cpp:148
+#: src/configure.cpp:156
+msgid "&Choose"
+msgstr "&Выбрать"
+
+#: src/configure.cpp:149
+msgid "Snapshot file:"
+msgstr "Файл снимка:"
+
+#: src/configure.cpp:153
+msgid "Choose video registration file"
+msgstr "Выберите файл регистрации видео"
+
+#: src/configure.cpp:157
+msgid "Video file:"
+msgstr "Файл видео:"
+
+#: src/configure.cpp:175
+msgid "&none (uncompressed)"
+msgstr "&нет (без сжатия)"
+
+#: src/configure.cpp:176
+msgid "&xvid"
+msgstr "&xvid"
+
+#: src/configure.cpp:178
+msgid "&Choose recording compression:"
+msgstr "&Выберите сжатие записи:"
+
+#: src/configure.cpp:182
+msgid "Choose xvid quality:"
+msgstr "Выберите качество xvid:"
+
+#: src/configure.cpp:190
+msgid "Enable audio recording (xvid only)"
+msgstr "Использовать запись звука (только xvid)"
+
+#: src/configure.cpp:194
+msgid "Audio device:"
+msgstr "Звуковой устройство:"
+
+#: src/configure.cpp:202
+msgid "Add silence for synchronization reason:"
+msgstr "Добавить тишину по причине синхронизации:"
+
+#: src/configure.cpp:208
+msgid "(hundredths of a second)"
+msgstr "(сотни секунд)"
+
+#: src/configure.cpp:258
+msgid "Save snapshot"
+msgstr "Сохранить снимок"
+
+#: src/configure.cpp:276
+msgid "Save video"
+msgstr "Сохранить видеофрагмент"
+
+#: src/configure.cpp:279
+msgid "AVI files (*.avi)|*.avi"
+msgstr "Файлы AVI (*.avi)|*.avi"
+
+#: src/configure.cpp:312
+msgid ""
+"You have modified device file or frame format or device API settings.\n"
+"Please restart the program for changes to take effect..."
+msgstr ""
+"Вы выполнили изменение файла устройства или формат кадра, или настройки API устройства.\n"
+"Пожалуйста, перезапустите программу для применения изменений..."
+
+#: src/configure.cpp:312
+msgid "Device setting"
+msgstr "Настройки устройства"
+
+#: src/wxcam.cpp:134
+msgid "Device found in your system: "
+msgstr "Устройство найдено в вашей системе: "
+
+#: src/wxcam.cpp:136
+msgid "Hardware found"
+msgstr "Обнаружено оборудование"
+
+#: src/wxcam.cpp:158
+msgid "E&xit\tAlt-X"
+msgstr "В&ыйти\tAlt-U"
+
+#: src/wxcam.cpp:161
+msgid "&Preferences\tCtrl-P"
+msgstr "&Свойства\tCtrl-P"
+
+#: src/wxcam.cpp:166
+msgid "&Image balance\tCtrl-I"
+msgstr "Б&аланс картинки\tCtrl-Q"
+
+#: src/wxcam.cpp:166
+msgid "Configure brightness, contrast, gamma and saturation"
+msgstr "Настроить яркость, контрастность, гамму и насыщенность"
+
+#: src/wxcam.cpp:170
+msgid "&Frame size\tCtrl-F"
+msgstr "&Размер кадра\tCtrl-T"
+
+#: src/wxcam.cpp:170
+msgid "Choose resolution and frame rate"
+msgstr "Выберите разрешение и частоту кадров"
+
+#: src/wxcam.cpp:174
+msgid "&Video standard\tCtrl-V"
+msgstr "&Стандарт видео\tCtrl-F"
+
+#: src/wxcam.cpp:174
+#: src/vidiostd.cpp:26
+msgid "Choose video standard"
+msgstr "Выберите стандарт видео"
+
+#: src/wxcam.cpp:178
+msgid "Full screen\tF"
+msgstr "Во весь экран\tF"
+
+#: src/wxcam.cpp:183
+msgid "About...\tF1"
+msgstr "Сведения...\tF1"
+
+#: src/wxcam.cpp:185
+msgid "&Webcam\tCtrl-W"
+msgstr "&Веб-камера\tCtrl-W"
+
+#: src/wxcam.cpp:185
+msgid "Show webcam info"
+msgstr "Показать сведения о веб-камере"
+
+#: src/wxcam.cpp:189
+msgid "&Snapshot\tCtrl-S"
+msgstr "&Снимок\tCtrl-C"
+
+#: src/wxcam.cpp:189
+#: src/wxcam.cpp:240
+#: src/wxcam.cpp:435
+msgid "Take snapshot"
+msgstr "Сделать снимок"
+
+#: src/wxcam.cpp:192
+msgid "&Record video\tCtrl-R"
+msgstr "&Записать видеофрагмент\tCtrl-E"
+
+#: src/wxcam.cpp:192
+#: src/wxcam.cpp:453
+msgid "Record video"
+msgstr "Записать видеофрагмент"
+
+#: src/wxcam.cpp:199
+msgid "Movement detection"
+msgstr "Датчик движения"
+
+#: src/wxcam.cpp:201
+msgid "Show movement detection areas"
+msgstr "Показать области действия датчика движения"
+
+#: src/wxcam.cpp:204
+msgid "&Adjust Colors\tAlt-A"
+msgstr "&Настроить цвета\tAlt-A"
+
+#: src/wxcam.cpp:206
+msgid "&Negative\tAlt-N"
+msgstr "&Негатив\tAlt-N"
+
+#: src/wxcam.cpp:208
+msgid "&Monochrome\tAlt-M"
+msgstr "&Монохромное\tAlt-M"
+
+#: src/wxcam.cpp:211
+msgid "&Upturned\tAlt-U"
+msgstr "&Перевёрнутое\tAlt-R"
+
+#: src/wxcam.cpp:213
+msgid "M&irror\tAlt-I"
+msgstr "З&еркальное\tAlt-I"
+
+#: src/wxcam.cpp:216
+msgid "&Blur\tAlt-B"
+msgstr "&Размытие\tAlt-F"
+
+#: src/wxcam.cpp:218
+msgid "&Deriche\tAlt-D"
+msgstr "&Deriche\tAlt-D"
+
+#: src/wxcam.cpp:220
+msgid "N&oise (slow)\tAlt-O"
+msgstr "&Шум (слабый)\tAlt-B"
+
+#: src/wxcam.cpp:222
+msgid "&Sharpen (slow)\tAlt-S"
+msgstr "Р&езкость (слабая)\tAlt-E"
+
+#: src/wxcam.cpp:224
+msgid "&Edge\tAlt-E"
+msgstr "&Рамка\tAlt-C"
+
+#: src/wxcam.cpp:227
+msgid "A&ppend datetime \tAlt-P"
+msgstr "Д&обавить дату и время \tAlt-J"
+
+#: src/wxcam.cpp:231
+msgid "&File"
+msgstr "&Файл"
+
+#: src/wxcam.cpp:232
+msgid "&Settings"
+msgstr "&Настройки"
+
+#: src/wxcam.cpp:233
+msgid "&Capture"
+msgstr "&Записать"
+
+#: src/wxcam.cpp:234
+msgid "&Effects"
+msgstr "&Эффекты"
+
+#: src/wxcam.cpp:235
+msgid "&Info"
+msgstr "&Сведения"
+
+#: src/wxcam.cpp:240
+msgid "Take Snapshot"
+msgstr "Сделать снимок"
+
+#: src/wxcam.cpp:241
+msgid "Start recording"
+msgstr "Начать запись"
+
+#: src/wxcam.cpp:298
+msgid "A webcam application for linux"
+msgstr "Приложение для работы с веб-камерой в linux"
+
+#: src/wxcam.cpp:335
+msgid ""
+"Error querying webcam capabilities.\n"
+"Perhaps the device hasn't been correctly opened."
+msgstr ""
+"Ошибка запроса возможностей веб-камеры.\n"
+"Возможно устройство не было доступно надлежащим образом."
+
+#: src/wxcam.cpp:335
+msgid "Capabilities"
+msgstr "Возможности"
+
+#: src/wxcam.cpp:342
+msgid "Name: "
+msgstr "Имя: "
+
+#: src/wxcam.cpp:344
+msgid "Channels: "
+msgstr "Каналы: "
+
+#: src/wxcam.cpp:349
+#: src/wxcam.cpp:351
+msgid "Audio: "
+msgstr "Звук: "
+
+#: src/wxcam.cpp:349
+msgid "Yes"
+msgstr "Да"
+
+#: src/wxcam.cpp:351
+msgid "No"
+msgstr "Нет"
+
+#: src/wxcam.cpp:355
+msgid "Min resolution: "
+msgstr "Мин. разрешение: "
+
+#: src/wxcam.cpp:359
+msgid "Max resolution: "
+msgstr "Макс. разрешение: "
+
+#: src/wxcam.cpp:362
+msgid "Webcam Capabilities     "
+msgstr "Возможности веб-камеры     "
+
+#: src/wxcam.cpp:373
+#: src/wxcam.cpp:406
+msgid ""
+"Error!\n"
+"Perhaps the device hasn't been correctly open."
+msgstr ""
+"Ошибка!\n"
+"Возможно устройство не было доступно надлежащим образом."
+
+#: src/wxcam.cpp:406
+msgid "Setting Resolution"
+msgstr "Настройка разрешения"
+
+#: src/wxcam.cpp:418
+msgid ""
+"Error!\n"
+"This video standard is not supported by your device."
+msgstr ""
+"Ошибка!\n"
+"Этот видео стандарт не поддерживается вашим устройством."
+
+#: src/wxcam.cpp:418
+msgid "Setting Video Standard"
+msgstr "Настройки стандарта видео"
+
+#: src/wxcam.cpp:431
+msgid "Saving snapshot on "
+msgstr "Сохранение снимка "
+
+#: src/wxcam.cpp:435
+msgid ""
+"Error taking snapshot!\n"
+"Perhaps the device hasn't been correctly open."
+msgstr ""
+"Ошибка выполнения снимка!\n"
+"Возможно устройство не было доступно надлежащим образом."
+
+#: src/wxcam.cpp:445
+msgid "Saving video on "
+msgstr "Сохранение видеофрагмента "
+
+#: src/wxcam.cpp:453
+msgid ""
+"Error recording!\n"
+"Perhaps the device hasn't been correctly open."
+msgstr ""
+"Ошибка записи!\n"
+"Возможно устройство не было доступно надлежащим образом."
+
+#: src/frame.cpp:88
+msgid "Cannot open "
+msgstr "Нет доступа к "
+
+#: src/frame.cpp:90
+msgid "Please check if your system has the correct driver for your webcam, or change the webcam device in settings->preferences."
+msgstr "Пожалуйста, убедитесь, что в системе есть надлежащий драйвер соответствующий вашей веб-камере или измените веб-камеру в настройки->свойства."
+
+#: src/frame.cpp:91
+msgid "Error opening device"
+msgstr "Ошибка доступа к устройству"
+
+#: src/frame.cpp:167
+msgid "Cannot create video recording thread!"
+msgstr "Невозможно создать поток записываемого видео!"
+
+#: src/frame.cpp:231
+msgid ""
+"Frame rate/resolution setting not supported.\n"
+"Please try a lower frame rate o resolution."
+msgstr ""
+"Настройки частоты/разрешения не поддерживаются.\n"
+"Пожалуйста, попробуйте установить сниженную частоту кадров и разрешение."
+
+#: src/frame.cpp:231
+msgid "Error applying settings"
+msgstr "Ошибка применения настроек"
+
+#: src/frame.cpp:263
+msgid ""
+"An error has occured during frame capture.\n"
+"Please check the \"frame format\" options in the preferences menu."
+msgstr ""
+"Обнаружена ошибка во время записи кадра.\n"
+"Пожалуйста, проверьте параметры \"формата кадра\" в меню свойств."
+
+#: src/frame.cpp:263
+msgid "Error capturing frame"
+msgstr "Ошибка записи кадра"
+
+#: src/frame.cpp:342
+msgid "An error has occured opening file "
+msgstr "Обнаружена ошибка во время открытия файла "
+
+#: src/frame.cpp:344
+msgid "Error opening file"
+msgstr "Ошибка открытия файла"
+
+#: src/frame.cpp:351
+msgid "You system is slow"
+msgstr "Ваша ситема низкопроизводительная."
+
+#: src/frame.cpp:352
+msgid "Queue full"
+msgstr "Очередь заполнена"
+
+#: src/frame.cpp:366
+msgid "Cannot open /dev/dsp.\n"
+msgstr "Невозможно открыть /dev/dsp.\n"
+
+#: src/frame.cpp:367
+msgid "Video file will be recorded without audio track.\n"
+msgstr "Файл вдиеофрагмента будет записан без звуковой дорожки.\n"
+
+#: src/frame.cpp:368
+msgid "Error recording audio"
+msgstr "Ошибка записи звука"
+
+#: src/frame.cpp:512
+msgid "Use mouse to create areas, [TAB], [<-] and [->] to select areas, [DELETE] to delete areas"
+msgstr "Используйте мышь для создания областей, [TAB], [<-] и [->] для выбора областей, [DELETE] для удаление областей"
+
+#: src/recording.cpp:34
+msgid "Recording"
+msgstr "Запись"
+
+#: src/recording.cpp:50
+msgid "Recording..."
+msgstr "Запись..."
+
+#: src/recording.cpp:59
+msgid "&Stop"
+msgstr "&Остановить"
+
+#: src/recording.cpp:90
+msgid "&Recording..."
+msgstr "&Запись..."
+
+#: src/recording.cpp:99
+msgid "&Paused"
+msgstr "&Приостановлено"
+
+#: src/mddialog.cpp:40
+msgid "Area Sensitivity Setting"
+msgstr "Настройки чувствительности области"
+
+#: src/mddialog.cpp:53
+msgid "Colour Sensitivity"
+msgstr "Цветовая чувствительность"
+
+#: src/mddialog.cpp:64
+#: src/mddialog.cpp:110
+msgid "Red: "
+msgstr "Красный: "
+
+#: src/mddialog.cpp:72
+#: src/mddialog.cpp:118
+msgid "Green: "
+msgstr "Зелёный: "
+
+#: src/mddialog.cpp:80
+#: src/mddialog.cpp:126
+msgid "Blue: "
+msgstr "Синий: "
+
+#: src/mddialog.cpp:90
+#: src/mddialog.cpp:137
+msgid "Colour"
+msgstr "Цвет"
+
+#: src/mddialog.cpp:93
+msgid "Sensitivity (%)"
+msgstr "Чувствительность (%)"
+
+#: src/mddialog.cpp:94
+#: src/mddialog.cpp:139
+msgid "Min"
+msgstr "Мин."
+
+#: src/mddialog.cpp:95
+#: src/mddialog.cpp:140
+msgid "Mean"
+msgstr "Среднее"
+
+#: src/mddialog.cpp:96
+#: src/mddialog.cpp:141
+msgid "Max"
+msgstr "Макс."
+
+#: src/mddialog.cpp:138
+msgid "Area (%)"
+msgstr "Область (%)"
+
+#: src/mddialog.cpp:289
+msgid "Reload"
+msgstr "Обновить"
+
+#: src/mddialog.cpp:290
+msgid "Modify"
+msgstr "Изменить"
+
+#: src/mddialog.cpp:291
+msgid "Hide"
+msgstr "Скрыть"
+
+#: src/vidiostd.cpp:40
+msgid "&PAL"
+msgstr "&PAL"
+
+#: src/vidiostd.cpp:41
+msgid "&NTSC"
+msgstr "&NTSC"
+
+#: src/vidiostd.cpp:42
+msgid "&SECAM"
+msgstr "&SECAM"
+
+#: src/vidiostd.cpp:43
+msgid "&NONE"
+msgstr "&НЕТ"
+
+#: src/vidiostd.cpp:45
+msgid "&Standard:"
+msgstr "&Стандарт:"
+

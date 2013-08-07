@@ -1,0 +1,35 @@
+/***************************************************************************
+ *   Copyright (C) 2007 by Marco Lorrai                                    *
+ *   marco.lorrai@abbeynet.it                                              *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
+void convert2bgr(unsigned char* frame, int size);
+
+void negative(unsigned char* frame, int size);
+
+void upturned(unsigned char* frame, int size);
+
+void mirror(unsigned char* frame, int size, int width);
+
+void monochrome(unsigned char* frame, int size);
+
+void edge(unsigned char* frame, int size, int width);
+
+void rgb32_rgb24(unsigned int width, unsigned int height, const unsigned char* src, unsigned char* dest);
+
+void rgb32_bgr24(unsigned int width, unsigned int height, const unsigned char* src, unsigned char* dest);

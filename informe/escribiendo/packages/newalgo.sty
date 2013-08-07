@@ -1,0 +1,167 @@
+%%
+%% newalgo.sty
+%%
+%% Generado a partir de newalg.sty
+%% Cambio un poco el formato, agregue el comando VAR y permito poner el valor que devuelve la funci�n en la signatura del algoritmo.
+%%
+%%
+
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{packages/newalgo}[2005/09/20 Format code algorithms nicely]
+
+\RequirePackage[utf8]{inputenc}
+
+%Para poner comentarios. Pendiente: hacer algo para comentarios de mas de una linea.
+\newcommand\comentario[1]{$\ \begin{small}\textit{\{ #1 \}}\end{small}$}
+
+%Para las restricciones.
+\newcommand\restriccion[1]{(Restriccion: $#1$)}
+
+%Para los parametros de los algoritmos
+\newcommand\param[3]{\ensuremath{\mathbf{#1}\,#2\!: #3}}
+
+%========================================================================
+% Tomados de Internet:
+%  \ifblank --- checks if parameter is blank (Spaces count as blank)
+%  \ifgiven --- checks if parameter is not blank: like \ifblank...\else
+%  \ifnull  --- checks if parameter is null (spaces are NOT null)
+%     use \ifgiven{#1}\then   ...  \else  ...  \fi   etc
+\let\then\iftrue
+{\catcode`\!=8 % funny catcode so ! will be a delimiter
+ \catcode`\Q=3 % funny catcode so Q will be a delimiter
+\long\gdef\ifgiven#1\then{\Ifbl@nk#1QQQ\empty!}% negative of \ifblank
+\long\gdef\ifblank#1\then{\Ifbl@nk#1QQ..!}% if null or spaces
+\long\gdef\Ifbl@nk#1#2Q#3!{\ifx#3}
+\long\gdef\ifnull#1\then{\IfN@LL#1* {#1}!}% if null
+\long\gdef\IfN@LL#1 #2!{\ifblank{#2}\then}
+}
+%========================================================================
+
+\newbox\algstack
+\newbox\algtab
+\newcount\algline
+\newtoks\alga
+\newtoks\algb
+
+\newif\ifalgisenv
+
+\def\alglpsh#1\to#2{\alga={#1\\}\algb=\expandafter{#2}
+  \global\edef#2{\the\alga\the\algb}}
+\def\alglpop#1\to#2{\ifx\empty#1\def#2{}
+  \else\global\expandafter\algllop#1\algllop#1#2\fi}
+\def\algllop#1\\#2\algllop#3#4{\def#3{#2}\def#4{#1}}
+\def\algltop#1\to#2{\ifx\empty#1\def\#2{}\else
+  \expandafter\alglttop#1\alglttop#2\fi}
+\def\alglttop#1\\#2\alglttop#3{\def#3{#1}}
+\def\algckenv#1{\algltop\alglenv\to\algenv
+  \def\algarg{#1}
+  \ifx \algarg\algenv \algisenvtrue \else \algisenvfalse \fi}
+
+\def\algsol{\global\advance\algline by 1
+  \the\algline&\hbox\bgroup\copy\algtab$\ignorespaces}
+\def\algeol{$\egroup\cr\algsol}
+\def\algpush{\global\setbox\algstack\hbox{\unhbox\algstack\box\algtab}}
+\def\algpop{\global\setbox\algstack\hbox{\unhbox\algstack
+    \global\setbox\algtab\lastbox}}
+\def\algset{$\egroup\setbox0=\lastbox\algpush
+  \global\setbox\algtab\hbox to \wd0{}\hbox\bgroup\unhbox0$}
+\def\algorithm#1#2#3{\bgroup
+  \let\\=\algeol
+  \let\==\leftarrow
+  \let\VAR=\algVAR
+  \let\IF=\algIF
+  \let\RETURN=\algRETURN
+  \let\ELSE=\algELSE
+  \let\endIF=\endalgIF
+  \let\ERROR=\algERROR
+  \let\NIL=\algNIL
+  \let\WHILE=\algWHILE
+  \let\endWHILE=\endalgWHILE
+  \let\FOR=\algFOR
+  \let\endFOR=\endalgFOR
+  \let\CALL=\algCALL
+  \let\text=\algtext
+  \let\TO=\algTO
+  \let\EACH=\algEACH
+  \let\SWITCH=\algSWITCH
+  \let\item=\algitem
+  \let\endSWITCH=\endalgSWITCH
+  \let\DEFAULT=\algDEFAULT
+  \let\REPEAT=\algREPEAT
+  \let\UNTIL=\endalgREPEAT
+  \let\endREPEAT=\UNTIL
+  \let\IN=\algIN
+  \let\begin=\algbegin
+  \let\end=\algend
+  \let\endalgorithm=\algalmostend
+  \global\setbox\algtab\null
+  \global\setbox\algstack\null
+  \global\algline=0
+  \def\alglenv{algorithm\\}
+  \halign\bgroup\space\hfill##&\quad##\hss \cr
+  \omit\CALL{#1}$(#2)\ifblank{#3}\then{}\else{\rightarrow\,#3}\fi$\span\omit\hfill \cr
+  \algsol}
+\def\algalmostend{$\egroup\cr\egroup\egroup\strut\end{algorithm}}
+\def\algkey#1{\mbox{\bf #1\ }}
+\def\algVAR#1{\algkey{var}#1}
+\def\endVAR{\algpop}
+\def\algIF#1{\algkey{if}\algset#1\hspace{1 mm}\algkey{then}\\\algset}
+\def\algELSE{\algckenv{IF}
+  \ifalgisenv
+    \\ \algpop
+    \hspace{-4 mm}\algkey{else}\hfill
+    \\ \algset
+  \else
+    \PackageError{newalg}
+    {\string\ELSE\space is only allowed in the IF environment}
+    {You have an \protect\ELSE\space command without a \string\begin{IF}}
+  \fi}
+\def\endalgIF{\algpop\algpop\hspace{-4 mm} \\ \algkey{end if}}
+\def\algERROR#1{\algkey{error}\mbox{``#1''}}
+\def\algRETURN{\algkey{return}}
+\def\algconst#1{\mbox{\sc #1}}
+\def\algNIL{\algconst{nil}}
+\def\algWHILE#1{\algkey{while}#1 \\
+  \indent\algkey{        }\algset}
+\def\endalgWHILE{\algpop \\ \algkey{end while}\algset \algpop}
+\def\algCALL#1{\mbox{\sc #1}}
+\def\algFOR#1{\algkey{for}#1 \\
+  \indent\algkey{       }\algset}
+\def\endalgFOR{ \algpop \\ \algkey{end for}\algset \algpop}
+\def\algtext#1{\mbox{ #1 }}
+\def\algTO{\algkey{ to}}
+\def\algEACH{\algkey{each}}
+\def\algSWITCH{\algkey{switch}\algpush}
+\def\algitem#1{\algckenv{SWITCH}
+  \ifalgisenv
+    \algpop \\
+    \quad\algkey{case}\algset #1:
+  \else
+    \PackageError{newalg}
+    {\string\item\space can only be used in a SWITCH environment}
+    {You have an item that is not inside of the correct environment}
+  \fi}
+\def\endalgSWITCH{\algpop}
+\def\algDEFAULT{\algkey{default}}
+\def\algREPEAT#1{
+  \algkey{repeat}\algset\\}
+\def\endalgREPEAT{\algpop \\
+  \quad\algkey{until}}
+\def\algIN{\algkey{in}}
+\def\algbegin#1{\alglpsh#1\to\alglenv
+  \csname #1\endcsname}
+\def\algend#1{\alglpop\alglenv\to\algenv
+  \def\algarg{#1}
+  \ifx \algarg\algenv
+    \relax
+  \else
+    \PackageError{newalg}
+    {\string\begin{\algenv}\space ended by \string\end{\algarg}}
+    {We are confused.  Try to return now}
+  \fi
+  \csname end#1\endcsname
+}
+
+\endinput
+%%
+%% End of file `newalg.sty'.

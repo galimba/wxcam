@@ -1,0 +1,633 @@
+# Traditional Chinese Messages for wxcam.
+# Copyright (C) 2011 The wxcam Project (msgids)
+# This file is distributed under the same license as the wxcam package.
+# Wei-Lun Chao <william.chao@ossii.com.tw>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: wxcam 1.0.7\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-03-30 10:08+0800\n"
+"PO-Revision-Date: 2011-03-30 11:30+0800\n"
+"Last-Translator: Wei-Lun Chao <william.chao@ossii.com.tw>\n"
+"Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../src/configure.cpp:75 ../src/wxcam.cpp:162
+msgid "Preferences"
+msgstr "偏好設定"
+
+#: ../src/configure.cpp:87
+msgid "  Global  "
+msgstr "  全域  "
+
+#: ../src/configure.cpp:88
+msgid "  Files  "
+msgstr "  檔案  "
+
+#: ../src/configure.cpp:89
+msgid "  Video  "
+msgstr "  視訊  "
+
+#: ../src/configure.cpp:107
+msgid "Webcam device:"
+msgstr "網路攝影機裝置："
+
+#: ../src/configure.cpp:116
+msgid "&YUV420P"
+msgstr "&YUV420P"
+
+#: ../src/configure.cpp:117
+msgid "&YUV420"
+msgstr "&YUV420"
+
+#: ../src/configure.cpp:118
+msgid "&YUYV"
+msgstr "&YUYV"
+
+#: ../src/configure.cpp:119
+msgid "&RGB24"
+msgstr "&RGB24"
+
+#: ../src/configure.cpp:120
+msgid "&RGB32"
+msgstr "&RGB32"
+
+#: ../src/configure.cpp:121
+msgid "&JPEG"
+msgstr "&JPEG"
+
+#: ../src/configure.cpp:122
+msgid "&MPEG"
+msgstr "&MPEG"
+
+#: ../src/configure.cpp:123 ../src/configure.cpp:131
+msgid "&AUTO"
+msgstr "&AUTO"
+
+#: ../src/configure.cpp:124
+msgid "&Frame format:"
+msgstr "影格格式(&F)："
+
+#: ../src/configure.cpp:129
+msgid "&Video4Linux1"
+msgstr "&Video4Linux1"
+
+#: ../src/configure.cpp:130
+msgid "&Video4Linux2"
+msgstr "&Video4Linux2"
+
+#: ../src/configure.cpp:133
+msgid "&Driver:"
+msgstr "驅動程式(&D)："
+
+#: ../src/configure.cpp:147
+msgid "Choose snapshot file"
+msgstr "選擇快照檔案"
+
+#: ../src/configure.cpp:150 ../src/configure.cpp:158
+msgid "&Choose"
+msgstr "選擇(&C)"
+
+#: ../src/configure.cpp:151
+msgid "Snapshot file:"
+msgstr "快照檔案："
+
+#: ../src/configure.cpp:155
+msgid "Choose video registration file"
+msgstr "選擇視訊註冊檔案"
+
+#: ../src/configure.cpp:159
+msgid "Video file:"
+msgstr "視訊檔案："
+
+#: ../src/configure.cpp:177
+msgid "&none (uncompressed)"
+msgstr "無(未壓縮)(&N)"
+
+#: ../src/configure.cpp:178
+msgid "&xvid"
+msgstr "&xvid"
+
+#: ../src/configure.cpp:180
+msgid "&Choose recording compression:"
+msgstr "選擇錄影壓縮(&C)："
+
+#: ../src/configure.cpp:184
+msgid "Choose xvid quality:"
+msgstr "選擇 xvid 品質："
+
+#: ../src/configure.cpp:192
+msgid "Enable audio recording (xvid only)"
+msgstr "啟用錄音(只有 xvid)"
+
+#: ../src/configure.cpp:196
+msgid "Audio device:"
+msgstr "音效裝置："
+
+#: ../src/configure.cpp:204
+msgid "Add silence for synchronization reason:"
+msgstr "由於同步因素而加入靜音："
+
+#: ../src/configure.cpp:210
+msgid "(hundredths of a second)"
+msgstr "(百分之一秒)"
+
+#: ../src/configure.cpp:260
+msgid "Save snapshot"
+msgstr "儲存快照"
+
+#: ../src/configure.cpp:278
+msgid "Save video"
+msgstr "儲存視訊"
+
+#: ../src/configure.cpp:281
+msgid "AVI files (*.avi)|*.avi"
+msgstr "AVI 檔案 (*.avi)|*.avi"
+
+#: ../src/configure.cpp:314
+msgid ""
+"You have modified device file or frame format or device API settings.\n"
+"Please restart the program for changes to take effect..."
+msgstr ""
+"您已修改裝置檔案、影格格式或裝置 API 設定值。\n"
+"請重新啟動程式以使變更生效…"
+
+#: ../src/configure.cpp:314
+msgid "Device setting"
+msgstr "裝置設定"
+
+#: ../src/frame.cpp:103
+msgid "Cannot open "
+msgstr "無法開啟 "
+
+#: ../src/frame.cpp:105
+msgid "Please check if your system has the correct driver for your webcam, or change the webcam device in settings->preferences."
+msgstr "請檢查您的系統是否有正確驅動程式用於網路攝影機，否則請在 [設定值->偏好設定] 中變更網路攝影機裝置。"
+
+#: ../src/frame.cpp:106
+msgid "Error opening device"
+msgstr "開啟裝置時發生錯誤"
+
+#: ../src/frame.cpp:189
+msgid "Cannot create video recording thread!"
+msgstr "無法建立錄影執行緒！"
+
+#: ../src/frame.cpp:287
+msgid ""
+"Frame rate/resolution setting not supported.\n"
+"Please try a lower frame rate o resolution."
+msgstr ""
+"不支援影格率/解析度設定。\n"
+"請嘗試降低影格率或解析度。"
+
+#: ../src/frame.cpp:287
+msgid "Error applying settings"
+msgstr "套用設定值時發生錯誤"
+
+#: ../src/frame.cpp:320
+msgid ""
+"An error has occured during frame capture.\n"
+"Please check the \"frame format\" options in the preferences menu."
+msgstr ""
+"在影格擷取期間發生了錯誤。\n"
+"請在偏好設定選單中檢查「影格格式」選項。"
+
+#: ../src/frame.cpp:320
+msgid "Error capturing frame"
+msgstr "擷取影格時發生錯誤"
+
+#: ../src/frame.cpp:402
+msgid "An error has occured opening file "
+msgstr "開啟檔案時發生了錯誤 "
+
+#: ../src/frame.cpp:404
+msgid "Error opening file"
+msgstr "開啟檔案時發生錯誤"
+
+#: ../src/frame.cpp:411
+msgid "You system is slow"
+msgstr "您的系統速度緩慢"
+
+#: ../src/frame.cpp:412
+msgid "Queue full"
+msgstr "佇列已滿"
+
+#: ../src/frame.cpp:426
+msgid "Cannot open /dev/dsp.\n"
+msgstr "無法開啟 /dev/dsp。\n"
+
+#: ../src/frame.cpp:427
+msgid "Video file will be recorded without audio track.\n"
+msgstr "視訊檔案將被錄製而不含音訊軌段。\n"
+
+#: ../src/frame.cpp:428
+msgid "Error recording audio"
+msgstr "錄音時發生錯誤"
+
+#: ../src/frame.cpp:529
+msgid "Use mouse to create areas, [TAB], [<-] and [->] to select areas, [DELETE] to delete areas"
+msgstr "使用滑鼠以建立區域，[TAB], [←] 和 [→] 用來選取區域，[DELETE] 以刪除區域"
+
+#: ../src/mddialog.cpp:40
+msgid "Area Sensitivity Setting"
+msgstr "區域靈敏度設定"
+
+#: ../src/mddialog.cpp:53
+msgid "Colour Sensitivity"
+msgstr "顏色靈敏度"
+
+#. Setup area sensitivity input fields
+#: ../src/mddialog.cpp:64 ../src/mddialog.cpp:110
+msgid "Red: "
+msgstr "紅色："
+
+#: ../src/mddialog.cpp:72 ../src/mddialog.cpp:118
+msgid "Green: "
+msgstr "綠色："
+
+#: ../src/mddialog.cpp:80 ../src/mddialog.cpp:126
+msgid "Blue: "
+msgstr "藍色："
+
+#. Setup sensitivity texts
+#. Setup area sensitivity texts
+#: ../src/mddialog.cpp:90 ../src/mddialog.cpp:137
+msgid "Colour"
+msgstr "顏色"
+
+#: ../src/mddialog.cpp:93
+msgid "Sensitivity (%)"
+msgstr "靈敏度 (%)"
+
+#: ../src/mddialog.cpp:94 ../src/mddialog.cpp:139
+msgid "Min"
+msgstr "最小"
+
+#: ../src/mddialog.cpp:95 ../src/mddialog.cpp:140
+msgid "Mean"
+msgstr "平均"
+
+#: ../src/mddialog.cpp:96 ../src/mddialog.cpp:141
+msgid "Max"
+msgstr "最大"
+
+#: ../src/mddialog.cpp:138
+msgid "Area (%)"
+msgstr "區域 (%)"
+
+#. Create button
+#: ../src/mddialog.cpp:289
+msgid "Reload"
+msgstr "重新載入"
+
+#: ../src/mddialog.cpp:290
+msgid "Modify"
+msgstr "修改"
+
+#: ../src/mddialog.cpp:291
+msgid "Hide"
+msgstr "隱藏"
+
+#: ../src/picture.cpp:38 ../src/wxcam.cpp:376
+msgid "Picture Functions"
+msgstr "圖片功能"
+
+#: ../src/picture.cpp:62
+msgid "Brightness:"
+msgstr "亮度："
+
+#: ../src/picture.cpp:74
+msgid "Contrast:"
+msgstr "對比："
+
+#: ../src/picture.cpp:86
+msgid "Gamma:"
+msgstr "γ值："
+
+#: ../src/picture.cpp:98
+msgid "Saturation:"
+msgstr "飽和度："
+
+#: ../src/picture.cpp:120
+msgid "Gain:"
+msgstr "增益："
+
+#: ../src/picture.cpp:125
+msgid "Auto gain control"
+msgstr "自動增益控制"
+
+#: ../src/picture.cpp:147
+msgid "Shutter speed:"
+msgstr "快門速度："
+
+#: ../src/picture.cpp:152
+msgid "Auto shutter speed control"
+msgstr "自動快門速度控制"
+
+#: ../src/picture.cpp:163 ../src/resolution.cpp:67 ../src/vidiostd.cpp:53
+msgid "&OK"
+msgstr "確定(&O)"
+
+#: ../src/progressdlg.cpp:25
+msgid "Saving file..."
+msgstr "儲存檔案…"
+
+#: ../src/recording.cpp:34
+msgid "Recording"
+msgstr "錄製"
+
+#: ../src/recording.cpp:50
+msgid "Recording..."
+msgstr "錄製…"
+
+#: ../src/recording.cpp:59
+msgid "&Stop"
+msgstr "停止(&S)"
+
+#: ../src/recording.cpp:90
+msgid "&Recording..."
+msgstr "錄製(&R)…"
+
+#: ../src/recording.cpp:99
+msgid "&Paused"
+msgstr "暫停(&P)"
+
+#: ../src/resolution.cpp:31
+msgid "Frame settings"
+msgstr "影格設定值"
+
+#: ../src/resolution.cpp:44
+msgid "Choose resolution:"
+msgstr "選擇解析度："
+
+#: ../src/resolution.cpp:53
+msgid "Choose frame rate (fps):"
+msgstr "選擇影格率 (影格/秒)："
+
+#: ../src/resolution.cpp:71 ../src/vidiostd.cpp:57
+msgid "&Cancel"
+msgstr "取消(&C)"
+
+#: ../src/vidiostd.cpp:26 ../src/wxcam.cpp:175
+msgid "Choose video standard"
+msgstr "選擇視訊標準"
+
+#: ../src/vidiostd.cpp:43
+msgid "&NONE"
+msgstr "&NONE"
+
+#: ../src/vidiostd.cpp:45
+msgid "&Standard:"
+msgstr "標準(&S)："
+
+#: ../src/wxcam.cpp:134
+msgid "Device found in your system: "
+msgstr "在您的系統中找到的裝置："
+
+#: ../src/wxcam.cpp:136
+msgid "Hardware found"
+msgstr "找到的硬體"
+
+#: ../src/wxcam.cpp:159
+msgid "E&xit\tAlt-X"
+msgstr "離開(&X)\tAlt-X"
+
+#: ../src/wxcam.cpp:162
+msgid "&Preferences\tCtrl-P"
+msgstr "偏好設定(&P)\tCtrl-P"
+
+#: ../src/wxcam.cpp:167
+msgid "&Image balance\tCtrl-I"
+msgstr "影像平衡(&I)\tCtrl-I"
+
+#: ../src/wxcam.cpp:167
+msgid "Configure brightness, contrast, gamma and saturation"
+msgstr "組配亮度、對比、γ值和飽和度"
+
+#: ../src/wxcam.cpp:171
+msgid "&Frame size\tCtrl-F"
+msgstr "影格大小(&F)\tCtrl-F"
+
+#: ../src/wxcam.cpp:171
+msgid "Choose resolution and frame rate"
+msgstr "選擇解析度和影格率"
+
+#: ../src/wxcam.cpp:175
+msgid "&Video standard\tCtrl-V"
+msgstr "視訊標準(&V)\tCtrl-V"
+
+#: ../src/wxcam.cpp:179
+msgid "Full screen\tF"
+msgstr "全螢幕\tF"
+
+#: ../src/wxcam.cpp:184
+msgid "About...\tF1"
+msgstr "關於…\tF1"
+
+#: ../src/wxcam.cpp:186
+msgid "&Webcam\tCtrl-W"
+msgstr "網路攝影機(&W)\tCtrl-W"
+
+#: ../src/wxcam.cpp:186
+msgid "Show webcam info"
+msgstr "顯示網路攝影機資訊"
+
+#: ../src/wxcam.cpp:190
+msgid "&Snapshot\tCtrl-S"
+msgstr "快照(&S)\tCtrl-S"
+
+#: ../src/wxcam.cpp:190 ../src/wxcam.cpp:243 ../src/wxcam.cpp:438
+msgid "Take snapshot"
+msgstr "拍下快照"
+
+#: ../src/wxcam.cpp:193
+msgid "&Record video\tCtrl-R"
+msgstr "錄影(&R)\tCtrl-R"
+
+#: ../src/wxcam.cpp:193 ../src/wxcam.cpp:456
+msgid "Record video"
+msgstr "錄影"
+
+#: ../src/wxcam.cpp:200
+msgid "Movement detection"
+msgstr "移動偵測"
+
+#: ../src/wxcam.cpp:202
+msgid "Show movement detection areas"
+msgstr "顯示移動偵測區域"
+
+#: ../src/wxcam.cpp:205
+msgid "&Adjust Colors\tAlt-A"
+msgstr "調整顏色(&A)\tAlt-A"
+
+#: ../src/wxcam.cpp:207
+msgid "&Negative\tAlt-N"
+msgstr "負片(&N)\tAlt-N"
+
+#: ../src/wxcam.cpp:209
+msgid "&Monochrome\tAlt-M"
+msgstr "單色(&M)\tAlt-M"
+
+#: ../src/wxcam.cpp:212
+msgid "&Upturned\tAlt-U"
+msgstr "顚倒(&U)\tAlt-U"
+
+#: ../src/wxcam.cpp:214
+msgid "M&irror\tAlt-I"
+msgstr "鏡像(&I)\tAlt-I"
+
+#: ../src/wxcam.cpp:217
+msgid "&Blur\tAlt-B"
+msgstr "模糊(&B)\tAlt-B"
+
+#: ../src/wxcam.cpp:219
+msgid "&Deriche\tAlt-D"
+msgstr "&Deriche\tAlt-D"
+
+#: ../src/wxcam.cpp:221
+msgid "N&oise (slow)\tAlt-O"
+msgstr "雜訊(慢)(&O)\tAlt-O"
+
+#: ../src/wxcam.cpp:223
+msgid "&Sharpen (slow)\tAlt-S"
+msgstr "銳化(慢)(&S)\tAlt-S"
+
+#: ../src/wxcam.cpp:225
+msgid "&Edge\tAlt-E"
+msgstr "邊緣(&E)\tAlt-E"
+
+#: ../src/wxcam.cpp:227
+msgid "&Laplacian\tAlt-L"
+msgstr "&Laplacian\tAlt-L"
+
+#: ../src/wxcam.cpp:230
+msgid "A&ppend datetime \tAlt-P"
+msgstr "附加日期時間(&P)\tAlt-P"
+
+#: ../src/wxcam.cpp:234
+msgid "&File"
+msgstr "檔案(&F)"
+
+#: ../src/wxcam.cpp:235
+msgid "&Settings"
+msgstr "設定值(&S)"
+
+#: ../src/wxcam.cpp:236
+msgid "&Capture"
+msgstr "擷取(&C)"
+
+#: ../src/wxcam.cpp:237
+msgid "&Effects"
+msgstr "效果(&E)"
+
+#: ../src/wxcam.cpp:238
+msgid "&Info"
+msgstr "資訊(&I)"
+
+#: ../src/wxcam.cpp:243
+msgid "Take Snapshot"
+msgstr "拍下快照"
+
+#: ../src/wxcam.cpp:244
+msgid "Start recording"
+msgstr "開始錄製"
+
+#: ../src/wxcam.cpp:301
+msgid "A webcam application for linux"
+msgstr "Linux 的網路攝影機應用程式"
+
+#: ../src/wxcam.cpp:338
+msgid ""
+"Error querying webcam capabilities.\n"
+"Perhaps the device hasn't been correctly opened."
+msgstr ""
+"查詢網路攝影機功能時發生錯誤。\n"
+"也許裝置尚未正確啟動。"
+
+#: ../src/wxcam.cpp:338
+msgid "Capabilities"
+msgstr "功能"
+
+#: ../src/wxcam.cpp:345
+msgid "Name: "
+msgstr "名稱："
+
+#: ../src/wxcam.cpp:347
+msgid "Channels: "
+msgstr "通道："
+
+#: ../src/wxcam.cpp:352 ../src/wxcam.cpp:354
+msgid "Audio: "
+msgstr "音訊："
+
+#: ../src/wxcam.cpp:352
+msgid "Yes"
+msgstr "是"
+
+#: ../src/wxcam.cpp:354
+msgid "No"
+msgstr "否"
+
+#: ../src/wxcam.cpp:358
+msgid "Min resolution: "
+msgstr "最小解析度："
+
+#: ../src/wxcam.cpp:362
+msgid "Max resolution: "
+msgstr "最大解析度："
+
+#: ../src/wxcam.cpp:365
+msgid "Webcam Capabilities     "
+msgstr "網路攝影機功能     "
+
+#: ../src/wxcam.cpp:376 ../src/wxcam.cpp:409
+msgid ""
+"Error!\n"
+"Perhaps the device hasn't been correctly open."
+msgstr ""
+"錯誤！\n"
+"也許裝置尚未正確啟動。"
+
+#: ../src/wxcam.cpp:409
+msgid "Setting Resolution"
+msgstr "設定解析度"
+
+#: ../src/wxcam.cpp:421
+msgid ""
+"Error!\n"
+"This video standard is not supported by your device."
+msgstr ""
+"錯誤！\n"
+"這個視訊標準未被您的裝置所支援。"
+
+#: ../src/wxcam.cpp:421
+msgid "Setting Video Standard"
+msgstr "設定視訊標準"
+
+#: ../src/wxcam.cpp:434
+msgid "Saving snapshot on "
+msgstr "儲存快照於 "
+
+#: ../src/wxcam.cpp:438
+msgid ""
+"Error taking snapshot!\n"
+"Perhaps the device hasn't been correctly open."
+msgstr ""
+"拍下快照時發生錯誤！\n"
+"也許裝置尚未正確啟動。"
+
+#: ../src/wxcam.cpp:448
+msgid "Saving video on "
+msgstr "儲存視訊於 "
+
+#: ../src/wxcam.cpp:456
+msgid ""
+"Error recording!\n"
+"Perhaps the device hasn't been correctly open."
+msgstr ""
+"錄製時發生錯誤！\n"
+"也許裝置尚未正確啟動。"

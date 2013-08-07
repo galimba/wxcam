@@ -1,0 +1,138 @@
+/***************************************************************************
+ *   Copyright (C) 2007 by Marco Lorrai                                    *
+ *   marco.lorrai@abbeynet.it                                              *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
+#include <wx/thread.h>
+#include <wx/string.h>
+#include <iostream>
+#include <string>
+#include "cfile.h"
+#include "v4l.h"
+
+#ifndef _setting_H
+#define	_setting_H
+
+//Thread safe access to configuration file
+//But the program is now mono thread 
+
+class Setting //Singleton
+{
+    public:  
+        static Setting* GetInstance(); //Singleton method
+        ~Setting();
+        
+    public: 
+        //getters       
+        std::string GetDeviceFile();
+        std::string GetAudioDeviceFile();
+        std::string GetDriverAPI();
+        std::string GetFrameFormat();
+        std::string GetSnapshotFile(bool orig = true);
+        std::string GetVideoFile(bool orig = true);
+        std::string GetResolution();
+        std::string GetFrameRate();
+        std::string GetCompression();
+        int GetCompressionLevel();
+        bool GetAudioEnabled();
+        int GetSilence();
+        bool isFirstExecution();
+        bool GetVerticalMirror();
+        bool GetInstagram();
+        bool GetStretch();
+        bool GetEdgeAsm();
+        bool GetBonaAsm();
+        bool GetPixelate();
+        bool GetMedian();
+        bool GetMedianAsm();
+        bool GetBlueOnlyAsm();
+        bool GetMonoAsm();
+        bool GetNegativeAsm();
+        bool GetAdjustColors();
+        bool GetNegative();
+        bool GetUpturned();
+        bool GetMonochrome();
+        bool GetMirror();
+        bool GetBlur();
+        bool GetDeriche();
+        bool GetNoise();
+        bool GetSharpen();
+        bool GetEdge();
+        bool GetLaplacian();
+        bool GetDateTime();
+        video_std GetVideoStd();
+        
+        //setters
+        void SetAlreadyOpen();
+        void SetDeviceFile(const std::string &);
+        void SetAudioDeviceFile(const std::string &);
+        void SetDriverAPI(const std::string &);
+        void SetFrameFormat(const std::string &);
+        void SetSnapshotFile(const std::string &);
+        void SetVideoFile(const std::string &);
+        void SetResolution(const std::string &);
+        void SetFrameRate(const std::string &);
+        void SetCompression(const std::string &);
+        void SetCompressionLevel(int);
+        void SetSilence(int);
+        void SetAudioEnabled(bool);
+        void SetAdjustColors(bool);
+        void SetNegative(bool);
+        void SetUpturned(bool);
+        void SetMonochrome(bool);
+        void SetMirror(bool);
+        void SetVerticalMirror(bool);
+        void SetInstagram(bool);
+        void SetStretch(bool);
+        void SetEdgeAsm(bool);
+        void SetBonaAsm(bool);
+        void SetPixelate(bool);
+        void SetMedian(bool);
+        void SetMedianAsm(bool);
+        void SetBlueOnlyAsm(bool);
+        void SetMonoAsm(bool);
+        void SetNegativeAsm(bool);
+        void SetBlur(bool);
+        void SetDeriche(bool);
+        void SetNoise(bool);
+        void SetSharpen(bool);
+        void SetEdge(bool);
+        void SetLaplacian(bool);
+        void SetDateTime(bool);
+        void SetVideoStd(video_std std);
+        
+        //default configuration
+        void WriteDefaults();
+        
+    protected:
+        Setting();
+
+    private:
+        bool GetAlreadyOpen();
+	wxString getDirByFile(const wxString &fileName);
+	wxString getFileByPath(const wxString &fileName);
+	wxString getNonOverwrittenFile(const wxString &fileName);
+    
+    private:
+        static Setting* setting;
+        static CFile *cfile;
+        static wxMutex mutex;
+};
+
+#endif	/* _setting_H */
+

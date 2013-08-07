@@ -1,0 +1,50 @@
+%macro begin_convencion_C 0
+	push rbp
+	mov rbp,rsp
+	push rbx
+	push r12
+	push r13
+	push r14
+	push r15
+%endmacro
+
+%macro end_convencion_C 0
+	pop r15
+	pop r14
+	pop r13
+	pop r12
+	pop rbx
+	pop rbp
+%endmacro
+
+%macro calcular_basura 2
+  mov %1, %2
+  and %1, 3h
+  neg %1
+  cmp %1, 0
+  je %%fin
+  add %1, 4h
+  %%fin:
+%endmacro
+
+%macro print 0
+	mov eax, 4     ; sys_write()
+    mov ebx, 1     ; salida standard
+    int 0x80       ; syscall
+%endmacro
+
+;   Register Offset
+;   %rdi 0
+;   %rsi 8
+;   %rdx 16
+;   %rcx 24
+;   %r8 32
+;   %r9 40
+;   %xmm0 48
+;   %xmm1 64
+;   . . .
+;   %xmm15 288
+
+;http://msdn.microsoft.com/en-us/library/6t169e9c.aspx
+;The registers RAX, RCX, RDX, R8, R9, R10, R11 are considered volatile and must be considered destroyed on function calls (unless otherwise safety-provable by analysis such as whole program optimization).
+;The registers RBX, RBP, RDI, RSI, RSP, R12, R13, R14, and R15 are considered nonvolatile and must be saved and restored by a function that uses them.

@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="89">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>include/BaseEncoder.h</itemPath>
+      <itemPath>include/XvidEncoder.h</itemPath>
+      <itemPath>include/audio.h</itemPath>
+      <itemPath>include/avi.h</itemPath>
+      <itemPath>include/avilib.h</itemPath>
+      <itemPath>ccvt/ccvt.h</itemPath>
+      <itemPath>include/cfile.h</itemPath>
+      <itemPath>include/configure.h</itemPath>
+      <itemPath>include/device.h</itemPath>
+      <itemPath>include/filters.h</itemPath>
+      <itemPath>include/frame.h</itemPath>
+      <itemPath>include/mddialog.h</itemPath>
+      <itemPath>include/motion.h</itemPath>
+      <itemPath>include/picture.h</itemPath>
+      <itemPath>include/progressdlg.h</itemPath>
+      <itemPath>include/pwc-ioctl.h</itemPath>
+      <itemPath>include/recording.h</itemPath>
+      <itemPath>include/resolution.h</itemPath>
+      <itemPath>include/setting.h</itemPath>
+      <itemPath>include/uncompressed.h</itemPath>
+      <itemPath>include/v4l.h</itemPath>
+      <itemPath>include/v4l1.h</itemPath>
+      <itemPath>include/v4l2.h</itemPath>
+      <itemPath>include/vidiostd.h</itemPath>
+      <itemPath>include/wxcam.h</itemPath>
+      <itemPath>include/xvidcodec.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+      <itemPath>src/globales.mac</itemPath>
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>src/BaseEncoder.cpp</itemPath>
+      <itemPath>src/XvidEncoder.cpp</itemPath>
+      <itemPath>src/audio.cpp</itemPath>
+      <itemPath>src/avilib.c</itemPath>
+      <itemPath>src/blueonly.asm</itemPath>
+      <itemPath>src/blur.asm</itemPath>
+      <itemPath>src/blushing.asm</itemPath>
+      <itemPath>src/bona.asm</itemPath>
+      <itemPath>src/brightness.asm</itemPath>
+      <itemPath>ccvt/ccvt.c</itemPath>
+      <itemPath>src/cfile.cpp</itemPath>
+      <itemPath>src/configure.cpp</itemPath>
+      <itemPath>src/contrast.asm</itemPath>
+      <itemPath>src/device.cpp</itemPath>
+      <itemPath>src/edge.asm</itemPath>
+      <itemPath>src/filters.cpp</itemPath>
+      <itemPath>src/frame.cpp</itemPath>
+      <itemPath>src/mddialog.cpp</itemPath>
+      <itemPath>src/median.asm</itemPath>
+      <itemPath>src/mono.asm</itemPath>
+      <itemPath>src/motion.cpp</itemPath>
+      <itemPath>src/negative.asm</itemPath>
+      <itemPath>src/picture.cpp</itemPath>
+      <itemPath>src/pixelate.asm</itemPath>
+      <itemPath>src/progressdlg.cpp</itemPath>
+      <itemPath>src/recording.cpp</itemPath>
+      <itemPath>src/resolution.cpp</itemPath>
+      <itemPath>src/revelcore.cpp</itemPath>
+      <itemPath>src/setting.cpp</itemPath>
+      <itemPath>src/stretch.asm</itemPath>
+      <itemPath>src/uncompressed.cpp</itemPath>
+      <itemPath>src/v4l1.cpp</itemPath>
+      <itemPath>src/v4l2.cpp</itemPath>
+      <itemPath>src/verticalmirror.asm</itemPath>
+      <itemPath>src/vidiostd.cpp</itemPath>
+      <itemPath>src/wxcam.cpp</itemPath>
+      <itemPath>src/xvidcodec.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>true</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>0</developmentMode>
+          <incDir>
+            <pElem>include</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <developmentMode>0</developmentMode>
+          <incDir>
+            <pElem>ccvt</pElem>
+            <pElem>images</pElem>
+            <pElem>include</pElem>
+          </incDir>
+          <commandLine>-ggdb `wx-config --cxxflags` </commandLine>
+        </ccTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+          <commandlineTool>nasm</commandlineTool>
+          <warningLevel>2</warningLevel>
+          <commandLine>-g -f elf64</commandLine>
+        </asmTool>
+        <linkerTool>
+          <output>bin/wxcam</output>
+          <linkerAddLib>
+            <pElem>/usr/local/lib</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerLibLibItem>xvidcore</linkerLibLibItem>
+            <linkerLibLibItem>lavjpeg</linkerLibLibItem>
+            <linkerLibLibItem>mjpegutils</linkerLibLibItem>
+            <linkerLibLibItem>X11</linkerLibLibItem>
+            <linkerLibLibItem>asound</linkerLibLibItem>
+            <linkerOptionItem>`wx-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="ccvt/ccvt.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ccvt/ccvt.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/BaseEncoder.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/XvidEncoder.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/audio.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/avi.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/avilib.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/cfile.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/configure.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/device.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/filters.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/frame.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/mddialog.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/motion.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/picture.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/progressdlg.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/pwc-ioctl.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/recording.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/resolution.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/setting.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/uncompressed.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/v4l.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/v4l1.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/v4l2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/vidiostd.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/wxcam.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/xvidcodec.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BaseEncoder.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/XvidEncoder.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/audio.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/avilib.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/blueonly.asm" ex="false" tool="4" flavor2="0">
+      </item>
+      <item path="src/blur.asm" ex="false" tool="4" flavor2="0">
+      </item>
+      <item path="src/blushing.asm" ex="false" tool="4" flavor2="0">
+      </item>
+      <item path="src/bona.asm" ex="false" tool="4" flavor2="0">
+      </item>
+      <item path="src/brightness.asm" ex="false" tool="4" flavor2="0">
+      </item>
+      <item path="src/cfile.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/configure.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/contrast.asm" ex="false" tool="4" flavor2="0">
+      </item>
+      <item path="src/device.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/edge.asm" ex="false" tool="4" flavor2="0">
+      </item>
+      <item path="src/filters.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/frame.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/globales.mac" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/mddialog.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/median.asm" ex="false" tool="4" flavor2="0">
+      </item>
+      <item path="src/mono.asm" ex="false" tool="4" flavor2="0">
+      </item>
+      <item path="src/motion.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/negative.asm" ex="false" tool="4" flavor2="0">
+      </item>
+      <item path="src/picture.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/pixelate.asm" ex="false" tool="4" flavor2="0">
+      </item>
+      <item path="src/progressdlg.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/recording.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/resolution.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/revelcore.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/setting.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/stretch.asm" ex="false" tool="4" flavor2="0">
+      </item>
+      <item path="src/uncompressed.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/v4l1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/v4l2.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/verticalmirror.asm" ex="false" tool="4" flavor2="0">
+      </item>
+      <item path="src/vidiostd.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/wxcam.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/xvidcodec.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

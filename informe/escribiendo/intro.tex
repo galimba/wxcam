@@ -1,0 +1,24 @@
+\section{WxCam}
+
+\subsection{El proyecto}
+WxCam es una aplicaci\'on para Linux. El software interact\'ua con la webcam a trav\'es del driver v4l-1 o v4l-2, que es uno de los mas utilizados. El proyecto est\'a activo (el \'ultimo release - v1.01 - fue hace unos pocos meses) y cuenta con dos main-developers y aproximadamente 15 contribuyentes. El programa soporta capturas de video, de im\'agenes y la aplicaci\'on de 10 filtros de im\'agenes, programados en C++ sin la utilizaci\'on de librer\'ias espec\'ificas, lo que los hace lentos para la aplicaci\'on en tiempo real.
+
+El presente trabajo busca suplir esta falta reimplementando estos filtros mediante instrucciones SIMD en lenguaje ensamblador para la arquitectura amd64. Asimismo buscamos que el proyecto sea mas atractivo al usuario final, por ende inclu\'imos una serie de filtros avanzados que ser\'an programados bajo la misma premisa de cuidado de la performance. Estos \'ultimos son ideados con el fin de transformar la herramienta en un programa de entretenimiento capaz de crear im\'agenes y videos divertidos.
+
+\subsection{Plataforma}
+Los desarrolladores del proyecto optaron por programar utilizando NetBeans como IDE, lo cual nos fuerza a utilizar el mismo software para implementar las mejoras. Decidimos utilizar la arquitectura amd64 debido a su amplio uso actual en PCs. Para explotar el potencial, trabajamos sobre Linux (K)Ubuntu y Mac OSX utilizando las \'ultimas versiones de SSE. Nuestro compilador assembler es NASM dada su mejor integraci\'on con NetBeans.
+
+\subsection{Filtros}
+WxCam tiene una implementaci\'on en C++ de varios filtros. Los algoritmos son simples y no estan optimizados (con la excepci\'on del par\'ametro -O2 que utiliza el IDE para compilar). Para realizar el presente trabajo evaluamos la lista de filtros del proyecto Gimp, tambi\'en Open Source, y decidimos implementar los siguientes efectos visuales: \\
+\begin{itemize}
+\item[1] Vertical Mirror: cada pixel se transporta entero de acuerdo a la distancia axial al centro de la imagen,
+\item[2] Negative: calcula el color inverso para cada pixel,
+\item[3] Stretch: zoom X2,
+\item[4] Edge: calcula un Sobel con caracterizaci\'on de colores,
+\item[5] Bona: filtro por distancia de colores espec\'ificos (ie. el rojo) y en caso de ser cercano se lo deja intacto,
+\item[5] Pixelate: distorsiona la imagen exagerando el pixelado,
+\item[6] Instagram: el efecto del filtro simula que la imagen fue tomada por una camara antigua,
+\item[7] Monochrome: pasaje a blanco/negro,
+\item[8] Channel: filtrado por canales (R, G o B),
+\item[9] Median: reducci\'on de ru\'ido a trav\'es del c\'alculo de promedios en la vecindad,
+\end{itemize}
