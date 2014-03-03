@@ -1,7 +1,7 @@
 wxcam
 =====
 
-New optimised filters added to wxcam, using SSE
+New optimised filters added to wxcam, using  Streaming SIMD Extensions (SSE)
 
 ======  FIXES ======
 
